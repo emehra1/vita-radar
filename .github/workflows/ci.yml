@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    # The pipeline commits data/ and out/ every morning with [skip ci], but
+    # [skip ci] only suppresses the push event for the commit that carries it —
+    # a manual data commit, or a merge that drags one along, still fires here.
+    # Nothing in CI reads generated output, so running it on generated output is
+    # a minute of Actions time that can only ever pass.
+    paths-ignore:
+      - "data/**"
+      - "out/**"
+      - ".cache/**"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          # From .nvmrc, so the runner and the laptop cannot drift. Node 22 is
+          # not incidental: the pipeline runs under tsx with no build step, and
+          # `--env-file-if-exists` in the email script is a Node 22 flag.
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - run: npm run typecheck
+      - run: npm test
+
+      # Last, and not redundant with the tests. `npm test` checks the code
+      # against fixtures; this checks the committed data/ against the contract,
+      # which is where the audit-trail firewall is asserted — no ScoreFactor key
+      # may start with llm/claude. A pull request that introduces a
+      # model-derived score factor fails here rather than in review.
+      - run: npm run validate

@@ -1,0 +1,27 @@
+{
+  "name": "vita-radar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepipeline": "bash scripts/assert-fresh.sh",
+    "pipeline": "tsx pipeline/run.ts",
+    "email": "node --env-file-if-exists=.env --import tsx scripts/send-email.ts",
+    "ics": "tsx scripts/build-ics.ts",
+    "validate": "tsx scripts/validate-data.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "nodemailer": "^6.9.5"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.14.5",
+    "@types/nodemailer": "^6.4.15",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.8"
+  }
+}

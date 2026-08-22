@@ -1,0 +1,347 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//vita-radar//deadline calendar//EN
+CALSCALE:GREGORIAN
+X-WR-CALNAME:vita-radar — deadlines
+X-WR-TIMEZONE:America/New_York
+X-WR-CALDESC:Fellowship\, conference and application deadlines from config/
+ deadlines.yml. Entries marked [projected] are rolled forward from a previo
+ us cycle and NOT confirmed. Entries marked (day unknown — verify) are pi
+ nned to the first of the month and are not due then.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:ardd-2026-2026-abstract-83113d13@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20260831
+DTEND;VALUE=DATE:20260901
+SUMMARY:ARDD 2026 — Aging Research & Drug Discovery — Poster abstract s
+ ubmission
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 31 Aug 2026\n\nCycle 2026 · Aging Pharma / ARDD\n\nEvid
+ ence: "The deadline is August 31\, and decisions will be announced in Sept
+ ember."\n\nCORRECTION to the master timeline\, verified live 2026-08-22. Y
+ our spreadsheet says "Copenhagen\, Aug 24-28\, 2026\; abstract deadline Au
+ g 10." Both are wrong for 2026: the conference is OCTOBER 1-3 in BOSTON\, 
+ at Harvard\, and the abstract deadline had not passed. The page prints "Au
+ gust 31" with NO YEAR — the year is inferred only because decisions are 
+ announced in September for an October conference\, which the `conference_d
+ ate - 400d < deadline < conference_date` validator confirms. Note the coll
+ ision: the conference runs over the Rhodes national deadline. Also: ardd.e
+ u is a French sustainable-development NGO\, not this.\n\nhttps://agingphar
+ ma.org/registration\n\nFrom config/deadlines.yml (ardd-2026) — the YAML 
+ is the source of truth\, this is a copy.
+URL:https://agingpharma.org/registration
+CATEGORIES:vita-radar,conferences,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ARDD 2026 — Aging Research & Drug Discovery — Poster abstra
+ ct submission
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uraf-contact-2026-email-uraf-6ce62c01@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20260901
+DTEND;VALUE=DATE:20260902
+SUMMARY:Get on the Harvard URAF fellowships mailing list — Email the Harv
+ ard fellowships office for endorsement deadlines
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 1 Sept 2026\n\nCycle 2026\n\nThe highest value-per-minut
+ e row in this file. uraf.harvard.edu returns a hard WAF 403 on every path 
+ including robots.txt\, so the Rhodes and Marshall internal endorsement dat
+ es — the ones that actually bind — cannot be obtained any other way. O
+ ne email replaces the entire scraping layer for the two rows where being w
+ rong costs a year.\n\nFrom config/deadlines.yml (uraf-contact) — the YAM
+ L is the source of truth\, this is a copy.
+CATEGORIES:vita-radar,fellowships,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Get on the Harvard URAF fellowships mailing list — Email the 
+ Harvard fellowships office for endorsement deadlines
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:abrcms-2026-2026-abstract-619c5d5a@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260912
+SUMMARY:ABRCMS 2026 — Abstract submission
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 11 Sept 2026\n\nCycle 2026\n\nUndergraduate-eligible\, l
+ arge biomedical research conference.\n\nhttps://abrcms.org/present-at-abrc
+ ms/submit-an-abstract/\n\nFrom config/deadlines.yml (abrcms-2026) — the 
+ YAML is the source of truth\, this is a copy.
+URL:https://abrcms.org/present-at-abrcms/submit-an-abstract/
+CATEGORIES:vita-radar,conferences,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ABRCMS 2026 — Abstract submission
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:rhodes-us-2027-national-app-d4d94f60@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART:20261002T035900Z
+SUMMARY:[projected] Rhodes Scholarship (US) — National application (Rhode
+ s portal)
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 1 Oct 2026\, 23:59 EDT\n\nPROJECTED date\, rolled forwar
+ d from a previous cycle and not confirmed against the source page. Verify 
+ it.\n\nCycle 2027 · Rhodes Trust\n\nEligibility: US citizen\; institution
+ al endorsement REQUIRED. Cannot be deferred. Commences October 2027 for tw
+ o years.\n\nRe-confirm by 2026-08-25\n\nhttps://www.rhodeshouse.ox.ac.uk/s
+ cholarships/the-rhodes-scholarship\n\nFrom config/deadlines.yml (rhodes-us
+ ) — the YAML is the source of truth\, this is a copy.
+URL:https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship
+CATEGORIES:vita-radar,fellowships,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] Rhodes Scholarship (US) — National application (R
+ hodes portal)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gates-cambridge-us-2027-gates-app-e13a361a@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:[projected] Gates Cambridge Scholarship (US round) — Gates Cambri
+ dge application
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 15 Oct 2026 (London time)\n\nPROJECTED date\, rolled for
+ ward from a previous cycle and not confirmed against the source page. Veri
+ fy it.\n\nCycle 2027 · Gates Cambridge Trust\n\nEligibility: Requires a S
+ EPARATE application to a Cambridge MPhil or PhD with its own deadline. Tar
+ get the 1-year MPhil: the 3-year PhD does not fit a Fall 2029 MD/PhD matri
+ culation. Structurally awkward for the master plan — the clean version i
+ s MPhil then an RA year.\n\nRe-confirm by 2026-09-01\n\nhttps://www.gatesc
+ ambridge.org/apply/\n\nFrom config/deadlines.yml (gates-cambridge-us) — 
+ the YAML is the source of truth\, this is a copy.
+URL:https://www.gatescambridge.org/apply/
+CATEGORIES:vita-radar,fellowships,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] Gates Cambridge Scholarship (US round) — Gates Ca
+ mbridge application
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nucleate-activator-us-2027-application-1c80a3f6@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Nucleate Activator (US) — Activator application
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 21 Oct 2026\n\nCycle 2027 · Nucleate\n\nEvidence: "Dead
+ line for US chapters is October 21st."\n\nEquity-free\; supports academic 
+ founders\; founded at Harvard/MIT. The quoted evidence span carries NO YEA
+ R\, and the page shows it beside a "2024 COHORT" block — a textbook case
+  for why the extractor is a locator and never a reader. Year assigned by a
+  human (me\, on 2026-08-22) from the surrounding cycle context. Note: nucl
+ eate.org's own /feed/ returns 200 with valid RSS and ZERO items\, and wp-j
+ son/wp/v2/posts returns [] — they publish no posts\, so there is nothing
+  to subscribe to.\n\nhttps://nucleate.org/\n\nFrom config/deadlines.yml (n
+ ucleate-activator-us) — the YAML is the source of truth\, this is a copy
+ .
+URL:https://nucleate.org/
+CATEGORIES:vita-radar,venture-founder,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Nucleate Activator (US) — Activator application
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:broad-bbps-2027-ecr-8dd712ee@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:[projected] Broad Biomedical Post-baccalaureate Scholars (BBPS) —
+  Broad Early Career Researcher application (Avature)
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 30 Nov 2026\n\nPROJECTED date\, rolled forward from a pr
+ evious cycle and not confirmed against the source page. Verify it.\n\nCycl
+ e 2027 · Broad Institute\n\nA gate\, not a formality — BBPS reads ECR a
+ pplicants. Target submission Nov 2026 so review completes before the BBPS 
+ window. broadinstitute.org 403s every path incl. robots.txt\; the only mac
+ hine-readable route is broadinstitute.avature.net/en_US/careers/SearchJobs
+ /feed/ (robots explicitly Allow: /careers). ACTION: email bbps@broadinstit
+ ute.org to get on the list — a mailing list beats any scraper against a 
+ hard 403.\n\nEligibility: Two-year program\, two-step application. Has a d
+ iversity / underrepresented-in-STEM focus — verify alignment. A standalo
+ ne RA hire in the Buenrostro lab is the viable Scenario B fallback.\n\nRe-
+ confirm by 2026-10-01\n\nhttps://www.broadinstitute.org/bbps\n\nFrom confi
+ g/deadlines.yml (broad-bbps) — the YAML is the source of truth\, this is
+  a copy.
+URL:https://www.broadinstitute.org/bbps
+CATEGORIES:vita-radar,mstp-labs,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] Broad Biomedical Post-baccalaureate Scholars (BBPS)
+  — Broad Early Career Researcher application (Avature)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:keystone-epigenetics-2027-2027-deadline-5b8f8395@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20261218
+SUMMARY:Keystone — Epigenetics in Health and Disease (D42027\, Banff) —
+  deadline
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 17 Dec 2026 (Denver time)\n\nCycle 2027 · Keystone Symp
+ osia\n\nOrganized by Liling Wan and Bradley Bernstein (Broad) — top exte
+ rnal venue and in-network. The short-talk deadline is FOUR MONTHS before t
+ he poster deadline\; do not conflate them. Probed from the conference-list
+ ing table's calndr.link query strings\, not the prose.\n\nhttps://www.keys
+ tonesymposia.org/conferences/conference-listing\n\nFrom config/deadlines.y
+ ml (keystone-epigenetics-2027) — the YAML is the source of truth\, this 
+ is a copy.
+URL:https://www.keystonesymposia.org/conferences/conference-listing
+CATEGORIES:vita-radar,conferences
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Keystone — Epigenetics in Health and Disease (D42027\, Banff)
+  — deadline
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:broad-bbps-2027-deadline-cc5d71bc@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:[projected] Broad Biomedical Post-baccalaureate Scholars (BBPS) —
+  deadline (day unknown — verify)
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes January 2027 (day unknown)\n\nDAY NOT KNOWN. This is pin
+ ned to the first of the month so it is visible\, not because it is due the
+ n. Find the real date before you plan around it.\n\nCycle 2027 · Broad In
+ stitute\n\nEligibility: Two-year program\, two-step application. Has a div
+ ersity / underrepresented-in-STEM focus — verify alignment. A standalone
+  RA hire in the Buenrostro lab is the viable Scenario B fallback.\n\nRe-co
+ nfirm by 2026-10-01\n\nhttps://www.broadinstitute.org/bbps\n\nFrom config/
+ deadlines.yml (broad-bbps) — the YAML is the source of truth\, this is a
+  copy.
+URL:https://www.broadinstitute.org/bbps
+CATEGORIES:vita-radar,mstp-labs
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] Broad Biomedical Post-baccalaureate Scholars (BBPS)
+  — deadline (day unknown — verify)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:jpm-week-2027-2027-deadline-c5b1178e@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270112
+SUMMARY:[projected] JPMorgan Healthcare week — SF networking sprint — d
+ eadline
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 11 Jan 2027\n\nPROJECTED date\, rolled forward from a pr
+ evious cycle and not confirmed against the source page. Verify it.\n\nCycl
+ e 2027\n\nMain conference is invite-only\; the surrounding week is the poi
+ nt. Biotech Showcase Jan 11-13\, 2027. Plan 2-3 meetings/day for 4-5 days 
+ and book them in December — the deadline here is when outreach must STAR
+ T\, not the event.\n\nRe-confirm by 2026-11-01\n\nFrom config/deadlines.ym
+ l (jpm-week-2027) — the YAML is the source of truth\, this is a copy.
+CATEGORIES:vita-radar,venture-founder
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] JPMorgan Healthcare week — SF networking sprint 
+ — deadline
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:age-annual-2027-2027-abstract-3a46fc67@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270220
+SUMMARY:AGE — American Aging Association annual meeting — Abstract subm
+ ission
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 19 Feb 2027\n\nCycle 2027\n\nhttps://www.americanagingas
+ sociation.org/annual-meeting\n\nFrom config/deadlines.yml (age-annual-2027
+ ) — the YAML is the source of truth\, this is a copy.
+URL:https://www.americanagingassociation.org/annual-meeting
+CATEGORIES:vita-radar,conferences,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AGE — American Aging Association annual meeting — Abstract 
+ submission
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cshl-biology-of-genomes-2027-2027-abstract-e9a55951@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270220
+SUMMARY:CSHL — Biology of Genomes 2027 — Abstract submission
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes 19 Feb 2027\n\nCycle 2027 · Cold Spring Harbor Laborato
+ ry\n\nhttps://meetings.cshl.edu/meetingshome.aspx\n\nFrom config/deadlines
+ .yml (cshl-biology-of-genomes-2027) — the YAML is the source of truth\, 
+ this is a copy.
+URL:https://meetings.cshl.edu/meetingshome.aspx
+CATEGORIES:vita-radar,conferences,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSHL — Biology of Genomes 2027 — Abstract submission
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:scmethyl-manuscript-2027-preprint-ddcf5ae8@vita-radar
+DTSTAMP:20260822T202944Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:[projected] scMethyl methods manuscript — bioRxiv preprint + jour
+ nal submission (day unknown — verify)
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Closes May 2027 (day unknown)\n\nDAY NOT KNOWN. This is pinned 
+ to the first of the month so it is visible\, not because it is due then. F
+ ind the real date before you plan around it.\n\nCycle 2027\n\nThe single h
+ ighest-leverage asset for AMCAS\, Hertz and PD Soros. A first-author or co
+ -first methods paper preprinted by mid-2028 is what the whole Fall 2028 st
+ ack is built on\, and posting to bioRxiv 6-12 months before acceptance cou
+ nts on AMCAS Work and Activities. Under Scenario A this MUST be submitted 
+ before leaving for Oxford\, with revisions managed remotely. Push for firs
+ t or co-first — middle author on lab papers does not move the needle. IP
+  NOTE: in the US a public disclosure (talk\, poster\, or preprint) starts 
+ a 12-month clock to file\, and most other jurisdictions have no grace peri
+ od at all. Talk to Broad OSAP BEFORE the preprint\, not after.\n\nRe-confi
+ rm by 2026-10-01\n\nFrom config/deadlines.yml (scmethyl-manuscript) — th
+ e YAML is the source of truth\, this is a copy.
+CATEGORIES:vita-radar,mstp-labs,gating
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[projected] scMethyl methods manuscript — bioRxiv preprint + 
+ journal submission (day unknown — verify)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,939 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  THE file you edit. Everything else in this repo is downstream of it.
+#
+#  THE ONE RULE: this file is the source of truth for every date. Scrapers and
+#  Claude are change-detectors layered on top. They may raise a flag; they may
+#  never write a date. A model may move a date toward a human, never toward an
+#  alert.
+#
+#  Why it is hand-maintained and not scraped, from live probes on 2026-08-22:
+#    · rhodeshouse.ox.ac.uk renders fine and states NO DATE — just
+#      "Applications for the Rhodes Scholarship 2027 are open!"
+#    · rhodesscholar.org/applying-for-the-scholarship 301s to a different
+#      domain; the date is in a PDF, three hops in.
+#    · gatescambridge.org/apply/ 302s to http://www.gatescambridge.org/// —
+#      downgraded scheme, triple slash, lands on the homepage. A scraper
+#      following redirects extracts nothing and reports zero.
+#    · nucleate.org says "Deadline for US chapters is October 21st" — no year —
+#      directly beside a "2024 COHORT" block.
+#    · uraf.harvard.edu returns a hard WAF 403 on EVERY path including
+#      robots.txt. Harvard-internal endorsement deadlines exist on no
+#      machine-readable host anywhere on the internet.
+#    · agingpharma.org/registration says "The deadline is August 31, and
+#      decisions will be announced in September." No year printed.
+#
+#  These are ~45 rows that change once a year. Scraping them trades an hour a
+#  year of typing for an unbounded, unfalsifiable, silent-failure risk.
+#
+#  EDITING RULES
+#    confirmed: true   only when a human read the page and the date is explicit.
+#                      Scored at full urgency. May ring the subject line.
+#    confirmed: false  a projection. Scored at 0.7x and can never outrank a
+#                      confirmed date at the same distance. Renders "projected".
+#    kind: unknown     there IS a deadline and we do not know it. NOT the same as
+#                      rolling. Surfaces in the Verify block until resolved.
+#    kind: rolling     genuinely no deadline. Delivered at most every 45 days.
+#    precision: month  a date we only know to the month. CANNOT ring an alert.
+#                      Never invent a day to make a row look tidy.
+#
+#    gating: true      missing this step ends the application. The T-minus ladder
+#                      runs off the earliest unmet gating step, NOT the headline
+#                      deadline. This is the field that earns the whole project.
+#
+#  After you verify a row by hand, update `verifiedOn`. Rows past
+#  `verifyEvery` surface at the TOP of the email.
+# ─────────────────────────────────────────────────────────────────────────────
+version: 1
+
+defaults:
+  timeZone: America/New_York
+  verifyEvery: 90        # days
+  horizonDays: 400
+
+programs:
+
+  # ══════════════════ FALL 2026 CYCLE — LIVE RIGHT NOW ══════════════════
+
+  - id: rhodes-us
+    label: Rhodes Scholarship (US)
+    org: Rhodes Trust
+    lane: fellowships
+    status: active
+    priority: high
+    url: https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship
+    verifiedOn: 2026-08-22
+    eligibility:
+      notes: >
+        US citizen; institutional endorsement REQUIRED. Cannot be deferred.
+        Commences October 2027 for two years.
+      source: https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship
+    cycles:
+      - year: 2027
+        deadline: 2026-10-01
+        confirmed: false          # rhodeshouse.ox.ac.uk states no date; "~Oct 1" is from your own notes
+        timeOfDay: "23:59"
+        precision: day
+        verifyBy: 2026-08-25
+        steps:
+          - id: harvard-endorsement
+            label: Harvard institutional endorsement (URAF / OUE)
+            gating: true
+            precision: month      # "mid-September" is NOT a date. Do not invent one.
+            note: >
+              THE row that matters. Harvard's internal deadline PRECEDES the
+              national one by weeks and missing it ends the application
+              regardless of Oct 1. uraf.harvard.edu 403s every path including
+              robots.txt, so no scraper on earth will find this. ACTION: email
+              the Harvard fellowships office in early September and put the
+              exact date here, then set precision: day.
+          - id: national-app
+            label: National application (Rhodes portal)
+            due: 2026-10-01
+            timeOfDay: "23:59"
+            gating: true
+            precondition: harvard-endorsement
+    recurrence: { cadence: annual, anchor: "10-01" }
+
+  - id: gates-cambridge-us
+    label: Gates Cambridge Scholarship (US round)
+    org: Gates Cambridge Trust
+    lane: fellowships
+    status: active
+    priority: normal
+    url: https://www.gatescambridge.org/apply/
+    verifiedOn: 2026-08-22
+    # A UK deadline, so it must NOT inherit the America/New_York default.
+    #
+    # Left on the default this row rendered "15 Oct 2026" with no zone, which
+    # reads as a local date to somebody in Boston. It is not: London's 15th ends
+    # at 19:00 Eastern, so a submission at 21:00 Eastern on the 15th is late.
+    #
+    # Where the administering zone is genuinely uncertain, prefer the EARLIER
+    # interpretation, which is the same rule the parser follows. A London
+    # midnight arrives before an Eastern one, so assuming London can only ever
+    # make the tracker early. Being early is free; being late costs a cycle.
+    timeZone: Europe/London
+    eligibility:
+      notes: >
+        Requires a SEPARATE application to a Cambridge MPhil or PhD with its own
+        deadline. Target the 1-year MPhil: the 3-year PhD does not fit a Fall
+        2029 MD/PhD matriculation. Structurally awkward for the master plan —
+        the clean version is MPhil then an RA year.
+    cycles:
+      - year: 2027
+        deadline: 2026-10-15
+        confirmed: false          # "mid-October" from your notes; /apply/ 302s to a broken root
+        precision: day
+        verifyBy: 2026-09-01
+        steps:
+          - id: cambridge-course-app
+            label: University of Cambridge MPhil application (separate deadline)
+            gating: true
+            precision: month
+            note: >
+              Its own earlier deadline, course-dependent. Gates cannot be won
+              without it. Verify the specific MPhil's date.
+          - id: gates-app
+            label: Gates Cambridge application
+            due: 2026-10-15
+            gating: true
+            precondition: cambridge-course-app
+    recurrence: { cadence: annual, anchor: "10-15" }
+
+  - id: broad-bbps
+    label: Broad Biomedical Post-baccalaureate Scholars (BBPS)
+    org: Broad Institute
+    lane: mstp-labs
+    status: active
+    priority: high
+    url: https://www.broadinstitute.org/bbps
+    verifiedOn: 2026-08-22
+    eligibility:
+      notes: >
+        Two-year program, two-step application. Has a diversity /
+        underrepresented-in-STEM focus — verify alignment. A standalone RA hire
+        in the Buenrostro lab is the viable Scenario B fallback.
+    cycles:
+      - year: 2027
+        deadline: 2027-01-15
+        confirmed: false
+        precision: month
+        verifyBy: 2026-10-01
+        steps:
+          - id: ecr
+            label: Broad Early Career Researcher application (Avature)
+            due: 2026-11-30
+            system: avature
+            gating: true
+            note: >
+              A gate, not a formality — BBPS reads ECR applicants. Target
+              submission Nov 2026 so review completes before the BBPS window.
+              broadinstitute.org 403s every path incl. robots.txt; the only
+              machine-readable route is
+              broadinstitute.avature.net/en_US/careers/SearchJobs/feed/
+              (robots explicitly Allow: /careers). ACTION: email
+              bbps@broadinstitute.org to get on the list — a mailing list beats
+              any scraper against a hard 403.
+          - id: bbps-app
+            label: BBPS application
+            gating: true
+            precondition: ecr
+            precision: month
+            note: Rolling decisions from late April 2027.
+    recurrence: { cadence: annual, anchor: "01-15" }
+
+  # ══════════════════════ CONFERENCES & ABSTRACTS ═══════════════════════
+
+  - id: ardd-2026
+    label: ARDD 2026 — Aging Research & Drug Discovery
+    org: Aging Pharma / ARDD
+    lane: conferences
+    status: active
+    priority: high
+    url: https://agingpharma.org/registration
+    verifiedOn: 2026-08-22
+    eventStart: 2026-10-01
+    eventEnd: 2026-10-03
+    venue: David Rubenstein Treehouse, Harvard University, Boston
+    cycles:
+      - year: 2026
+        deadline: 2026-08-31
+        confirmed: true
+        precision: day
+        evidence: "The deadline is August 31, and decisions will be announced in September."
+        steps:
+          - id: abstract
+            label: Poster abstract submission
+            due: 2026-08-31
+            gating: true
+        note: >
+          CORRECTION to the master timeline, verified live 2026-08-22. Your
+          spreadsheet says "Copenhagen, Aug 24-28, 2026; abstract deadline Aug
+          10." Both are wrong for 2026: the conference is OCTOBER 1-3 in BOSTON,
+          at Harvard, and the abstract deadline had not passed. The page prints
+          "August 31" with NO YEAR — the year is inferred only because decisions
+          are announced in September for an October conference, which the
+          `conference_date - 400d < deadline < conference_date` validator
+          confirms. Note the collision: the conference runs over the Rhodes
+          national deadline.
+          Also: ardd.eu is a French sustainable-development NGO, not this.
+    recurrence: { cadence: annual }
+
+  - id: abrcms-2026
+    label: ABRCMS 2026
+    lane: conferences
+    status: active
+    priority: normal
+    url: https://abrcms.org/present-at-abrcms/submit-an-abstract/
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2026
+        deadline: 2026-09-11
+        confirmed: true
+        precision: day
+        steps:
+          - id: abstract
+            label: Abstract submission
+            due: 2026-09-11
+            gating: true
+        note: Undergraduate-eligible, large biomedical research conference.
+    recurrence: { cadence: annual }
+
+  - id: keystone-epigenetics-2027
+    label: Keystone — Epigenetics in Health and Disease (D42027, Banff)
+    org: Keystone Symposia
+    lane: conferences
+    status: active
+    priority: high
+    url: https://www.keystonesymposia.org/conferences/conference-listing
+    verifiedOn: 2026-08-22
+    eventStart: 2027-04-12
+    eventEnd: 2027-04-15
+    timeZone: America/Denver
+    cycles:
+      - year: 2027
+        deadline: 2026-12-17
+        confirmed: true
+        precision: day
+        steps:
+          - id: short-talk-abstract
+            label: Short-talk abstract + scholarship
+            due: 2026-12-17
+            gating: false
+          - id: poster-abstract
+            label: Poster abstract
+            due: 2027-03-23
+            gating: false
+        note: >
+          Organized by Liling Wan and Bradley Bernstein (Broad) — top external
+          venue and in-network. The short-talk deadline is FOUR MONTHS before
+          the poster deadline; do not conflate them. Probed from the
+          conference-listing table's calndr.link query strings, not the prose.
+    recurrence: { cadence: biennial }
+
+  - id: cshl-biology-of-genomes-2027
+    label: CSHL — Biology of Genomes 2027
+    org: Cold Spring Harbor Laboratory
+    lane: conferences
+    status: active
+    priority: normal
+    url: https://meetings.cshl.edu/meetingshome.aspx
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        deadline: 2027-02-19
+        confirmed: true
+        precision: day
+        steps:
+          - id: abstract
+            label: Abstract submission
+            due: 2027-02-19
+            gating: true
+    recurrence: { cadence: annual }
+
+  - id: cshl-single-cell
+    label: CSHL — Single Cell Analyses (next US edition)
+    org: Cold Spring Harbor Laboratory
+    lane: conferences
+    status: active
+    priority: normal
+    url: https://meetings.cshl.edu/meetingshome.aspx
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        kind: unknown
+        verifyBy: 2026-09-15
+        note: >
+          Alternating years; your notes expect a fall 2026 US edition. The
+          meetings.cshl.edu table is scraped in phase 2 and will resolve this
+          automatically — until then it stays honestly unknown rather than
+          guessed. Stay on meetings.cshl.edu; www.cshl.edu/robots.txt disallows
+          ClaudeBot by name.
+
+  - id: grc-epigenetics-2027
+    label: GRC — Epigenetics 2027 (Holderness, NH)
+    org: Gordon Research Conferences
+    lane: conferences
+    status: watch
+    watchFrom: 2027-01-01
+    priority: normal
+    url: https://www.grc.org/
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        deadline: 2027-07-04
+        confirmed: false
+        precision: day
+        verifyBy: 2027-04-01
+        steps:
+          - id: application
+            label: Conference application
+            due: 2027-07-04
+            gating: true
+        note: >
+          Biennial. GRC requires a BACHELOR'S DEGREE in science/engineering for
+          primary attendance, so this becomes available only after May 2027
+          commencement — hence status: watch until then.
+    recurrence: { cadence: biennial }
+
+  - id: age-annual-2027
+    label: AGE — American Aging Association annual meeting
+    lane: conferences
+    status: active
+    priority: normal
+    url: https://www.americanagingassociation.org/annual-meeting
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        deadline: 2027-02-19
+        confirmed: true
+        precision: day
+        steps:
+          - id: abstract
+            label: Abstract submission
+            due: 2027-02-19
+            gating: true
+    recurrence: { cadence: annual }
+
+  - id: ashg-2027
+    label: ASHG 2027
+    lane: conferences
+    status: active
+    priority: normal
+    url: https://www.ashg.org/meetings/
+    cycles:
+      - year: 2027
+        kind: unknown
+        verifyBy: 2027-03-01
+        note: >
+          YAML-only permanently. The ASHG abstract deadline lives inside a
+          noindex PheedLoop SPA serving an identical 3,472-byte shell on every
+          path; the WP REST route is 401-locked; and
+          www.ashg.org/meetings/2026-meeting/abstracts/ still redirects to the
+          ASHG25 event. Driving Playwright at a noindex SPA for one date a year
+          is a bad trade. Meeting is October; abstracts typically close in June.
+    recurrence: { cadence: annual }
+
+  - id: broad-retreat
+    label: Broad Institute annual retreat (internal poster)
+    lane: conferences
+    status: active
+    priority: normal
+    cycles:
+      - year: 2026
+        kind: unknown
+        verifyBy: 2026-09-01
+        note: >
+          Internal, low-bar, effectively mandatory poster. The abstract call
+          goes out BY EMAIL ONLY — there is nothing to scrape. Watch your inbox.
+
+  - id: buenrostro-lab-retreat
+    label: Buenrostro lab retreat (subgroup update)
+    lane: conferences
+    status: active
+    priority: normal
+    cycles:
+      - year: 2026
+        kind: rolling
+        note: Scheduled internally. Present subgroup updates.
+
+  - id: jpm-week-2027
+    label: JPMorgan Healthcare week — SF networking sprint
+    lane: venture-founder
+    status: active
+    priority: normal
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        deadline: 2027-01-11
+        confirmed: false
+        precision: day
+        verifyBy: 2026-11-01
+        note: >
+          Main conference is invite-only; the surrounding week is the point.
+          Biotech Showcase Jan 11-13, 2027. Plan 2-3 meetings/day for 4-5 days
+          and book them in December — the deadline here is when outreach must
+          START, not the event.
+    recurrence: { cadence: annual, anchor: "01-11" }
+
+  # ══════════════════════ VENTURE / FOUNDER TRACK ════════════════════════
+
+  - id: nucleate-activator-us
+    label: Nucleate Activator (US)
+    org: Nucleate
+    lane: venture-founder
+    status: active
+    priority: high
+    url: https://nucleate.org/
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        deadline: 2026-10-21
+        confirmed: true
+        precision: day
+        evidence: "Deadline for US chapters is October 21st."
+        steps:
+          - id: application
+            label: Activator application
+            due: 2026-10-21
+            gating: true
+        note: >
+          Equity-free; supports academic founders; founded at Harvard/MIT. The
+          quoted evidence span carries NO YEAR, and the page shows it beside a
+          "2024 COHORT" block — a textbook case for why the extractor is a
+          locator and never a reader. Year assigned by a human (me, on
+          2026-08-22) from the surrounding cycle context. Note: nucleate.org's
+          own /feed/ returns 200 with valid RSS and ZERO items, and
+          wp-json/wp/v2/posts returns [] — they publish no posts, so there is
+          nothing to subscribe to.
+    recurrence: { cadence: annual, anchor: "10-21" }
+
+  - id: nucleate-venture-fellows
+    label: Nucleate Venture Fellows
+    org: Nucleate
+    lane: venture-founder
+    status: watch
+    watchFrom: 2029-09-01
+    priority: normal
+    cycles:
+      - year: 2030
+        kind: unknown
+        note: >
+          Part-time stipended fellowship in venture diligence and memo-writing;
+          ~5 national fellows per cycle. Trains GRAD STUDENTS AND POSTDOCS, so
+          it opens during the MD/PhD, not now. The accessible step today is
+          chapter involvement and the Activator ecosystem.
+
+  - id: activate-fellowship
+    label: Activate Fellowship (Cyclotron Road)
+    org: Activate
+    lane: venture-founder
+    status: watch
+    watchFrom: 2028-06-01
+    priority: normal
+    url: https://www.activate.org/
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2029
+        kind: unknown
+        verifyBy: 2028-08-01
+        note: >
+          Two-year equity-free deep-tech fellowship, >$300K over two years plus
+          lab access. The 2027 cohort opened 2026-09-15 — noted because the
+          annual cadence is the useful fact; you are not eligible for it. Best
+          suited to a science founder with a tool/platform, which is exactly the
+          profile, so this becomes a real target once there is a platform to
+          spin out.
+    recurrence: { cadence: annual, anchor: "09-15" }
+
+  - id: flagship-fellowship
+    label: Flagship Pioneering Fellowship
+    org: Flagship Pioneering
+    lane: venture-founder
+    status: watch
+    watchFrom: 2033-01-01
+    priority: normal
+    cycles:
+      - year: 2034
+        kind: unknown
+        note: >
+          12-week paid summer fellowship in Kendall Square. Eligibility is a
+          COMPLETED or FINAL-YEAR PhD/MD, so it is reachable in MD/PhD year 7-8,
+          not before. Fellows are expected to be available for full-time
+          Cambridge employment after, making it a genuine pipeline into Flagship.
+
+  - id: age1-fellowship
+    label: age1 Venture Fellowship
+    org: age1
+    lane: venture-founder
+    status: active
+    priority: normal
+    cycles:
+      - year: 2027
+        kind: rolling
+        note: >
+          You already work with age1 remotely; formalizing is a conversation,
+          not an application. Under Scenario A this runs concurrently with the
+          two Rhodes years. age1.vc returns HTTP 436 to automated clients, so
+          there is nothing to watch — this row exists to keep the relationship
+          on the quarterly review.
+
+  - id: ra-techatlas
+    label: RA Capital TechAtlas — associate / summer internship
+    org: RA Capital
+    lane: venture-founder
+    status: watch
+    watchFrom: 2026-11-01
+    priority: normal
+    cycles:
+      - year: 2027
+        kind: rolling
+        verifyBy: 2026-11-01
+        note: >
+          Apply within ~6 months of graduating. Process is a public-company
+          pitch, a conversation, then a take-home case — so the preparation is a
+          written investment thesis on single-cell/omics tools or an aging
+          target, which is worth doing regardless of whether you apply.
+          The free RA University "Biotech Unveiled" course is the on-ramp.
+
+  - id: convergent-fro
+    label: Convergent Research — FRO roles & Founder in Residence
+    org: Convergent Research
+    lane: venture-founder
+    status: active
+    priority: high
+    url: https://api.lever.co/v0/postings/convergentresearch?mode=json
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2027
+        kind: rolling
+        note: >
+          Watched programmatically from phase 2 — the single highest-value
+          endpoint found. One flat Lever array covers EVERY FRO via
+          categories.team (E11 Bio, PTI, Melody, Atlas) and carried a live
+          Founder in Residence posting on 2026-08-22. FROs are ~15-30 people,
+          $20-50M, 5-7 years, and exist precisely to build tools and datasets
+          that neither academia nor VC will fund — unusually well matched to a
+          tool-builder.
+
+  - id: astera-residency
+    label: Astera Institute Residency
+    lane: venture-founder
+    status: watch
+    watchFrom: 2035-01-01
+    priority: normal
+    cycles:
+      - year: 2036
+        kind: rolling
+        note: >
+          12-18 months fully funded, $125K-$250K salary plus project budget up
+          to $1.5M. Career stage skews mid-career: target post-MD/PhD or late
+          dissertation. Cycles ~2x/year; verify with residency@astera.org.
+
+  - id: blavatnik-fellowship
+    label: Blavatnik Fellowship in Life Science Entrepreneurship (HBS)
+    lane: venture-founder
+    status: ruled-out
+    ruledOut:
+      reason: >
+        Eligibility is HBS alumni (typically within 7 years) and Harvard-affiliated
+        POSTDOCS. Not open to undergraduates or to MD/PhD students.
+      citation: Harvard Gazette / Harvard OTD program page
+    note: Kept in the file so nobody re-adds it in two years. Revisit post-PhD.
+
+  # ════════════════ FALL 2028 CYCLE — THE CONVERGENCE POINT ═══════════════
+  #
+  #  AMCAS + Hertz + PD Soros + Knight-Hennessy all land together, and
+  #  Knight-Hennessy forces Stanford MSTP onto the AMCAS school list. Every
+  #  date here is a PROJECTION from prior cycles: they are two years out and
+  #  none of them is published yet. They are in the file now so the ladder
+  #  starts ringing at T-365 instead of T-30.
+
+  - id: amcas-mstp
+    label: AMCAS / MD-PhD (MSTP) application
+    lane: mstp-labs
+    status: watch
+    watchFrom: 2027-11-01
+    priority: high
+    cycles:
+      - year: 2029
+        deadline: 2028-06-01
+        confirmed: false
+        precision: month
+        verifyBy: 2028-01-15
+        steps:
+          - id: essays
+            label: Personal statement, MD/PhD essay, Significant Research Experience essay
+            due: 2028-04-01
+            gating: true
+            note: Draft Jan-Apr 2028. The SRE essay is where the scMethyl paper earns its keep.
+          - id: letters
+            label: Lock 5-7 letter writers
+            due: 2028-02-01
+            gating: true
+            note: >
+              Anchors: Adam Cohen, Jason Buenrostro, Patrick Griffin. Add an
+              Oxford supervisor (Scenario A) or post-bacc mentor (Scenario B),
+              an age1 mentor for the non-academic letter, and one more research
+              mentor. Semesterly meetings — letters are built, not requested.
+          - id: submit
+            label: AMCAS submission
+            due: 2028-06-01
+            gating: true
+            precondition: essays
+          - id: casper-preview
+            label: CASPer / AAMC PREview
+            due: 2028-06-30
+            gating: false
+        note: >
+          YAML-only permanently: AAMC returns HTTP 200 with a 3,038-byte
+          F5/Shape "Client Challenge" body, so a naive monitor calls it healthy
+          forever. Dates move once a year and only matter in 2028.
+
+  - id: mcat
+    label: MCAT
+    lane: mstp-labs
+    status: watch
+    watchFrom: 2027-01-01
+    priority: high
+    cycles:
+      - year: 2028
+        deadline: 2027-07-15
+        confirmed: false
+        precision: month
+        verifyBy: 2027-02-01
+        steps:
+          - id: content-review
+            label: Structured content review begins
+            due: 2027-01-15
+            gating: false
+          - id: test-date
+            label: Test date (target July or August 2027)
+            due: 2027-07-15
+            gating: true
+        note: >
+          Scores release ~3 weeks. Valid 3 years at most schools — HMS requires
+          a retake beyond 3 years — so a July 2027 score covers matriculation
+          through summer 2030 with margin. LATEST acceptable date is April 2028
+          to have a verified score by AMCAS submission.
+
+  - id: hertz-fellowship
+    label: Hertz Fellowship
+    lane: fellowships
+    status: watch
+    watchFrom: 2028-06-01
+    priority: high
+    url: https://www.hertzfoundation.org/the-fellowship/
+    cycles:
+      - year: 2029
+        deadline: 2028-10-25
+        confirmed: false
+        precision: month
+        verifyBy: 2028-08-15
+        steps:
+          - id: application
+            label: Application (opens late August)
+            due: 2028-10-25
+            gating: true
+          - id: references
+            label: Four references due
+            due: 2028-11-05
+            gating: true
+            precondition: application
+        note: >
+          Funds the PhD portion of MD/PhD only. MCAT accepted in lieu of GRE.
+          First-round interviews Dec 2028 / Jan 2029, second round in person Feb
+          2029. Gap-period applicants preparing to apply are explicitly
+          eligible. hertzfoundation.org/feed/ is a soft 200 serving the 593KB
+          homepage, and its /wp-json/ is open but robots-disallowed — so this
+          row stays hand-maintained.
+    recurrence: { cadence: annual, anchor: "10-25" }
+
+  - id: pd-soros
+    label: Paul & Daisy Soros Fellowship for New Americans
+    lane: fellowships
+    status: watch
+    watchFrom: 2028-06-01
+    priority: high
+    url: https://www.pdsoros.org/
+    cycles:
+      - year: 2029
+        deadline: 2028-10-26
+        confirmed: false
+        precision: month
+        timeOfDay: "14:00"
+        verifyBy: 2028-08-15
+        steps:
+          - id: application
+            label: Application
+            due: 2028-10-26
+            timeOfDay: "14:00"
+            gating: true
+        note: >
+          Closes at 2 PM ET, NOT midnight — the single most likely way to lose
+          this one, which is why timeOfDay is a first-class field. Age <=30 at
+          deadline; MD/PhD is an eligible degree; no admit needed in hand.
+          Content reuses heavily from AMCAS, so apply concurrently.
+    recurrence: { cadence: annual, anchor: "10-26" }
+
+  - id: knight-hennessy
+    label: Knight-Hennessy Scholars (Stanford)
+    lane: fellowships
+    status: watch
+    watchFrom: 2028-05-01
+    priority: normal
+    url: https://knight-hennessy.stanford.edu/
+    cycles:
+      - year: 2029
+        deadline: 2028-10-08
+        confirmed: false
+        precision: month
+        verifyBy: 2028-08-01
+        steps:
+          - id: stanford-mstp
+            label: Concurrent Stanford MSTP application (must be on the AMCAS list)
+            gating: true
+            precision: month
+            note: >
+              KH cannot be held without a Stanford MSTP application in the same
+              cycle, and both must start the same Fall. If you are applying KH,
+              Stanford MSTP goes on the AMCAS school list — a decision that has
+              to be made months before this deadline.
+          - id: kh-app
+            label: Knight-Hennessy application
+            due: 2028-10-08
+            gating: true
+        note: >
+          Eligibility is within 7 years of the BA; you would apply ~1.3 years
+          out, well inside. Cannot be deferred. OPEN QUESTION to resolve before
+          committing: confirm with the Stanford MSTP office whether KH funding
+          can layer onto an MSTP T32 stipend — some MSTPs have historically
+          restricted external fellowship layering, which would make the whole
+          application moot. knight-hennessy.stanford.edu declares Crawl-delay: 30.
+    recurrence: { cadence: annual, anchor: "10-08" }
+
+  # ══════════════════════ MD/PhD-STAGE MECHANISMS ════════════════════════
+
+  - id: nih-f30-nia
+    label: NIH F30 (NRSA dual-degree, NIA-routed)
+    org: NIH / National Institute on Aging
+    lane: fellowships
+    status: watch
+    watchFrom: 2029-09-01
+    priority: normal
+    verifiedOn: 2026-08-22
+    cycles:
+      - year: 2030
+        deadline: 2030-04-08
+        confirmed: true
+        precision: day
+        note: >
+          Standard receipt dates are POLICY-DRIVEN and fixed: April 8, August 8,
+          December 8, every year. They are published in the parent PA and are
+          absent from the Grants.gov closeDate (which shows 05/07/2028 for
+          PA-25-425/426), so no API carries them — this is a permanent YAML row.
+          Must apply within 48 months of MD/PhD matriculation; target PhD year 1
+          or 2. F31 is PhD-only and inappropriate for MD/PhD.
+    recurrence: { cadence: thrice-yearly, anchors: ["04-08", "08-08", "12-08"] }
+
+  - id: hhmi-gilliam
+    label: HHMI Gilliam Fellows
+    lane: fellowships
+    status: watch
+    watchFrom: 2026-09-01
+    priority: normal
+    url: https://www.hhmi.org/programs/gilliam-fellowships-advanced-study
+    cycles:
+      - year: 2031
+        kind: unknown
+        verifyBy: 2026-10-01
+        note: >
+          MD/PhD students became eligible as of 2026-09-01 — a brand-new change,
+          which is exactly why watchFrom is set to that date. Target PhD year 2
+          or 3, after qualifying exams. Verify program details when the cycle
+          posts.
+
+  - id: schmidt-science-fellows
+    label: Schmidt Science Fellows
+    lane: fellowships
+    status: watch
+    watchFrom: 2035-01-01
+    priority: normal
+    url: https://schmidtsciencefellows.org/
+    cycles:
+      - year: 2036
+        kind: unknown
+        note: >
+          Post-PhD only; eligible window is PhD conferral within ~14 months of
+          the fellowship start, so you apply in the final year of the PhD
+          (MD/PhD year ~7-8). Strong fit for interdisciplinary pivots; a
+          postdoc bridge. Nomination is institutional — the internal deadline
+          will precede the external one.
+
+  # ═══════════════════════════ RULED OUT ═════════════════════════════════
+  #
+  #  These stay in the file. Never scored, never emailed. The reason is
+  #  recorded so nobody re-adds them in two years, and so an item that looks
+  #  like one gets the eligibilityMismatch penalty instead of a slot.
+
+  - id: nsf-grfp
+    label: NSF Graduate Research Fellowship Program
+    lane: fellowships
+    status: ruled-out
+    ruledOut:
+      reason: MD/PhD candidates are explicitly ineligible.
+      citation: NSF 25-547 (FY2026 solicitation)
+    note: >
+      Re-evaluate ONLY if the FY2028 solicitation reverses the exclusion. An
+      NSF-GRFP-shaped item with a perfect imminent deadline is worse than noise
+      — it is a distraction with a deadline — which is why eligibilityMismatch
+      is weighted heavily enough to sink an item on its own.
+
+  - id: marshall-scholarship
+    label: Marshall Scholarship
+    lane: fellowships
+    status: watch
+    watchFrom: 2026-09-01
+    priority: normal
+    cycles:
+      - year: 2027
+        kind: unknown
+        verifyBy: 2026-09-01
+        note: >
+          YAML-only permanently: marshallscholarship.org is unreachable by every
+          method tried (HTTP/2 INTERNAL_ERROR, then timeouts at 25s/45s/60s).
+          Also requires Harvard endorsement, so the BINDING date is a URAF one
+          anyway — same email that resolves the Rhodes endorsement row.
+
+  # ════════════════════════ STANDING OBLIGATIONS ═════════════════════════
+  #
+  #  Not applications, but dated commitments the flywheel depends on:
+  #  "Publish + Present + Write + Meet". They belong here because the whole
+  #  point of a compounding cadence is that nothing reminds you when it slips.
+
+  - id: substack-cadence
+    label: Substack — one piece every 3 weeks
+    lane: venture-founder
+    status: active
+    priority: normal
+    url: https://eshanmehra.substack.com/
+    cycles:
+      - year: 2026
+        kind: rolling
+        note: >
+          Alternating research clarity and bio-innovation/venture memos. Directly
+          supports the age1 relationship and is load-bearing under Scenario A,
+          where age1 work runs concurrently with Rhodes. Next up per your plan:
+          the research-throughline piece.
+
+  - id: scmethyl-manuscript
+    label: scMethyl methods manuscript
+    lane: mstp-labs
+    status: active
+    priority: high
+    cycles:
+      - year: 2027
+        deadline: 2027-05-01
+        confirmed: false
+        precision: month
+        verifyBy: 2026-10-01
+        steps:
+          - id: draft-circulated
+            label: Full manuscript draft circulated in-lab and to Jason
+            due: 2026-12-15
+            gating: false
+          - id: journal-target
+            label: Lock journal target (Nat Methods / Nat Biotech / Cell Methods / Genome Biology)
+            due: 2026-12-15
+            gating: false
+          - id: preprint
+            label: bioRxiv preprint + journal submission
+            due: 2027-05-01
+            gating: true
+        note: >
+          The single highest-leverage asset for AMCAS, Hertz and PD Soros. A
+          first-author or co-first methods paper preprinted by mid-2028 is what
+          the whole Fall 2028 stack is built on, and posting to bioRxiv 6-12
+          months before acceptance counts on AMCAS Work and Activities. Under
+          Scenario A this MUST be submitted before leaving for Oxford, with
+          revisions managed remotely. Push for first or co-first — middle author
+          on lab papers does not move the needle.
+          IP NOTE: in the US a public disclosure (talk, poster, or preprint)
+          starts a 12-month clock to file, and most other jurisdictions have no
+          grace period at all. Talk to Broad OSAP BEFORE the preprint, not after.
+
+  - id: clinical-volunteering
+    label: Weekly clinical volunteering (MCEP or equivalent)
+    lane: mstp-labs
+    status: active
+    priority: normal
+    cycles:
+      - year: 2026
+        kind: rolling
+        note: >
+          Keep it running weekly through senior year and both post-grad years so
+          it compounds quietly. This is the one AMCAS component that cannot be
+          created late — it is a duration, not an achievement.
+
+  - id: uraf-contact
+    label: Get on the Harvard URAF fellowships mailing list
+    lane: fellowships
+    status: active
+    priority: high
+    cycles:
+      - year: 2026
+        deadline: 2026-09-01
+        confirmed: true
+        precision: day
+        steps:
+          - id: email-uraf
+            label: Email the Harvard fellowships office for endorsement deadlines
+            due: 2026-09-01
+            gating: true
+        note: >
+          The highest value-per-minute row in this file. uraf.harvard.edu
+          returns a hard WAF 403 on every path including robots.txt, so the
+          Rhodes and Marshall internal endorsement dates — the ones that
+          actually bind — cannot be obtained any other way. One email replaces
+          the entire scraping layer for the two rows where being wrong costs a
+          year.

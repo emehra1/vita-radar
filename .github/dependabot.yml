@@ -1,0 +1,23 @@
+# Dependency hygiene, and insurance against the 60-day rule: GitHub disables
+# scheduled workflows in a public repo after 60 days with no repository
+# activity. The daily data commit normally covers that, but if the pipeline is
+# broken for two months the cron would switch itself off too — exactly when you
+# would not notice. Dependabot keeps a heartbeat either way.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    # Major upgrades here are migrations, not bumps: Next 14→16, TypeScript
+    # 5→7 and the React major all failed CI within minutes of this file
+    # landing. Keep them deliberate rather than a standing stream of red pull
+    # requests, which just trains you to ignore CI.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

@@ -1,0 +1,464 @@
+name: Radar pipeline
+
+# Generate the digest, build the calendar feed, commit both, email one. All in
+# ONE workflow, because commits made with the default GITHUB_TOKEN do not
+# trigger other workflows — a separate `on: push` email job would simply never
+# fire, and would look like it was working.
+#
+# There is no Pages job. The site is phase 2; today the email and the .ics ARE
+# the product, and the repo is the database.
+
+on:
+  schedule:
+    # 10:47 America/New_York, and every part of that is deliberate.
+    #
+    # The timezone key is new: Actions cron gained timezone support (GA
+    # 2026-03-19), which retires the old dual-cron EST/EDT hack — two crons an
+    # hour apart plus a guard step that exits on the wrong one. That hack was
+    # the single most-misread thing in the sibling repo. A deadline tracker is
+    # read at breakfast, and "breakfast" is a local-time concept, so the
+    # schedule should be written in the reader's zone rather than translated
+    # twice a year by hand.
+    #
+    # :47 rather than :00 because :00 is peak queue time for GitHub's scheduler
+    # and delays of tens of minutes are normal there. Staggered off the sibling
+    # project's "17 11 * * *" for a different reason: two digests arriving in
+    # the same minute from the same sender get threaded together by Gmail, and a
+    # collapsed thread is how a countdown strip stops being seen.
+    - cron: "47 10 * * *"
+      timezone: America/New_York
+    # Catch-up. GitHub drops scheduled runs outright under load — not delays
+    # them, drops them — and a missed morning is a day of the ladder that never
+    # rang. A second attempt six hours later is safe rather than duplicative
+    # because the run is idempotent per CALENDAR DAY: run.ts refuses to
+    # regenerate an existing digest without --force, and send-email.ts refuses
+    # to resend one that carries `emailedAt`. So on a normal day this run does
+    # the work of finding out there is nothing to do, and on a dropped-cron day
+    # it is the whole product.
+    - cron: "47 16 * * *"
+      timezone: America/New_York
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD (blank = today)"
+        type: string
+        required: false
+      send_email:
+        description: "Send the email"
+        type: boolean
+        default: false
+      force:
+        description: "Regenerate an existing digest"
+        type: boolean
+        default: false
+      no_market:
+        description: "Skip the market section (use when a quote source is misbehaving)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write # commit data/ and out/calendar.ics
+  issues: write # failure reporting
+
+concurrency:
+  group: radar-pipeline
+  # Never cancel a run in flight. The window between "digest committed" and
+  # "email sent" is the one place where cancellation costs a day: the digest is
+  # in the repo and stamped, so the catch-up run finds nothing to do and the
+  # reader gets silence on a day the pipeline worked. Serializing the daily and
+  # catch-up crons is exactly what is wanted — the second one waits, then
+  # no-ops on the idempotence gate.
+  cancel-in-progress: false
+
+env:
+  # "Today" must mean the reader's day, not UTC's. At 20:00 ET on the 21st, UTC
+  # is already the 22nd, and a countdown that is off by one day is worse than no
+  # countdown: it is a countdown you learn to distrust.
+  TZ: America/New_York
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      digest_outcome: ${{ steps.digest.outcome }}
+      # Exit code, not just outcome. run.ts distinguishes 2 (unusable — the run
+      # completed and the result is not fit to send) from 1 (crashed), and those
+      # need different handling and different issue titles. `outcome` collapses
+      # both to 'failure'.
+      digest_exit: ${{ steps.digest.outputs.exit_code }}
+      # The email job reads the digest back out of the commit this job pushes,
+      # so "did the push land" is its real precondition — not "did the build job
+      # succeed", which also covers building the calendar feed.
+      commit_outcome: ${{ steps.commit.outcome }}
+      ics_outcome: ${{ steps.ics.outcome }}
+      date: ${{ steps.when.outputs.date }}
+    steps:
+      # `ref:` is load-bearing, not tidiness. Without it checkout pins to
+      # `github.sha` — the SHA at QUEUE time — and two runs dispatched twelve
+      # seconds apart on 2026-08-07 both checked out the same commit, so the
+      # second regenerated data against a tree two commits stale and could not
+      # push it. `concurrency` does not help: it serializes the runs but not the
+      # SHA they were frozen at. Taking the branch tip means the pipeline reads
+      # the current rung ladder and its push is a fast-forward.
+      #
+      # It matters more here than it did there. data/state/rungs.json records
+      # which T-minus card has already gone out for each program; a run against
+      # a stale tree rewinds it and re-delivers the 30-day Rhodes card the day
+      # after the 21-day one, which reads as the countdown running backwards.
+      #
+      # The trade: re-running an old run now uses today's code, not the code it
+      # was dispatched against. For a daily digest that is the wanted behaviour.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # Raw fetched bodies only, and empty until phase 2 adds a fetcher — phase 1
+      # is a pure function of a YAML file and the clock. Kept here because the
+      # key shape is the part that is easy to get wrong: keyed on run_id so each
+      # run writes a NEW entry and restore-keys pulls the most recent one. A
+      # single mutable key is written once and never updated again, which is a
+      # cache that quietly goes stale rather than one that misses.
+      - uses: actions/cache@v6
+        with:
+          path: .cache/raw
+          key: vr-${{ hashFiles('package-lock.json') }}-${{ github.run_id }}
+          restore-keys: vr-${{ hashFiles('package-lock.json') }}-
+
+      - id: when
+        env:
+          VR_DATE: ${{ inputs.date }}
+        run: echo "date=${VR_DATE:-$(date +%F)}" >> "$GITHUB_OUTPUT"
+
+      # The pipeline is allowed to fail without killing the job: the calendar
+      # build and the failure report both still need to run, and a crash here
+      # must produce a filed issue rather than a red X nobody is subscribed to.
+      - id: digest
+        continue-on-error: true
+        env:
+          # Passed through env instead of interpolated into the command line,
+          # and compared against both forms: `inputs.*` is typed for
+          # workflow_dispatch, but `github.event.inputs.*` is always a string —
+          # and the string "false" is truthy in a `&&` expression, so the naive
+          # version can pass or drop the flag for the wrong reason. This is the
+          # bug that regenerated a digest on a run where the box was unchecked.
+          VR_FORCE: ${{ (inputs.force == true || inputs.force == 'true') && '1' || '' }}
+          VR_DATE: ${{ inputs.date }}
+          VR_NO_MARKET: ${{ (inputs.no_market == true || inputs.no_market == 'true') && '1' || '' }}
+        run: |
+          echo "force resolved to: '${VR_FORCE:-<empty>}'"
+          set +e
+          npx tsx pipeline/run.ts \
+            ${VR_DATE:+--date "$VR_DATE"} \
+            ${VR_FORCE:+--force} \
+            ${VR_NO_MARKET:+--no-market} \
+            --summary "$GITHUB_STEP_SUMMARY"
+          code=$?
+          set -e
+          echo "exit_code=${code}" >> "$GITHUB_OUTPUT"
+          echo "pipeline/run.ts exited ${code} (0 ok, 2 unusable, 1 crashed)"
+          exit "$code"
+
+      # The subscribable calendar. This is the one output that keeps working when
+      # everything else here is broken: a .ics already in somebody's phone keeps
+      # its alarms whether or not this workflow ever runs again.
+      #
+      # Deliberately NOT gated on the digest. build-ics.ts touches
+      # config/deadlines.yml and nothing else — no digest, no state, no network —
+      # so it has no reason to care whether the pipeline ran. Gating it would
+      # mean a crash anywhere in scoring freezes the reader's phone alarms, and
+      # the month the pipeline is broken is exactly the month this artifact is
+      # for.
+      - id: ics
+        if: always()
+        continue-on-error: true
+        run: |
+          npx tsx scripts/build-ics.ts
+
+          # Assert the calendar is actually committable, rather than assuming it.
+          #
+          # out/calendar.ics is the one artifact that has to outlive a broken
+          # pipeline: it is what the reader subscribes to, so once committed the
+          # deadlines keep arriving even if this repo stops running for a month.
+          # The root .gitignore un-ignores exactly this path (`out/*` plus a
+          # negation), and if that ever regresses the failure is silent in both
+          # directions: commit-data.sh finds new files with `ls-files --others
+          # --exclude-standard`, which never lists an ignored path, so the .ics
+          # would simply be absent from the commit and every subscriber's feed
+          # would freeze on whatever it last saw -- while the build kept
+          # reporting success every single day.
+          #
+          # So check it here, where the answer is cheap and unambiguous.
+          if git check-ignore -q out/calendar.ics; then
+            echo "::error::out/calendar.ics is gitignored — subscribers would silently freeze. Fix .gitignore (out/* plus !out/calendar.ics)."
+            exit 1
+          fi
+          ls -l out/calendar.ics
+
+      # Runs on failure too. A crashed digest still leaves a freshly built
+      # calendar worth committing, and a partial run still lands whatever state
+      # it legitimately produced.
+      #
+      # NOT on exit 2, because run.ts's header makes that a contract: an
+      # unusable run must leave the repo exactly as it was. It already declines
+      # to write a digest in that branch, so what this condition actually
+      # withholds is the run-status record and the rebuilt calendar — both
+      # recoverable on the next run. The point is that everything committed here
+      # was fit to send, so "the repo is the database" keeps meaning something;
+      # the Actions log and the filed issue carry the forensics for the day it
+      # was not.
+      #
+      # `continue-on-error` for the reason the digest step has it: nothing
+      # downstream reads `build.result`, the email gate and the failure report
+      # both read `commit_outcome`, and a push that lost a race must produce a
+      # reported failure rather than a skipped remainder.
+      #
+      # ⚠️ THE HEARTBEAT TRAP. commit-data.sh exits 0 SILENTLY when the tree is
+      # unchanged ("nothing to commit"), and GitHub disables scheduled workflows
+      # in a public repo after 60 days with no repository activity. So a run of
+      # quiet days that each produce a byte-identical artifact stops the repo's
+      # heartbeat, the cron switches itself off, and the failure mode is total
+      # silence that looks exactly like a quiet season for deadlines. The
+      # mitigation deliberately does NOT live here — a workflow step that
+      # touches a file to make a commit is a lie in the git history. It lives in
+      # run.ts: every digest embeds the run date and the countdown integers,
+      # both of which change daily by construction, so a quiet day still writes
+      # a genuinely different file. .github/dependabot.yml is the second belt.
+      - id: commit
+        if: always() && steps.digest.outputs.exit_code != '2'
+        continue-on-error: true
+        run: >-
+          bash scripts/commit-data.sh
+          "data: digest ${{ steps.when.outputs.date || 'run' }} [skip ci]"
+          error data out/calendar.ics
+
+  email:
+    needs: build
+    # Only email a digest that actually generated and reached the repo. A failed
+    # run stays silent rather than mailing yesterday's countdown as if it were
+    # today's — the one output of this system that is both wrong and invisible.
+    #
+    # `!cancelled()` is load-bearing. A failed `needs` skips a job regardless of
+    # what its `if` says — the implicit success() check on needs applies unless
+    # the expression opts out — so any future job added to `needs` would
+    # silently swallow the email. In the sibling, a Pages deploy in `needs` did
+    # exactly that: run 31104163416 generated and committed a fine digest, Pages
+    # timed out, and no email was sent.
+    #
+    # commit_outcome is tested with `!= 'failure'` rather than `== 'success'` so
+    # the gate FAILS OPEN. Every bug in this file has been a silent unsent
+    # email. An `== 'success'` test against an output that ever goes missing —
+    # renamed step id, skipped step, expression typo — mutes the digest forever
+    # and looks like nothing is wrong. A duplicate email is a nuisance; a missed
+    # endorsement deadline costs a year.
+    #
+    # send_email is compared against both forms for the reason documented on
+    # VR_FORCE above: `github.event.inputs.*` is always a string, and "false" is
+    # truthy.
+    if: >-
+      !cancelled()
+      && needs.build.outputs.digest_outcome == 'success'
+      && needs.build.outputs.commit_outcome != 'failure'
+      && (github.event_name == 'schedule'
+      || inputs.send_email == true
+      || github.event.inputs.send_email == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: America/New_York
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - name: Send digest
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          # Optional and empty until phase 2 puts a site somewhere. The renderer
+          # degrades to omitting the "view on the web" link entirely rather than
+          # rendering a link to nothing, which is why this is not defaulted to a
+          # plausible-looking github.io URL that would 404.
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: >-
+          npx tsx scripts/send-email.ts --send
+          ${{ inputs.date && format('--date {0}', inputs.date) || '' }}
+
+      # send-email.ts stamps `emailedAt` into the digest and guards on it, but
+      # the checkout it writes to is thrown away — so without this commit the
+      # guard can never fire in CI, and the guard is what makes the catch-up
+      # cron safe. It is also what makes "Re-run failed jobs" safe: re-running
+      # re-runs failed jobs AND their dependents.
+      #
+      # A warning, never a failure: the mail is already gone by this point, and
+      # failing here would file a "Radar email failing" issue about an email
+      # sitting in the reader's inbox.
+      - name: Record that the digest was emailed
+        if: success()
+        run: >-
+          bash scripts/commit-data.sh
+          "data: mark digest emailed [skip ci]"
+          warning data/digests
+
+      # Dead-man's switch, and the only alarm here that does not share a failure
+      # domain with what it monitors. Everything else in this file needs this
+      # file to run: a filed issue needs the workflow to start, the "email
+      # failing" report needs the email job to be reached. So it survives the
+      # repo being disabled, the workflow being disabled, the 60-day scheduled-
+      # workflow cutoff, SMTP breaking, GitHub dropping the cron, and the runner
+      # never starting — because in every one of those cases the ping simply
+      # does not arrive, and somebody else's infrastructure notices the absence.
+      #
+      # Absence is the whole point. Every other mechanism reports a failure it
+      # observed; this one reports a failure nobody was alive to observe.
+      #
+      # No-ops when HEALTHCHECK_URL is unset, so it is inert until the check
+      # exists. Never fails the job — a monitoring call that can break a
+      # delivered digest is worse than no monitoring.
+      - name: Ping dead-man's switch
+        if: success()
+        continue-on-error: true
+        env:
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+        run: |
+          if [ -z "${HEALTHCHECK_URL:-}" ]; then
+            echo "HEALTHCHECK_URL unset - skipping (see README: How the alarms work)."
+            exit 0
+          fi
+          curl -fsS -m 10 --retry 3 --retry-delay 2 \
+            "${HEALTHCHECK_URL}?rid=${GITHUB_RUN_ID}" \
+            && echo "pinged" || echo "ping failed (ignored)"
+
+  report-failure:
+    # `email` is in needs so a broken SMTP config is reported too — a silent
+    # send failure is the one failure the reader notices and cannot diagnose.
+    needs: [build, email]
+    # commit_outcome is tested explicitly. The commit step is
+    # `continue-on-error`, so `build.result` stays 'success' through exactly the
+    # failure this job most needs to report: the digest generated and then did
+    # not reach the repo, so nothing downstream can read it.
+    if: >-
+      !cancelled()
+      && (needs.build.result == 'failure'
+      || needs.build.outputs.digest_outcome == 'failure'
+      || needs.build.outputs.commit_outcome == 'failure'
+      || needs.email.result == 'failure')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@v9
+        # Passed through env, not interpolated into the script body: these are
+        # all fixed enums today, but a template hole in a `script:` block is a
+        # bad habit to keep.
+        env:
+          BUILD_RESULT: ${{ needs.build.result }}
+          DIGEST_OUTCOME: ${{ needs.build.outputs.digest_outcome }}
+          DIGEST_EXIT: ${{ needs.build.outputs.digest_exit }}
+          COMMIT_OUTCOME: ${{ needs.build.outputs.commit_outcome }}
+          ICS_OUTCOME: ${{ needs.build.outputs.ics_outcome }}
+          EMAIL_RESULT: ${{ needs.email.result }}
+        with:
+          script: |
+            const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const {
+              BUILD_RESULT, DIGEST_OUTCOME, DIGEST_EXIT, COMMIT_OUTCOME, ICS_OUTCOME, EMAIL_RESULT,
+            } = process.env;
+
+            // Four failures with four different urgencies, which a single
+            // "pipeline failing" issue would flatten into one. That is how you
+            // train yourself to ignore the alert that matters: in the sibling, a
+            // run that built a perfectly good digest and only failed to publish
+            // the site filed the digest alarm anyway, and after the third one
+            // nobody opened it.
+            //
+            // The ordering is by what it costs the reader. A digest that never
+            // generated costs them the day's content. An unusable one is worse
+            // than a crash in one specific way — it is the failure that could
+            // have looked like a normal quiet day — so it gets its own title and
+            // says so. A failed commit means the digest exists and is
+            // unreachable. A failed email means everything worked except the
+            // only delivery channel that exists today.
+            const unusable = DIGEST_EXIT === '2';
+            const crashed = DIGEST_OUTCOME === 'failure' && !unusable;
+
+            const { title, label, detail } = unusable
+              ? {
+                  title: 'Radar produced an unusable digest',
+                  label: 'digest-unusable',
+                  detail:
+                    'run.ts exited 2: it completed and judged its own output unfit to send, so nothing was ' +
+                    'committed and nothing was emailed. This is the failure that would otherwise look like a ' +
+                    'quiet day — no new opportunities reads exactly like no working scrapers. The day is still ' +
+                    'retryable: no digest was written, so the catch-up cron will try again',
+                }
+              : crashed
+                ? {
+                    title: 'Radar pipeline failing',
+                    label: 'pipeline-failure',
+                    detail: 'the digest did not generate — today has no countdown and no email',
+                  }
+                : COMMIT_OUTCOME === 'failure'
+                  ? {
+                      title: 'Radar data commit failing',
+                      label: 'commit-failure',
+                      detail:
+                        'the digest generated but its commit could not be pushed after five re-parenting ' +
+                        'attempts, so nothing downstream can read it and the repo-as-database is behind',
+                    }
+                  : EMAIL_RESULT === 'failure'
+                    ? {
+                        title: 'Radar email failing',
+                        label: 'email-failure',
+                        detail:
+                          'the digest generated and committed, but the email failed to send. The .ics feed and ' +
+                          'the committed digest are current; only the daily delivery is missing',
+                      }
+                    : {
+                        title: 'Radar pipeline failing',
+                        label: 'pipeline-failure',
+                        detail: 'the build job failed outside the digest, commit and email steps',
+                      };
+
+            const body = [
+              `Run failed: ${url}`,
+              '',
+              `**Diagnosis:** ${detail}.`,
+              '',
+              '| step | result |',
+              '| --- | --- |',
+              `| build job | ${BUILD_RESULT} |`,
+              `| digest | ${DIGEST_OUTCOME || 'n/a'} (exit ${DIGEST_EXIT || '?'}) |`,
+              `| calendar | ${ICS_OUTCOME || 'n/a'} |`,
+              `| data commit | ${COMMIT_OUTCOME || 'n/a'} |`,
+              `| email | ${EMAIL_RESULT} |`,
+            ].join('\n');
+
+            // Comment on the open issue for THIS failure class rather than
+            // opening a second one. A daily cron that files an issue a day
+            // produces sixty issues before anybody looks, and the sixtieth is
+            // indistinguishable from the first.
+            const { data: issues } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: label,
+            });
+            if (issues.length > 0 && issues[0]) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: issues[0].number, body });
+            } else {
+              await github.rest.issues.create({ ...context.repo, title, body, labels: [label] });
+            }
