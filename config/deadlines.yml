@@ -61,38 +61,52 @@ programs:
     status: active
     priority: high
     url: https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship
-    verifiedOn: 2026-08-22
+    verifiedOn: 2026-09-06
     eligibility:
       notes: >
-        US citizen; institutional endorsement REQUIRED. Cannot be deferred.
-        Commences October 2027 for two years.
+        US citizen; institutional endorsement REQUIRED and OBTAINED (2026-09-06).
+        Cannot be deferred. Commences October 2027 for two years.
       source: https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship
     cycles:
       - year: 2027
-        deadline: 2026-10-01
-        confirmed: false          # rhodeshouse.ox.ac.uk states no date; "~Oct 1" is from your own notes
+        # Confirmed by Eshan on 2026-09-06, not by any fetch. rhodeshouse.ox.ac.uk
+        # still states no date and the US site's date lives in a PDF three hops
+        # in, so a human remains the only source this row has ever had — which is
+        # the whole argument for the file.
+        #
+        # Note this moved: the previous 2026-10-01 was a projection from prior
+        # cycles, and the real date is the 7th. Six days is the difference between
+        # a comfortable submission and a scramble, and nothing automated would
+        # have caught it.
+        deadline: 2026-10-07
+        confirmed: true
         timeOfDay: "23:59"
         precision: day
-        verifyBy: 2026-08-25
         steps:
           - id: harvard-endorsement
             label: Harvard institutional endorsement (URAF / OUE)
             gating: true
-            precision: month      # "mid-September" is NOT a date. Do not invent one.
+            status: done          # obtained 2026-09-06
             note: >
-              THE row that matters. Harvard's internal deadline PRECEDES the
-              national one by weeks and missing it ends the application
-              regardless of Oct 1. uraf.harvard.edu 403s every path including
-              robots.txt, so no scraper on earth will find this. ACTION: email
-              the Harvard fellowships office in early September and put the
-              exact date here, then set precision: day.
+              DONE. Endorsement obtained 2026-09-06. Kept in the file rather than
+              deleted, because the precondition on national-app still needs
+              something to point at, and because next cycle's roll-forward
+              reinstates this step as pending with no date — which is correct,
+              since an endorsement is per-cycle and would have to be won again.
           - id: national-app
             label: National application (Rhodes portal)
-            due: 2026-10-01
+            due: 2026-10-07
             timeOfDay: "23:59"
             gating: true
             precondition: harvard-endorsement
-    recurrence: { cadence: annual, anchor: "10-01" }
+            note: >
+              23:59 ET is the historical close and is carried over, NOT confirmed
+              — "October 7th" does not specify a time. Worth two minutes on the
+              portal, because the failure mode is submitting on the right day and
+              still being late. Rhodes House is in Oxford; if the portal turns out
+              to run on UK time, 23:59 BST is 18:59 ET and the margin is five
+              hours smaller than it looks.
+    recurrence: { cadence: annual, anchor: "10-07" }
 
   - id: gates-cambridge-us
     label: Gates Cambridge Scholarship (US round)

@@ -85,16 +85,42 @@ describe("buildOpportunities over the real registry", () => {
    * is missing.
    */
   it("forces verification when a GATING step has no date, even beside a dated deadline", () => {
+    // Asserted against the MECHANISM, not against one program's current state.
+    //
+    // This test named Rhodes until 2026-09-06, when the endorsement was obtained
+    // and its date confirmed — at which point a test that was correct for two
+    // weeks started failing on a change that was pure good news. A test over the
+    // live registry has to assert the rule, and let the data move.
     const { result } = build();
-    const rhodes = result.verify.find((v) => v.programId === "rhodes-us");
-    expect(rhodes).toBeDefined();
-    expect(rhodes?.reason).toMatch(/GATING step has no date/);
-    expect(rhodes?.reason).toMatch(/endorsement/i);
+    const flagged = result.verify.filter((v) => v.reason.includes("GATING step has no date"));
+    expect(flagged.length).toBeGreaterThan(0);
+    for (const row of flagged) {
+      // Whatever is flagged must genuinely have a pending, gating, undated step.
+      const program = loadRegistry().programs.find((p) => p.id === row.programId);
+      const steps = program?.cycles.flatMap((c) => c.steps ?? []) ?? [];
+      expect(steps.some((st) => st.gating && st.status !== "done" && !st.due)).toBe(true);
+    }
+  });
+
+  it("stops flagging a program once its gating prerequisite is done", () => {
+    // The Rhodes endorsement was obtained on 2026-09-06. Marking a step `done`
+    // must clear both the Verify row and the "comes first" parenthetical, or the
+    // tracker keeps nagging about work that is finished — which is how a reader
+    // learns to skim the Verify block.
+    const { result } = build();
+    const rhodesVerify = result.verify.find(
+      (v) => v.programId === "rhodes-us" && v.reason.includes("GATING step has no date"),
+    );
+    expect(rhodesVerify).toBeUndefined();
+    const row = result.countdown.find((r) => r.programId === "rhodes-us");
+    expect(row?.target).not.toMatch(/comes first/);
   });
 
   it("names the missing prerequisite in the countdown target too", () => {
+    // Gates Cambridge still carries an undated gating step (the separate
+    // University of Cambridge MPhil application), so it is the live example now.
     const { result } = build();
-    const row = result.countdown.find((r) => r.programId === "rhodes-us");
+    const row = result.countdown.find((r) => r.programId === "gates-cambridge-us");
     expect(row?.target).toMatch(/comes first/);
     expect(row?.needsVerification).toBe(true);
   });
@@ -102,7 +128,7 @@ describe("buildOpportunities over the real registry", () => {
   it("catches every multi-step program whose prerequisite is undated", () => {
     const { result } = build();
     const flagged = result.verify.filter((v) => v.reason.includes("GATING step has no date")).map((v) => v.programId);
-    expect(flagged).toContain("rhodes-us");
+    // Rhodes was here until its endorsement was obtained on 2026-09-06.
     expect(flagged).toContain("gates-cambridge-us");
     expect(flagged).toContain("broad-bbps");
   });
@@ -149,9 +175,19 @@ describe("buildOpportunities over the real registry", () => {
 
   it("marks a projected date as projected rather than presenting it as fact", () => {
     const { result } = build();
+    // Gates Cambridge is still a projection — /apply/ 302s to a broken root, so
+    // nothing has ever confirmed its date.
+    const gates = result.countdown.find((r) => r.programId === "gates-cambridge-us");
+    expect(gates?.kind).toBe("projected");
+  });
+
+  it("marks a human-confirmed date as confirmed", () => {
+    // Rhodes: 2026-10-07, confirmed by Eshan on 2026-09-06. Six days later than
+    // the projection it replaced, and no fetch could have found it.
+    const { result } = build();
     const rhodes = result.countdown.find((r) => r.programId === "rhodes-us");
-    // rhodeshouse.ox.ac.uk states no date at all, so ours is a projection.
-    expect(rhodes?.kind).toBe("projected");
+    expect(rhodes?.kind).toBe("confirmed");
+    expect(rhodes?.date).toBe("2026-10-07");
   });
 
   /**

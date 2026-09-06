@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-09-06",
-  "generatedAt": "2026-09-06T15:25:28.259Z",
+  "generatedAt": "2026-09-06T18:02:55.989Z",
   "windowStart": "2026-08-22",
   "windowEnd": "2026-09-06",
   "health": [
@@ -13,9 +13,396 @@
       "itemsKept": 14,
       "parseWarnings": [],
       "latencyMs": 0,
-      "lastSuccessAt": "2026-09-06T15:25:28.258Z",
+      "lastSuccessAt": "2026-09-06T18:02:41.378Z",
       "consecutiveFailures": 0,
       "optional": false
+    },
+    {
+      "sourceId": "biopharma-dive",
+      "sourceName": "BioPharma Dive",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 10,
+      "parseWarnings": [],
+      "latencyMs": 231,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "fierce-biotech",
+      "sourceName": "Fierce Biotech",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 25,
+      "itemsKept": 25,
+      "parseWarnings": [
+        "title-was-object:25"
+      ],
+      "latencyMs": 243,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "fierce-pharma",
+      "sourceName": "Fierce Pharma",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 25,
+      "itemsKept": 25,
+      "parseWarnings": [
+        "title-was-object:25"
+      ],
+      "latencyMs": 259,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "stat",
+      "sourceName": "STAT",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 254,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "endpoints",
+      "sourceName": "Endpoints News",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 24,
+      "itemsKept": 24,
+      "parseWarnings": [],
+      "latencyMs": 247,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "lifescivc",
+      "sourceName": "LifeSciVC (Bruce Booth)",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 15,
+      "parseWarnings": [],
+      "latencyMs": 300,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "owlposting",
+      "sourceName": "Owl Posting",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 687,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "decodingbio",
+      "sourceName": "Decoding Bio",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 497,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "ruxandra",
+      "sourceName": "Ruxandra Teslo",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 648,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "centuryofbio",
+      "sourceName": "Century of Biology",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 729,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-biotech",
+      "sourceName": "Nature Biotechnology",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 691,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 1728,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 2752,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "sdn-physician-scientists",
+      "sourceName": "SDN — Physician Scientists",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 50,
+      "itemsKept": 25,
+      "parseWarnings": [],
+      "latencyMs": 996,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gates-cambridge-news",
+      "sourceName": "Gates Cambridge — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 0,
+      "parseWarnings": [
+        "10 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 2070,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "pdsoros-news",
+      "sourceName": "PD Soros — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 0,
+      "parseWarnings": [
+        "10 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 1064,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "schmidt-news",
+      "sourceName": "Schmidt Science Fellows — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 1,
+      "parseWarnings": [
+        "9 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 2873,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nih-guide-nofo",
+      "sourceName": "NIH Guide — funding opportunities",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 5,
+      "itemsKept": 5,
+      "parseWarnings": [],
+      "latencyMs": 1278,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": false
+    },
+    {
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 21,
+      "itemsKept": 21,
+      "parseWarnings": [],
+      "latencyMs": 1953,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "lever-retro",
+      "sourceName": "Retro Biosciences",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 6,
+      "itemsKept": 6,
+      "parseWarnings": [],
+      "latencyMs": 3061,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "ashby-insitro",
+      "sourceName": "insitro",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 16,
+      "itemsKept": 16,
+      "parseWarnings": [],
+      "latencyMs": 1838,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-recursion",
+      "sourceName": "Recursion — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 14,
+      "itemsKept": 14,
+      "parseWarnings": [],
+      "latencyMs": 1963,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-variantbio",
+      "sourceName": "Variant Bio — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 2,
+      "itemsKept": 2,
+      "parseWarnings": [],
+      "latencyMs": 3002,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 16,
+      "itemsKept": 16,
+      "parseWarnings": [],
+      "latencyMs": 4089,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-altoslabs",
+      "sourceName": "Altos Labs — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 18,
+      "itemsKept": 18,
+      "parseWarnings": [],
+      "latencyMs": 5153,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-calicolabs",
+      "sourceName": "Calico — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 15,
+      "itemsKept": 15,
+      "parseWarnings": [],
+      "latencyMs": 6199,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-arcinstitute",
+      "sourceName": "Arc Institute — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 25,
+      "itemsKept": 25,
+      "parseWarnings": [],
+      "latencyMs": 7275,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-arcadiascience",
+      "sourceName": "Arcadia Science — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 12,
+      "itemsKept": 12,
+      "parseWarnings": [],
+      "latencyMs": 8336,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-beamtx",
+      "sourceName": "Beam Therapeutics — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 26,
+      "itemsKept": 26,
+      "parseWarnings": [],
+      "latencyMs": 9396,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 0,
+      "optional": true
     }
   ],
   "items": {
@@ -120,7 +507,7 @@
       "kind": "opportunity",
       "id": "b00693f401008e0b",
       "clusterId": "b00693f401008e0b",
-      "title": "Rhodes Scholarship (US) — National application (Rhodes portal) (but Harvard institutional endorsement (URAF / OUE) comes first)",
+      "title": "Rhodes Scholarship (US) — National application (Rhodes portal)",
       "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
       "canonicalUrl": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
       "sourceId": "deadlines-yml",
@@ -135,19 +522,18 @@
         "fellowships": 1
       },
       "primaryLane": "fellowships",
-      "score": 53.82,
+      "score": 46.99,
       "scoreBreakdown": {
-        "total": 53.82,
+        "total": 46.99,
         "factors": [
           {
             "key": "deadlineUrgency",
             "label": "Deadline urgency",
-            "raw": 0.4739336695651037,
+            "raw": 0.5663547598962198,
             "weight": 30,
-            "contribution": 14.218010086953111,
+            "contribution": 16.990642796886593,
             "evidence": [
-              "25d until 2026-10-01",
-              "projected (x0.7)"
+              "31d until 2026-10-07"
             ]
           },
           {
@@ -161,16 +547,6 @@
             ]
           },
           {
-            "key": "event.verify-deadline",
-            "label": "Event: verify-deadline",
-            "raw": 0.9,
-            "weight": 14,
-            "contribution": 12.6,
-            "evidence": [
-              "verify-deadline"
-            ]
-          },
-          {
             "key": "fit",
             "label": "High priority",
             "raw": 1,
@@ -181,15 +557,7 @@
             ]
           }
         ],
-        "penalties": [
-          {
-            "key": "deadlineProjected",
-            "label": "deadlineProjected",
-            "raw": 1,
-            "weight": -3,
-            "contribution": -3
-          }
-        ],
+        "penalties": [],
         "laneScores": {
           "fellowships": 1
         },
@@ -206,9 +574,8 @@
           "timeZone": "America/New_York",
           "cycleYear": 2027,
           "cycleYearConfident": true,
-          "verifyBy": "2026-08-25",
-          "kind": "projected",
-          "date": "2026-10-01",
+          "kind": "confirmed",
+          "date": "2026-10-07",
           "timeOfDay": "23:59",
           "precision": "minute",
           "provenance": "yaml"
@@ -218,34 +585,32 @@
             "id": "harvard-endorsement",
             "label": "Harvard institutional endorsement (URAF / OUE)",
             "gating": true,
-            "status": "pending",
-            "note": "THE row that matters. Harvard's internal deadline PRECEDES the national one by weeks and missing it ends the application regardless of Oct 1. uraf.harvard.edu 403s every path including robots.txt, so no scraper on earth will find this. ACTION: email the Harvard fellowships office in early September and put the exact date here, then set precision: day.\n"
+            "status": "done",
+            "note": "DONE. Endorsement obtained 2026-09-06. Kept in the file rather than deleted, because the precondition on national-app still needs something to point at, and because next cycle's roll-forward reinstates this step as pending with no date — which is correct, since an endorsement is per-cycle and would have to be won again.\n"
           },
           {
             "id": "national-app",
             "label": "National application (Rhodes portal)",
-            "due": "2026-10-01",
+            "due": "2026-10-07",
             "timeOfDay": "23:59",
             "precondition": "harvard-endorsement",
             "gating": true,
-            "status": "pending"
+            "status": "pending",
+            "note": "23:59 ET is the historical close and is carried over, NOT confirmed — \"October 7th\" does not specify a time. Worth two minutes on the portal, because the failure mode is submitting on the right day and still being late. Rhodes House is in Oxford; if the portal turns out to run on UK time, 23:59 BST is 18:59 ET and the margin is five hours smaller than it looks.\n"
           }
         ],
-        "nextStepIndex": 0,
-        "effectiveDate": "2026-10-01",
+        "nextStepIndex": 1,
+        "effectiveDate": "2026-10-07",
         "eligibility": {
-          "notes": "US citizen; institutional endorsement REQUIRED. Cannot be deferred. Commences October 2027 for two years.\n",
+          "notes": "US citizen; institutional endorsement REQUIRED and OBTAINED (2026-09-06). Cannot be deferred. Commences October 2027 for two years.\n",
           "source": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
         },
-        "needsVerification": true,
-        "verifyReason": "GATING step has no date: Harvard institutional endorsement (URAF / OUE)",
+        "needsVerification": false,
         "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
-        "verifiedOn": "2026-08-22"
+        "verifiedOn": "2026-09-06"
       },
-      "eventTypes": [
-        "verify-deadline"
-      ],
-      "daysUntil": 25
+      "eventTypes": [],
+      "daysUntil": 31
     },
     "482d97ad01012205": {
       "kind": "opportunity",
@@ -1360,6 +1725,938 @@
         "url": "https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study"
       },
       "eventTypes": []
+    },
+    "fcb1e1851494c7ce": {
+      "kind": "news",
+      "id": "fcb1e1851494c7ce",
+      "clusterId": "fcb1e1851494c7ce",
+      "title": "A consensus roadmap from the SENESCENCE2030 network towards precision senescence medicine",
+      "url": "https://www.nature.com/articles/s43587-026-01222-y",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01222-y",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-03T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "At the SENESCENCE2030 Annual Conference and Industry–Academia Workshop held in Coimbra, Portugal, in May 2026, researchers, clinicians, industry representatives and policy stakeholders identified the major priorities required to translate recent advances in cellular senescence research into clinical practice.",
+        "The resulting roadmap emphasizes the need to establish functional classifications of senescent states, develop standardized and clinically actionable biomarkers, advance precision senescence medicine, strengthen translational and regulatory frameworks, and promote international collaboration."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.1111111111111111,
+        "causal-genetics": 0.5120299605967554
+      },
+      "primaryLane": "causal-genetics",
+      "score": 34.24,
+      "scoreBreakdown": {
+        "total": 34.24,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5120299605967554,
+            "weight": 22,
+            "contribution": 11.26465913312862,
+            "evidence": [
+              "senescence"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.5219679450779044,
+            "weight": 8,
+            "contribution": 4.175743560623236,
+            "evidence": [
+              "90h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.1111111111111111,
+          "causal-genetics": 0.5120299605967554
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "3fd811a6610ef1dc": {
+      "kind": "news",
+      "id": "3fd811a6610ef1dc",
+      "clusterId": "3fd811a6610ef1dc",
+      "title": "Mapping structural aging across human tissues reveals tissue-specific trajectories and coordinated deterioration",
+      "url": "https://www.nature.com/articles/s43587-026-01200-4",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01200-4",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-08-31T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "develop a framework that quantifies tissue structural aging without training on chronological age, using a large dataset of human histology images.",
+        "They reveal distinct yet coordinated organ aging trajectories, and link accelerated aging to pathways, genetic variants and pathology."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.4722566328925762
+      },
+      "primaryLane": "causal-genetics",
+      "score": 31.67,
+      "scoreBreakdown": {
+        "total": 31.67,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.4722566328925762,
+            "weight": 22,
+            "contribution": 10.389645923636676,
+            "evidence": [
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.3103639970449967,
+            "weight": 8,
+            "contribution": 2.4829119763599734,
+            "evidence": [
+              "162h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.4722566328925762
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "6592484bbf3189a0": {
+      "kind": "news",
+      "id": "6592484bbf3189a0",
+      "clusterId": "6592484bbf3189a0",
+      "title": "Reframing the epidemiological transition as increasing returns to tackling aging-related diseases",
+      "url": "https://www.nature.com/articles/s43587-026-01210-2",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01210-2",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-02T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Reframing diseases by when they occur over the lifespan reveals that aging-related diseases now dominate the global burden in every income group.",
+        "They also uniquely show increasing returns, meaning that the more we tackle them, the greater the gains."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.38835309026714504
+      },
+      "primaryLane": "causal-genetics",
+      "score": 30.86,
+      "scoreBreakdown": {
+        "total": 30.86,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.38835309026714504,
+            "weight": 22,
+            "contribution": 8.54376798587719,
+            "evidence": [
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.4389209738933576,
+            "weight": 8,
+            "contribution": 3.511367791146861,
+            "evidence": [
+              "114h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.38835309026714504
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "38fb4d071b87cea5": {
+      "kind": "news",
+      "id": "38fb4d071b87cea5",
+      "clusterId": "38fb4d071b87cea5",
+      "title": "Mitochondrial DNA leakage in oocytes activates cGAS-STING signaling to drive ovarian aging",
+      "url": "https://www.nature.com/articles/s43587-026-01195-y",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01195-y",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-08-28T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "The cGAS-STING signaling pathway contributes to low-grade inflammation in several tissues during aging; however, its role in the ovary was unclear.",
+        "Here the authors show that aging oocytes leak mitochondrial DNA into the cytosol where it activates the cGAS-STING pathway, driving inflammatory signaling in oocytes as well as neighboring granulosa cells via cGAMP transfer."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.4722566328925762
+      },
+      "primaryLane": "causal-genetics",
+      "score": 30.67,
+      "scoreBreakdown": {
+        "total": 30.67,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.4722566328925762,
+            "weight": 22,
+            "contribution": 10.389645923636676,
+            "evidence": [
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.1845435367632968,
+            "weight": 8,
+            "contribution": 1.4763482941063744,
+            "evidence": [
+              "234h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.4722566328925762
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "bae6d62665c873f2": {
+      "kind": "news",
+      "id": "bae6d62665c873f2",
+      "clusterId": "bae6d62665c873f2",
+      "title": "Senior Scientist / Scientist, In Vivo Pharmacology",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/6181901004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/6181901004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-04T16:47:38.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Company info NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat age-related diseases by reprogramming the epigenome, a new therapeutic mechanism to restore regenerative potential in aged and diseased cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.49638664348173345
+      },
+      "primaryLane": "venture-founder",
+      "score": 26.95,
+      "scoreBreakdown": {
+        "total": 26.95,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.49638664348173345,
+            "weight": 22,
+            "contribution": 10.920506156598137,
+            "evidence": [
+              "translational",
+              "epigenetic editing",
+              "reprogramming",
+              "healthspan",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.8161123564495354,
+            "weight": 8,
+            "contribution": 6.528898851596283,
+            "evidence": [
+              "49h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.49638664348173345
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "99ef20c3ab045d81": {
+      "kind": "news",
+      "id": "99ef20c3ab045d81",
+      "clusterId": "99ef20c3ab045d81",
+      "title": "Scientist, Computational Biology",
+      "url": "https://job-boards.greenhouse.io/arcinstitute/jobs/6134331004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/arcinstitute/jobs/6134331004",
+      "sourceId": "gh-arcinstitute",
+      "sourceName": "Arc Institute — jobs",
+      "publisherGroup": "ats:arcinstitute",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-31T05:08:54.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Arc Institute Arc Institute is an independent nonprofit research organization at the interface of artificial intelligence and biology, working to accelerate scientific progress and understand the root causes of complex diseases.",
+        "Founded in 2021 and based in Palo Alto, Arc partners with Stanford University, UC Berkeley, and UC San Francisco."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5767788263934998
+      },
+      "primaryLane": "venture-founder",
+      "score": 26.38,
+      "scoreBreakdown": {
+        "total": 26.38,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5767788263934998,
+            "weight": 22,
+            "contribution": 12.689134180656994,
+            "evidence": [
+              "perturb-seq",
+              "crispr screen",
+              "functional genomics",
+              "single-cell"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.5234386413767461,
+            "weight": 8,
+            "contribution": 4.187509131013969,
+            "evidence": [
+              "157h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5767788263934998
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "97517bcad5d53661": {
+      "kind": "news",
+      "id": "97517bcad5d53661",
+      "clusterId": "97517bcad5d53661",
+      "title": "Partner, AI Resilience",
+      "url": "https://jobs.lever.co/convergentresearch/801342e0-5446-4520-b084-04590fc26d3d",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/801342e0-5446-4520-b084-04590fc26d3d",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-27T20:17:53.273Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Convergent Research is a nonprofit science studio best known for pioneering the Focused Research Organization (FRO): purpose-built, mission-driven orgs designed to solve technological bottlenecks, unlock whole new fields, and lead to scaled revolutions.",
+        "We’ve proven our model works by building over 14 high-impact scientific organizations spanning AI, biotech, mathematics, climate science, and more."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5024702829844531
+      },
+      "primaryLane": "venture-founder",
+      "score": 25.55,
+      "scoreBreakdown": {
+        "total": 25.55,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5024702829844531,
+            "weight": 22,
+            "contribution": 11.054346225657968,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.3749684545190682,
+            "weight": 8,
+            "contribution": 2.9997476361525455,
+            "evidence": [
+              "238h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5024702829844531
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "e44fa8c4c97012db": {
+      "kind": "news",
+      "id": "e44fa8c4c97012db",
+      "clusterId": "e44fa8c4c97012db",
+      "title": "Scientist, LNP-Drug Product Development",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/6129296004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/6129296004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-31T16:57:07.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Company info NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat aging by reprogramming the epigenome, a new therapeutic mechanism to restore youthful function in aged cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5236481579459856
+      },
+      "primaryLane": "venture-founder",
+      "score": 25.42,
+      "scoreBreakdown": {
+        "total": 25.42,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5236481579459856,
+            "weight": 22,
+            "contribution": 11.520259474811684,
+            "evidence": [
+              "epigenetic editing",
+              "reprogramming",
+              "healthspan",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.5495611505683373,
+            "weight": 8,
+            "contribution": 4.396489204546699,
+            "evidence": [
+              "145h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5236481579459856
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "b47b76c5cee3b970": {
+      "kind": "news",
+      "id": "b47b76c5cee3b970",
+      "clusterId": "b47b76c5cee3b970",
+      "title": "Scientist, LNP-Lipid Chemistry",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/6135782004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/6135782004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-31T16:58:48.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Company info NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat aging by reprogramming the epigenome, a new therapeutic mechanism to restore youthful function in aged cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.4252804879842382
+      },
+      "primaryLane": "venture-founder",
+      "score": 23.25,
+      "scoreBreakdown": {
+        "total": 23.25,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.4252804879842382,
+            "weight": 22,
+            "contribution": 9.35617073565324,
+            "evidence": [
+              "reprogramming",
+              "healthspan",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.5496247680117665,
+            "weight": 8,
+            "contribution": 4.396998144094132,
+            "evidence": [
+              "145h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.4252804879842382
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "7dcaf8237b36d0ba": {
+      "kind": "news",
+      "id": "7dcaf8237b36d0ba",
+      "clusterId": "7dcaf8237b36d0ba",
+      "title": "Machine Learning Scientist / Senior Machine Learning Scientist",
+      "url": "https://www.calicolabs.com/careers/?gh_jid=8533254002",
+      "canonicalUrl": "https://www.calicolabs.com/careers?gh_jid=8533254002",
+      "sourceId": "gh-calicolabs",
+      "sourceName": "Calico — jobs",
+      "publisherGroup": "ats:calicolabs",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-20T21:52:23.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Who We Are: Calico (Calico Life Sciences LLC) is an Alphabet-founded research and development company whose mission is to harness advanced technologies and model systems to increase our understanding of the biology that controls human aging.",
+        "Calico will use that knowledge to devise interventions that enable people to lead longer and healthier lives."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5121379025868306
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.28,
+      "scoreBreakdown": {
+        "total": 22.28,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5121379025868306,
+            "weight": 22,
+            "contribution": 11.267033856910272,
+            "evidence": [
+              "ATAC",
+              "single-cell",
+              "chromatin",
+              "chromatin accessibility",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.18870645556646262,
+            "weight": 8,
+            "contribution": 1.509651644531701,
+            "evidence": [
+              "404h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5121379025868306
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "bd8e35724729aeeb": {
+      "kind": "news",
+      "id": "bd8e35724729aeeb",
+      "clusterId": "bd8e35724729aeeb",
+      "title": "Postdoctoral Researcher, Neuro-Immune Interactions, Pluvinage Lab",
+      "url": "https://job-boards.greenhouse.io/arcinstitute/jobs/6180130004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/arcinstitute/jobs/6180130004",
+      "sourceId": "gh-arcinstitute",
+      "sourceName": "Arc Institute — jobs",
+      "publisherGroup": "ats:arcinstitute",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-02T21:58:17.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Arc Institute Arc Institute is an independent nonprofit research organization at the interface of artificial intelligence and biology, working to accelerate scientific progress and understand the root causes of complex diseases.",
+        "Founded in 2021 and based in Palo Alto, Arc partners with Stanford University, UC Berkeley, and UC San Francisco."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.3273166922479315
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.17,
+      "scoreBreakdown": {
+        "total": 22.17,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.3273166922479315,
+            "weight": 22,
+            "contribution": 7.200967229454492,
+            "evidence": [
+              "functional genomics",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.6839410358447551,
+            "weight": 8,
+            "contribution": 5.471528286758041,
+            "evidence": [
+              "92h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.3273166922479315
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "3571f05705506d69": {
+      "kind": "news",
+      "id": "3571f05705506d69",
+      "clusterId": "3571f05705506d69",
+      "title": "Senior/Principal Scientist, Translational Biomarkers",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/5969886004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/5969886004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-03T22:08:38.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "About NewLimit NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat age-related diseases by reprogramming the epigenome, a new therapeutic mechanism to restore regenerative potential in aged and diseased cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.29740091497044646
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.09,
+      "scoreBreakdown": {
+        "total": 22.09,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.29740091497044646,
+            "weight": 22,
+            "contribution": 6.542820129349822,
+            "evidence": [
+              "translational"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.7556697547645983,
+            "weight": 8,
+            "contribution": 6.045358038116786,
+            "evidence": [
+              "68h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.29740091497044646
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
     }
   },
   "lanes": [
@@ -1389,7 +2686,12 @@
       "label": "Venture, Founder & Frontier Roles",
       "blurb": "Nucleate, Flagship, Activate, age1, TechAtlas, FROs, Astera, and roles at the companies building the tools.",
       "itemIds": [
-        "482d97ad01012205"
+        "482d97ad01012205",
+        "bae6d62665c873f2",
+        "99ef20c3ab045d81",
+        "97517bcad5d53661",
+        "e44fa8c4c97012db",
+        "b47b76c5cee3b970"
       ]
     },
     {
@@ -1403,6 +2705,17 @@
         "cef1b06101013a1e",
         "cf465fc30100dcff",
         "045baff501006f2a"
+      ]
+    },
+    {
+      "id": "causal-genetics",
+      "label": "Causal Human Genetics",
+      "blurb": "GWAS, Mendelian randomization, fine-mapping, colocalization, burden tests, PheWAS, perturbation screens, single-cell and spatial epigenomics, epigenetic editing, biomarkers of aging.",
+      "itemIds": [
+        "fcb1e1851494c7ce",
+        "3fd811a6610ef1dc",
+        "6592484bbf3189a0",
+        "38fb4d071b87cea5"
       ]
     }
   ],
@@ -1423,14 +2736,14 @@
     {
       "programId": "rhodes-us",
       "label": "Rhodes Scholarship (US)",
-      "target": "National application (Rhodes portal) (but Harvard institutional endorsement (URAF / OUE) comes first)",
-      "date": "2026-10-01",
-      "daysUntil": 25,
-      "kind": "projected",
+      "target": "National application (Rhodes portal)",
+      "date": "2026-10-07",
+      "daysUntil": 31,
+      "kind": "confirmed",
       "precision": "minute",
       "gating": true,
-      "displayWhen": "1 Oct 2026, 23:59 EDT",
-      "needsVerification": true,
+      "displayWhen": "7 Oct 2026, 23:59 EDT",
+      "needsVerification": false,
       "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
     },
     {
@@ -1490,13 +2803,6 @@
       "url": "https://www.gatescambridge.org/apply/"
     },
     {
-      "programId": "rhodes-us",
-      "label": "Rhodes Scholarship (US)",
-      "reason": "GATING step has no date: Harvard institutional endorsement (URAF / OUE)",
-      "staleDays": 15,
-      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
-    },
-    {
       "programId": "ashg-2027",
       "label": "ASHG 2027",
       "reason": "deadline unknown",
@@ -1524,23 +2830,711 @@
       "reason": "deadline unknown"
     },
     {
+      "programId": "nucleate-activator-us",
+      "label": "Nucleate Activator (US)",
+      "reason": "page changed — verify the date (content changed (last changed 2026-09-06))",
+      "url": "https://nucleate.org/"
+    },
+    {
       "programId": "scmethyl-manuscript",
       "label": "scMethyl methods manuscript",
       "reason": "only known to the month — cannot alert"
     }
   ],
+  "markets": {
+    "asOf": "2026-09-06",
+    "catalysts": [
+      {
+        "date": "2026-09-18",
+        "ticker": "GSK",
+        "company": "GSK plc",
+        "label": "GSK plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 12,
+        "watched": true
+      },
+      {
+        "date": "2026-09-21",
+        "ticker": "MRK",
+        "company": "Merck & Co., Inc.",
+        "label": "Merck & Co., Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 15,
+        "watched": true
+      },
+      {
+        "date": "2026-09-22",
+        "ticker": "IONS",
+        "company": "IONIS PHARMACEUTICALS, INC.",
+        "label": "IONIS PHARMACEUTICALS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 16,
+        "watched": true
+      },
+      {
+        "date": "2026-09-23",
+        "ticker": "GRAL",
+        "company": "GRAIL, Inc.",
+        "label": "GRAIL, Inc. FDA AdCom",
+        "kind": "adcomm",
+        "source": "FDA AdCom calendar",
+        "daysUntil": 17,
+        "watched": true
+      },
+      {
+        "date": "2026-09-30",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB",
+        "label": "BRISTOL MYERS SQUIBB PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 24,
+        "watched": true
+      },
+      {
+        "date": "2026-10-04",
+        "ticker": "MRK",
+        "company": "Merck & Co., Inc.",
+        "label": "Merck & Co., Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 28,
+        "watched": true
+      },
+      {
+        "date": "2026-10-10",
+        "ticker": "MRK",
+        "company": "MERCK & CO., INC.",
+        "label": "MERCK & CO., INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 34,
+        "watched": true
+      },
+      {
+        "date": "2026-10-26",
+        "ticker": "IONS",
+        "company": "IONIS PHARMACEUTICALS, INC.",
+        "label": "IONIS PHARMACEUTICALS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 50,
+        "watched": true
+      },
+      {
+        "date": "2026-11-25",
+        "ticker": "SNY",
+        "company": "Sanofi Winthrop Industrie",
+        "label": "Sanofi Winthrop Industrie PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 80,
+        "watched": true
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "VRTX",
+        "company": "VERTEX PHARMACEUTICALS INCORPORATED",
+        "label": "VERTEX PHARMACEUTICALS INCORPORATED PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 85,
+        "watched": true
+      },
+      {
+        "date": "2026-12-23",
+        "ticker": "GILD",
+        "company": "GILEAD SCIENCES, INC.",
+        "label": "GILEAD SCIENCES, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 108,
+        "watched": true
+      },
+      {
+        "date": "2027-03-11",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB CO",
+        "label": "BRISTOL MYERS SQUIBB CO PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 186,
+        "watched": true
+      },
+      {
+        "date": "2027-03-22",
+        "ticker": "MRK",
+        "company": "MERCK & CO., INC.",
+        "label": "MERCK & CO., INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 197,
+        "watched": true
+      },
+      {
+        "date": "2027-05-13",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB",
+        "label": "BRISTOL MYERS SQUIBB PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 249,
+        "watched": true
+      },
+      {
+        "date": "2026-09-11",
+        "ticker": "TLX",
+        "company": "Telix Pharmaceuticals Ltd",
+        "label": "Telix Pharmaceuticals Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 5,
+        "watched": false
+      },
+      {
+        "date": "2026-09-18",
+        "ticker": "NUVL",
+        "company": "Nuvalent, Inc.",
+        "label": "Nuvalent, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 12,
+        "watched": false
+      },
+      {
+        "date": "2026-09-18",
+        "ticker": "RPRX",
+        "company": "Royalty Pharma plc",
+        "label": "Royalty Pharma plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 12,
+        "watched": false
+      },
+      {
+        "date": "2026-09-19",
+        "ticker": "RARE",
+        "company": "Ultragenyx Pharmaceutical Inc.",
+        "label": "Ultragenyx Pharmaceutical Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 13,
+        "watched": false
+      },
+      {
+        "date": "2026-09-26",
+        "ticker": "MIRM",
+        "company": "Mirum Pharmaceuticals, Inc.",
+        "label": "Mirum Pharmaceuticals, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 20,
+        "watched": false
+      },
+      {
+        "date": "2026-09-28",
+        "ticker": "BFRI",
+        "company": "Biofrontera Inc.",
+        "label": "Biofrontera Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 22,
+        "watched": false
+      },
+      {
+        "date": "2026-10-10",
+        "company": "4568 DAIICHI SANKYO",
+        "label": "4568 DAIICHI SANKYO PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 34,
+        "watched": false
+      },
+      {
+        "date": "2026-10-17",
+        "ticker": "IRD",
+        "company": "Opus Genetics, Inc.",
+        "label": "Opus Genetics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 41,
+        "watched": false
+      },
+      {
+        "date": "2026-10-17",
+        "ticker": "VTRS",
+        "company": "Viatris Inc.",
+        "label": "Viatris Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 41,
+        "watched": false
+      },
+      {
+        "date": "2026-10-30",
+        "ticker": "INO",
+        "company": "INOVIO PHARMACEUTICALS, INC.",
+        "label": "INOVIO PHARMACEUTICALS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 54,
+        "watched": false
+      },
+      {
+        "date": "2026-11-01",
+        "ticker": "AGIO",
+        "company": "Agios Pharmaceuticals, Inc.",
+        "label": "Agios Pharmaceuticals, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 56,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "BTAI",
+        "company": "BioXcel Therapeutics, Inc.",
+        "label": "BioXcel Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 69,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "CYTK",
+        "company": "CYTOKINETICS INC",
+        "label": "CYTOKINETICS INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 69,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "SMMT",
+        "company": "Summit Therapeutics Inc.",
+        "label": "Summit Therapeutics Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 69,
+        "watched": false
+      },
+      {
+        "date": "2026-11-22",
+        "ticker": "CAPR",
+        "company": "CAPRICOR THERAPEUTICS, INC.",
+        "label": "CAPRICOR THERAPEUTICS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 77,
+        "watched": false
+      },
+      {
+        "date": "2026-11-22",
+        "ticker": "SVRA",
+        "company": "SAVARA INC.",
+        "label": "SAVARA INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 77,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "BBIO",
+        "company": "BridgeBio Pharma, Inc.",
+        "label": "BridgeBio Pharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 82,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "NUVL",
+        "company": "Nuvalent, Inc.",
+        "label": "Nuvalent, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 82,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "RPRX",
+        "company": "Royalty Pharma plc",
+        "label": "Royalty Pharma plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 82,
+        "watched": false
+      },
+      {
+        "date": "2026-11-28",
+        "ticker": "PYPD",
+        "company": "PolyPid Ltd.",
+        "label": "PolyPid Ltd. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 83,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "COGT",
+        "company": "Cogent Biosciences, Inc.",
+        "label": "Cogent Biosciences, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 85,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "RHHBY",
+        "company": "F. Hoffmann-La Roche Ltd",
+        "label": "F. Hoffmann-La Roche Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 85,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "ZLAB",
+        "company": "Zai Lab Ltd",
+        "label": "Zai Lab Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 85,
+        "watched": false
+      },
+      {
+        "date": "2026-12-03",
+        "ticker": "EXEL",
+        "company": "EXELIXIS, INC.",
+        "label": "EXELIXIS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 88,
+        "watched": false
+      },
+      {
+        "date": "2026-12-12",
+        "ticker": "ANAB",
+        "company": "ANAPTYSBIO, INC",
+        "label": "ANAPTYSBIO, INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 97,
+        "watched": false
+      },
+      {
+        "date": "2026-12-12",
+        "ticker": "VNDA",
+        "company": "Vanda Pharmaceuticals Inc.",
+        "label": "Vanda Pharmaceuticals Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 97,
+        "watched": false
+      },
+      {
+        "date": "2026-12-17",
+        "ticker": "CORT",
+        "company": "CORCEPT THERAPEUTICS INC",
+        "label": "CORCEPT THERAPEUTICS INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 102,
+        "watched": false
+      },
+      {
+        "date": "2026-12-18",
+        "ticker": "RHHBY",
+        "company": "F. Hoffmann-La Roche Ltd",
+        "label": "F. Hoffmann-La Roche Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 103,
+        "watched": false
+      },
+      {
+        "date": "2026-12-22",
+        "ticker": "MLYS",
+        "company": "Mineralys Therapeutics, Inc.",
+        "label": "Mineralys Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 107,
+        "watched": false
+      },
+      {
+        "date": "2026-12-23",
+        "ticker": "ACLX",
+        "company": "Arcellx, Inc.",
+        "label": "Arcellx, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 108,
+        "watched": false
+      },
+      {
+        "date": "2026-12-27",
+        "ticker": "PRAX",
+        "company": "Praxis Precision Medicines, Inc.",
+        "label": "Praxis Precision Medicines, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 112,
+        "watched": false
+      },
+      {
+        "date": "2026-12-27",
+        "ticker": "VTRS",
+        "company": "Viatris Inc.",
+        "label": "Viatris Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 112,
+        "watched": false
+      },
+      {
+        "date": "2026-12-30",
+        "ticker": "COGT",
+        "company": "Cogent Biosciences, Inc.",
+        "label": "Cogent Biosciences, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 115,
+        "watched": false
+      },
+      {
+        "date": "2027-01-06",
+        "ticker": "IBRX",
+        "company": "IMMUNITYBIO, INC.",
+        "label": "IMMUNITYBIO, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 122,
+        "watched": false
+      },
+      {
+        "date": "2027-01-21",
+        "ticker": "DYN",
+        "company": "Dyne Therapeutics, Inc.",
+        "label": "Dyne Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 137,
+        "watched": false
+      },
+      {
+        "date": "2027-01-29",
+        "ticker": "PRAX",
+        "company": "Praxis Precision Medicines, Inc.",
+        "label": "Praxis Precision Medicines, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 145,
+        "watched": false
+      },
+      {
+        "date": "2027-02-12",
+        "ticker": "BLTE",
+        "company": "BELITE BIO, INC",
+        "label": "BELITE BIO, INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 159,
+        "watched": false
+      },
+      {
+        "date": "2027-02-23",
+        "ticker": "ARQT",
+        "company": "Arcutis Biotherapeutics, Inc.",
+        "label": "Arcutis Biotherapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 170,
+        "watched": false
+      },
+      {
+        "date": "2027-02-27",
+        "ticker": "CGEM",
+        "company": "Cullinan Therapeutics, Inc.",
+        "label": "Cullinan Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 174,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "APMD",
+        "company": "Apnimed, Inc.",
+        "label": "Apnimed, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 175,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "BMRN",
+        "company": "BioMarin Pharmaceutical Inc.",
+        "label": "BioMarin Pharmaceutical Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 175,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "SRPT",
+        "company": "SAREPTA THERAPEUTICS, INC.",
+        "label": "SAREPTA THERAPEUTICS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 175,
+        "watched": false
+      },
+      {
+        "date": "2027-04-01",
+        "ticker": "HRMY",
+        "company": "Harmony Biosciences Holdings, Inc.",
+        "label": "Harmony Biosciences Holdings, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 207,
+        "watched": false
+      },
+      {
+        "date": "2027-04-23",
+        "ticker": "PHVS",
+        "company": "Pharvaris N.V.",
+        "label": "Pharvaris N.V. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 229,
+        "watched": false
+      },
+      {
+        "date": "2027-04-23",
+        "ticker": "RPRX",
+        "company": "Royalty Pharma plc",
+        "label": "Royalty Pharma plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 229,
+        "watched": false
+      },
+      {
+        "date": "2027-04-24",
+        "ticker": "ORGO",
+        "company": "Organogenesis Holdings Inc.",
+        "label": "Organogenesis Holdings Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 230,
+        "watched": false
+      },
+      {
+        "date": "2027-04-28",
+        "ticker": "IMNM",
+        "company": "IMMUNOME, INC.",
+        "label": "IMMUNOME, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 234,
+        "watched": false
+      },
+      {
+        "date": "2027-05-01",
+        "ticker": "AXSM",
+        "company": "Axsome Therapeutics, Inc.",
+        "label": "Axsome Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 237,
+        "watched": false
+      },
+      {
+        "date": "2027-05-08",
+        "ticker": "BBIO",
+        "company": "BridgeBio Pharma, Inc.",
+        "label": "BridgeBio Pharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 244,
+        "watched": false
+      },
+      {
+        "date": "2027-05-27",
+        "ticker": "ZBIO",
+        "company": "Zenas BioPharma, Inc.",
+        "label": "Zenas BioPharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 263,
+        "watched": false
+      },
+      {
+        "date": "2027-06-24",
+        "ticker": "UTHR",
+        "company": "UNITED THERAPEUTICS CORPORATION",
+        "label": "UNITED THERAPEUTICS CORPORATION PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 291,
+        "watched": false
+      }
+    ],
+    "health": [
+      {
+        "sourceId": "fda-pdufa",
+        "sourceName": "FDA PDUFA calendar",
+        "status": "ok",
+        "httpStatus": 200,
+        "itemsParsed": 1553,
+        "itemsKept": 64,
+        "parseWarnings": [],
+        "latencyMs": 1094,
+        "lastSuccessAt": "2026-09-06",
+        "consecutiveFailures": 0,
+        "optional": true
+      },
+      {
+        "sourceId": "fda-adcomm",
+        "sourceName": "FDA AdCom calendar",
+        "status": "ok",
+        "httpStatus": 200,
+        "itemsParsed": 243,
+        "itemsKept": 1,
+        "parseWarnings": [],
+        "latencyMs": 2704,
+        "lastSuccessAt": "2026-09-06",
+        "consecutiveFailures": 0,
+        "optional": true
+      }
+    ]
+  },
   "stats": {
-    "fetched": 37,
-    "kept": 14,
+    "fetched": 49,
+    "kept": 26,
     "deadlinesTracked": 10,
-    "verifiedLast7d": 0,
+    "verifiedLast7d": 1,
     "medianScore": 29.295,
     "dropped": {
-      "below-threshold": 7,
+      "below-threshold": 263,
       "not-yet-watched": 13,
       "rolling-cooldown": 1,
-      "ruled-out": 2
+      "ruled-out": 2,
+      "too-old": 157
     }
-  },
-  "emailedAt": "2026-09-06T17:21:09.499Z"
+  }
 }

@@ -1,10 +1,10 @@
 {
-  "startedAt": "2026-09-06T15:25:28.235Z",
-  "finishedAt": "2026-09-06T15:25:28.259Z",
+  "startedAt": "2026-09-06T18:02:41.355Z",
+  "finishedAt": "2026-09-06T18:02:55.989Z",
   "outcome": "ok",
   "date": "2026-09-06",
-  "sourcesOk": 1,
-  "sourcesTotal": 1,
-  "itemsKept": 14,
+  "sourcesOk": 30,
+  "sourcesTotal": 30,
+  "itemsKept": 26,
   "deadlinesTracked": 10
 }

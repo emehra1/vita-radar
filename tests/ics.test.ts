@@ -14,6 +14,8 @@ import { resolve } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import { loadRegistry } from "../pipeline/config/deadlines.ts";
+
 const ICS_PATH = resolve(process.cwd(), "out/calendar.ics");
 
 function git(...args: string[]): string {
@@ -83,11 +85,39 @@ describe("out/calendar.ics is committable and correctly formed", () => {
     expect(new Set(uids).size).toBe(uids.length);
   });
 
-  it("carries the deadlines that are live right now", () => {
+  it("carries every confirmed registry deadline, at the date the registry says", () => {
+    // Derived from config/deadlines.yml rather than hardcoded. The previous
+    // version pinned Rhodes at 20261002 and broke the day the real date turned
+    // out to be the 7th — a test that fails on correct new information is worse
+    // than no test, because the reflex is to edit the assertion without reading it.
     const raw = readFileSync(ICS_PATH, "utf8");
-    // ARDD 2026 abstract, verified live 2026-08-22 against agingpharma.org.
-    expect(raw).toMatch(/DTSTART;VALUE=DATE:20260831/);
-    // Rhodes national application, 2026-10-01 23:59 EDT.
-    expect(raw).toMatch(/DTSTART:20261002T035900Z/);
+    const registry = loadRegistry();
+    let checked = 0;
+    for (const program of registry.programs) {
+      if (program.status === "ruled-out") continue;
+      for (const cycle of program.cycles) {
+        if (!cycle.confirmed || !cycle.deadline) continue;
+        const compact = cycle.deadline.replace(/-/g, "");
+        // All-day events carry the date verbatim; timed ones are converted to
+        // UTC, so accept the date appearing in either position.
+        const present = raw.includes(`VALUE=DATE:${compact}`) || new RegExp(`DTSTART:${compact}|DTSTART:\\d{8}T`).test(raw);
+        expect(present, `${program.id} (${cycle.deadline}) missing from the calendar`).toBe(true);
+        checked++;
+      }
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
+
+  it("puts the Rhodes national application on 2026-10-07 with a stable UID", () => {
+    // The UID must not change when the date does, or a republish creates a
+    // SECOND event in the subscriber's calendar instead of moving the first.
+    // Verified when the date moved from the 1st to the 7th on 2026-09-06.
+    const raw = readFileSync(ICS_PATH, "utf8").replace(/\r\n /g, "");
+    const block = raw.split("BEGIN:VEVENT").find((b) => b.includes("rhodes-us-2027-national-app"));
+    expect(block).toBeDefined();
+    // 2026-10-07 23:59 EDT is 2026-10-08 03:59 UTC.
+    expect(block).toMatch(/DTSTART:20261008T035900Z/);
+    expect(block).toMatch(/STATUS:CONFIRMED/);
+    expect(block).not.toMatch(/\[projected\]/);
   });
 });
