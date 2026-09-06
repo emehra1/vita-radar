@@ -1,2 +1,15 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# An .ics file MUST use CRLF line endings — RFC 5545 §3.1 makes it part of the
+# format, not a platform convention. The `* text=auto` rule above would normalise
+# out/calendar.ics to LF on the way into the repo, and the failure is completely
+# silent: build-ics.ts keeps writing correct CRLF to disk and reporting success
+# every day, while the bytes GitHub actually serves to a subscribed calendar
+# client are malformed. Verified with `git add --renormalize`, which stripped all
+# 347 CRs from a calendar that had been committed correctly before this file
+# existed.
+#
+# `-text` disables all end-of-line conversion in both directions, so the file
+# round-trips byte-exact.
+*.ics -text
