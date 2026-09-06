@@ -394,30 +394,43 @@ export type DropReason =
   | "rolling-cooldown"
   | "over-cap";
 
-export interface Quote {
-  ticker: string;
-  name?: string;
-  last?: number;
-  changePct?: number;
-  changePct5d?: number;
-}
-
+/**
+ * A dated regulatory event.
+ *
+ * Note what this is NOT: a price. Every keyless quote source turned out to be
+ * unusable — Yahoo 429s even from residential IPs, Stooq answers 200 with a
+ * SHA-256 proof-of-work challenge, Alpha Vantage allows 25 requests a DAY, and
+ * Tiingo's free tier is licensed "internal use only" so emailing the numbers
+ * anywhere would breach it. The two that work need API keys.
+ *
+ * That turned out not to matter, because the prices were the part with no
+ * value. A daily percentage move is not something a student can act on, and it
+ * is the one number in the digest that is embarrassing when wrong and worthless
+ * when right. The DATES are the signal — and a PDUFA date is the same object as
+ * a fellowship deadline: a dated thing you can prepare for. So catalysts run
+ * through the same countdown machinery as everything else in the tracker,
+ * rather than sitting in a price table nobody acts on.
+ */
 export interface Catalyst {
+  /** YYYY-MM-DD. */
   date: string;
   ticker?: string;
+  company?: string;
   label: string;
-  kind: "pdufa" | "adcomm" | "earnings" | "readout";
+  kind: "pdufa" | "adcomm";
+  /** Which feed it came from, for provenance in the email. */
   source: string;
+  /** Whole days until the date, at build time. */
+  daysUntil: number;
+  /** True when the ticker is on the watchlist rather than merely in the feed. */
+  watched: boolean;
 }
 
 export interface MarketSection {
-  /** Trading day, not run day. Weekend payloads are legitimately unchanged. */
+  /** The date the catalysts were computed against. */
   asOf: string;
-  tradingDay: boolean;
-  quotes: Quote[];
-  movers: Quote[];
   catalysts: Catalyst[];
-  /** Its own health. A market outage must never make a run unusable. */
+  /** Its own health. A catalyst outage must never make a run unusable. */
   health: SourceHealth[];
 }
 

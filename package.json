@@ -14,6 +14,7 @@
     "check-sources": "tsx scripts/check-sources.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
     "js-yaml": "^4.1.0",
     "nodemailer": "^6.9.5",
     "rss-parser": "^3.13.0"

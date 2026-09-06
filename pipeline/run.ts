@@ -16,18 +16,22 @@
 
 import { writeFileSync } from "node:fs";
 
-import type { DailyDigest, DigestItem, Lane, RunStatus } from "../lib/types.ts";
+import type { DailyDigest, DigestItem, Lane, MarketSection, RunStatus } from "../lib/types.ts";
 import { LANES, LANE_BLURBS, LANE_LABELS, PINNED_LANE } from "../lib/types.ts";
 import { DeadlineConfigError, loadRegistry } from "./config/deadlines.ts";
 import { buildOpportunities } from "./deadlines/build.ts";
 import { buildNews } from "./digest/build.ts";
 import { collectSources } from "./ingest/collect.ts";
+import { fetchCatalysts, CATALYST_HORIZON_DAYS } from "./market/catalysts.ts";
+import { HttpCache } from "./net/cache.ts";
+import { createHttpClient } from "./net/http.ts";
 import { WEIGHTS } from "./score/index.ts";
 import { localDateString } from "./normalize/dates.ts";
 import {
   SeenStore,
   findPreviousDigest,
   readDigest,
+  listDigestDates,
   readRollingDelivered,
   readRungs,
   writeDigest,
@@ -289,6 +293,34 @@ async function main(): Promise<number> {
   }
   built.verify.sort((a, b) => (b.staleDays ?? 0) - (a.staleDays ?? 0) || a.label.localeCompare(b.label));
 
+  /**
+   * Catalysts: FDA decision dates, not prices.
+   *
+   * Its own try/catch and its own health rows, and deliberately NOT folded into
+   * `items`. A catalyst must never compete with a deadline for a slot in the
+   * lane round-robin, and a feed outage must never reduce `stats.kept` in a way
+   * that could trip the usability gate on a day the deadline half was fine.
+   */
+  let markets: MarketSection | undefined;
+  if (!args.noMarket && !args.noSources) {
+    try {
+      const cache = new HttpCache(".cache/http-meta.json", ".cache/raw");
+      await cache.load();
+      const client = createHttpClient(cache);
+      const result = await fetchCatalysts(client, now, {
+        today: date,
+        horizonDays: CATALYST_HORIZON_DAYS,
+      });
+      await cache.flush();
+      markets = { asOf: date, catalysts: result.catalysts, health: result.health };
+      const watched = result.catalysts.filter((c) => c.watched).length;
+      console.log(`catalysts: ${result.catalysts.length} upcoming (${watched} on the watchlist)`);
+    } catch (err) {
+      console.error(`catalysts failed: ${(err as Error).message}`);
+      markets = undefined;
+    }
+  }
+
   const allItems: DigestItem[] = [...built.items, ...newsItems];
   const items: Record<string, DigestItem> = {};
   for (const item of allItems) items[item.id] = item;
@@ -306,6 +338,69 @@ async function main(): Promise<number> {
    */
   const unusable = built.deadlinesTracked > 0 && built.countdown.length === 0 && built.items.length === 0;
 
+  /**
+   * The opener runs LAST, over the already-scored and already-selected digest.
+   *
+   * It can therefore only describe what the deterministic pipeline chose — it
+   * cannot promote anything, and if it fails the email simply has no opener.
+   * `--no-llm` and a missing ANTHROPIC_API_KEY both reduce this to a no-op, and
+   * the countdown, the subject escalation and the .ics are all computed well
+   * above this line.
+   */
+  let editorial: string | undefined;
+  if (!args.noLlm) {
+    try {
+      /**
+       * Imported dynamically, and that is a correctness requirement rather than
+       * a style choice.
+       *
+       * The README's strongest claim is that the countdown, the subject-line
+       * escalation and the .ics all keep working with `pipeline/llm/` DELETED
+       * FROM DISK — the cleanest statement of the model being additive rather
+       * than load-bearing. A static import makes that claim false: removing the
+       * directory breaks module resolution before main() runs a single line, and
+       * the digest never gets written at all. Verified by deleting it, which is
+       * how this comment came to exist.
+       *
+       * Dynamic import turns that from a crash into a caught miss.
+       */
+      const { createLlmClient } = await import("./llm/client.ts");
+      const { writeEditorial } = await import("./llm/editorial.ts");
+      const runner = createLlmClient();
+      if (runner) {
+        // The last three openers, newest first, so the model varies its angle.
+        // Read from committed digests rather than kept in memory: the runner is
+        // ephemeral and the repo is the database.
+        const previousOpeners = listDigestDates()
+          .filter((d) => d < date)
+          .slice(-3)
+          .reverse()
+          .map((d) => readDigest(d)?.editorial)
+          .filter((e): e is string => Boolean(e));
+        editorial = await writeEditorial(runner, {
+          date,
+          items: [...allItems]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 12)
+            .map((item) => ({
+              lane: item.primaryLane,
+              score: item.score,
+              title: item.title,
+              fact: item.kind === "opportunity"
+                ? (item.opportunity.deadline.date ?? "no date")
+                : (item.digest[0] ?? ""),
+              daysUntil: item.kind === "opportunity" ? item.daysUntil : undefined,
+            })),
+          previousOpeners,
+        });
+        if (editorial) console.log(`editorial: ${editorial.length} chars`);
+      }
+    } catch (err) {
+      // Belt and braces: writeEditorial already swallows its own errors.
+      console.error(`editorial failed: ${(err as Error).message}`);
+    }
+  }
+
   const digest: DailyDigest = {
     schemaVersion: 1,
     date,
@@ -318,6 +413,8 @@ async function main(): Promise<number> {
     lanes,
     countdown: built.countdown,
     verify: built.verify,
+    markets,
+    editorial,
     stats: {
       fetched: registry.programs.length + newsItems.length,
       kept: allItems.length,

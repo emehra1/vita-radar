@@ -55,6 +55,40 @@ lands you on the wrong organisation entirely.
 
 ---
 
+## What runs today
+
+Three layers, in strict order of how much you should trust them.
+
+**1. The deadline tracker — no network, no model.** A pure function of
+`config/deadlines.yml` and the clock: 37 programs, the countdown strip, the
+Verify block, the subject-line escalation and `out/calendar.ics`. Every feed on
+earth can 403 and this half is unchanged. It is why the project shipped in this
+order.
+
+**2. Sources — 29 feeds and 13 watched pages.** News narrowed hard to causal
+human genetics, single-cell epigenomics and the tools/venture angle (the broad
+industry feed is `biotech-insights`' job); ATS job boards for the FROs and the
+genomics/aging companies; cycle early-warning from SDN, Gates Cambridge, PD
+Soros, Schmidt and the NIH Guide. The 13 program pages are **hashed, never
+parsed** — a change becomes one Verify line asking a human to look.
+
+**3. Catalysts and the opener — additive, and provably so.** FDA PDUFA and
+AdCom dates from two public tracker calendars (1,553 and 243 events; ~65
+upcoming, 14 on the watchlist). No prices: every keyless quote source turned out
+unusable — Yahoo 429s even from residential IPs, Stooq answers 200 with a
+SHA-256 proof-of-work challenge, Alpha Vantage allows 25 requests a *day*, and
+Tiingo's free tier is licensed "internal use only" so emailing the numbers would
+breach it. That turned out not to matter, because the dates were the valuable
+half: a PDUFA date is the same kind of object as a deadline, so it runs through
+the same countdown machinery instead of sitting in a price table nobody acts on.
+
+`pipeline/llm/` is reached through a **dynamic** import, so the layer is
+genuinely deletable — `rm -rf pipeline/llm && npm run pipeline` exits 0 with the
+countdown intact. It was a static import first, which made that claim false in
+the most complete way available: module resolution failed before `main()` ran
+and no digest was written at all. `tests/llm.contract.test.ts` pins it.
+
+
 ## Quick start
 
 ```bash

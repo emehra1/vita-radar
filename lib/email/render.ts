@@ -21,7 +21,8 @@
  *   2. COUNTDOWN— every dated program inside the horizon, every day, no
  *                 exceptions and no degradation.
  *   3. LANES    — deadlines pinned first; a preprint never displaces a date.
- *   4. MARKETS  — compact.
+ *   4. CATALYSTS— upcoming FDA decision dates. Decoration, and the first
+ *                 substantive block the size ladder sheds.
  *   5. EDITORIAL— model-written, last, linking nothing.
  *   6. FOOTER   — the heartbeat. Load-bearing, see heartbeatLine.
  *
@@ -38,12 +39,11 @@ import type {
   MarketSection,
   NewsItem,
   OpportunityItem,
-  Quote,
   VerifyRow,
 } from "../types.ts";
 import { LANE_LABELS, PINNED_LANE, isOpportunity } from "../types.ts";
 import { formatWhen, parseDeadlineDate } from "../../pipeline/normalize/dates.ts";
-import { formatDaysUntil, formatPct, formatUsd, pluralize, truncate } from "../format.ts";
+import { formatDaysUntil, pluralize, truncate } from "../format.ts";
 import { html, raw, safeUrl, type Raw } from "../html.ts";
 import {
   COLORS,
@@ -91,6 +91,15 @@ export interface RenderOptions {
   nextUnverified?: { label: string; days: number };
   /** Hours left for a row due today, so the strip can say "in 6 hours". */
   hoursUntil?: (row: CountdownRow) => number;
+  /**
+   * The window the catalyst collector actually swept, in days.
+   *
+   * Only ever printed in the empty state — and the empty state is exactly the
+   * case where it cannot be inferred from the data, because there is no data.
+   * A caller that sweeps a different window must pass it, or the email names a
+   * horizon nobody looked at.
+   */
+  catalystHorizonDays?: number;
 }
 
 export interface RenderedEmail {
@@ -111,7 +120,7 @@ interface BuildStep {
   showBody: boolean;
   showBlurbs: boolean;
   perLane: number;
-  showMarkets: boolean;
+  showCatalysts: boolean;
   showEditorial: boolean;
   pinnedOnly: boolean;
 }
@@ -344,68 +353,275 @@ function renderNewsHtml(item: NewsItem, step: BuildStep): Raw {
   `;
 }
 
+/* -------------------------------- catalysts -------------------------------- */
+
 /**
- * Markets, compact.
- *
- * A weekend payload is legitimately identical to Friday's, so `tradingDay:
- * false` is stated out loud — otherwise an unchanged block reads as a stuck
- * feed. Catalyst dates print verbatim from the JSON: reformatting a bare
- * YYYY-MM-DD requires assuming a zone, and a PDUFA date moved a day by an
- * assumed zone is exactly the kind of confident wrongness this repo tries not to
- * ship.
+ * Watched rows are the point of this section; every other row is context.
+ * Both halves are capped because the PDUFA calendar carries 1,553 events with
+ * 64 of them still upcoming, and a section that can grow to sixty rows spends
+ * the byte budget that the footer heartbeat needs to survive Gmail's clip.
  */
-function renderMarketsHtml(markets: MarketSection): Raw {
-  const movers = (markets.movers?.length ? markets.movers : markets.quotes ?? []).slice(0, 6);
-  const catalysts = (markets.catalysts ?? []).slice(0, 5);
-  if (movers.length === 0 && catalysts.length === 0) return html``;
-  const broken = (markets.health ?? []).filter((h) => h.status === "failed" || h.status === "degraded");
+const MAX_WATCHED_CATALYSTS = 12;
+const MAX_UNWATCHED_CATALYSTS = 8;
+
+/** Only ever printed in the empty state. See RenderOptions.catalystHorizonDays. */
+const DEFAULT_CATALYST_HORIZON_DAYS = 90;
+
+const CATALYST_KIND_LABELS: Record<Catalyst["kind"], string> = {
+  pdufa: "PDUFA",
+  adcomm: "AdCom",
+};
+
+interface CatalystView {
+  watched: Catalyst[];
+  unwatched: Catalyst[];
+  hiddenWatched: number;
+  hiddenUnwatched: number;
+  horizonDays: number;
+}
+
+/**
+ * Watched first, then soonest.
+ *
+ * These calendars are overwhelmingly companies the reader has never heard of,
+ * so ordering by date alone buries the two rows that were the reason to fetch
+ * the feed under thirty rows that were not. Date order is the tiebreak, not the
+ * sort.
+ */
+function compareCatalysts(a: Catalyst, b: Catalyst): number {
+  if (a.watched !== b.watched) return a.watched ? -1 : 1;
+  if (a.daysUntil !== b.daysUntil) return a.daysUntil - b.daysUntil;
+  if (a.date !== b.date) return a.date.localeCompare(b.date);
+  return (a.ticker ?? a.label).localeCompare(b.ticker ?? b.label);
+}
+
+/**
+ * `undefined` means "render nothing at all", and it is a third state rather
+ * than a flavour of empty.
+ *
+ * A half-read calendar and a genuinely quiet quarter produce the same short
+ * list, so a degraded feed may not print one — the reader would take a subset
+ * for the whole, which is the silent-failure shape this project spends most of
+ * its design budget refusing. The section removing itself is distinguishable
+ * from the section saying "nothing in range", and that distinction is the
+ * entire point. Nothing load-bearing is lost either way: these dates are
+ * decoration, they never make a run unusable, and every date that governs the
+ * reader's own life is in the countdown strip above, which comes from the YAML
+ * and not from anyone's calendar.
+ */
+function selectCatalysts(markets: MarketSection, options: RenderOptions): CatalystView | undefined {
+  const broken = (markets.health ?? []).some(
+    (entry) => entry.status === "failed" || entry.status === "degraded",
+  );
+  if (broken) return undefined;
+
+  const sorted = [...(markets.catalysts ?? [])].sort(compareCatalysts);
+  const watchedAll = sorted.filter((catalyst) => catalyst.watched);
+  const unwatchedAll = sorted.filter((catalyst) => !catalyst.watched);
+  const watched = watchedAll.slice(0, MAX_WATCHED_CATALYSTS);
+  const unwatched = unwatchedAll.slice(0, MAX_UNWATCHED_CATALYSTS);
+
+  return {
+    watched,
+    unwatched,
+    hiddenWatched: watchedAll.length - watched.length,
+    hiddenUnwatched: unwatchedAll.length - unwatched.length,
+    horizonDays: options.catalystHorizonDays ?? DEFAULT_CATALYST_HORIZON_DAYS,
+  };
+}
+
+/**
+ * "+34 more on the calendars, not shown".
+ *
+ * Emitted whenever anything was cut. A truncated list with no count reads as a
+ * complete one, which is the countdown strip's empty-section failure repeated
+ * one floor down: the reader concludes "that was everything" from a section
+ * that was silently shortened for space.
+ */
+function catalystsNotShown(view: CatalystView): string {
+  const hidden = view.hiddenWatched + view.hiddenUnwatched;
+  if (hidden === 0) return "";
+  if (view.hiddenWatched > 0) {
+    return `+${hidden} more not shown, ${view.hiddenWatched} of them on your watchlist`;
+  }
+  return `+${hidden} more on the calendars, not shown`;
+}
+
+/**
+ * Where these dates came from, said in the email rather than only in the README.
+ *
+ * They are two public Google calendars maintained by an FDA tracker, not a
+ * regulatory filing, and a reader deciding what to do with a row has to be able
+ * to weigh that. The date itself prints exactly as published: reformatting a
+ * bare YYYY-MM-DD means assuming a zone, and a PDUFA date moved a day by an
+ * assumed zone is the precise flavour of confident wrongness this repo exists
+ * to avoid shipping.
+ */
+function catalystProvenance(markets: MarketSection): string {
+  const names = [
+    ...new Set(
+      [
+        ...(markets.health ?? []).map((entry) => entry.sourceName),
+        ...(markets.catalysts ?? []).map((catalyst) => catalyst.source),
+      ].filter((name): name is string => Boolean(name && name.trim())),
+    ),
+  ];
+  const who = names.length > 0 ? names.join(" + ") : "two FDA-tracker calendars";
+  return `as of ${markets.asOf} · from ${who} — public tracker calendars read as ICS, dates printed exactly as published`;
+}
+
+function catalystTitle(catalyst: Catalyst): string {
+  const parts = [catalyst.ticker, catalyst.company].filter(
+    (part): part is string => Boolean(part && part.trim()),
+  );
+  return parts.length > 0 ? parts.join(" — ") : catalyst.label;
+}
+
+/**
+ * The label, but only when it says something the row has not already said.
+ *
+ * The ICS SUMMARY is "<TICKER> <Company> PDUFA", so on most rows `label` is a
+ * restatement of the ticker, the company and the kind that the row prints
+ * anyway. A line that repeats the line above it in a 600px column is how a
+ * reader learns to skip a whole block.
+ */
+function catalystExtra(catalyst: Catalyst): string {
+  const label = (catalyst.label ?? "").trim();
+  if (!label) return "";
+  const known = [catalyst.ticker, catalyst.company].filter(Boolean).join(" ").trim().toLowerCase();
+  if (!known) return label;
+  const normalized = label.toLowerCase();
+  if (normalized.includes(known) || known.includes(normalized)) return "";
+  return label;
+}
+
+function catalystDetail(catalyst: Catalyst): string {
+  return [catalyst.date, CATALYST_KIND_LABELS[catalyst.kind] ?? catalyst.kind, catalystExtra(catalyst)]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+/**
+ * One catalyst row, laid out like a countdown row on purpose.
+ *
+ * A PDUFA date is the same object as a fellowship deadline — a dated thing you
+ * can prepare for — so it gets the same T-number in the same column rather than
+ * a second visual language halfway down the email.
+ *
+ * Watched rows are ink, bold, accent-ruled and chipped; unwatched rows are
+ * muted throughout. Both the weight and the rule are set because Gmail's
+ * dark-mode inverter can flatten a colour difference, and a distinction that
+ * survives only in light mode is not a distinction.
+ */
+function catalystRowHtml(catalyst: Catalyst): Raw {
+  const watched = catalyst.watched;
+  const color = watched ? COLORS.ink : COLORS.muted;
+  const cls = watched ? "vr-ink" : "vr-muted";
+  return html`
+    <tr>
+      <td
+        class="${cls}"
+        align="right"
+        style="padding:7px 10px 7px 0;color:${color};font-size:13px;font-weight:${watched
+          ? "700"
+          : "400"};white-space:nowrap;vertical-align:top;width:104px;"
+      >
+        ${formatDaysUntil(catalyst.daysUntil)}
+      </td>
+      <td
+        class="vr-hr"
+        style="padding:7px 0;border-bottom:1px solid ${COLORS.border};vertical-align:top;${watched
+          ? `border-left:3px solid ${COLORS.accent};padding-left:9px;`
+          : ""}"
+      >
+        <div class="${cls}" style="color:${color};font-size:13px;line-height:1.45;font-weight:${watched
+          ? "600"
+          : "400"};">
+          ${catalystTitle(catalyst)}${watched ? html` ${chip("watched", COLORS.accent, "vr-accent")}` : ""}
+        </div>
+        <div class="vr-muted" style="color:${COLORS.muted};font-size:12px;line-height:1.45;padding-top:2px;">
+          ${catalystDetail(catalyst)}
+        </div>
+      </td>
+    </tr>
+  `;
+}
+
+/**
+ * Upcoming FDA decision dates. Explicitly not a portfolio.
+ *
+ * There are no prices in this email and there never will be: every keyless
+ * quote source is unusable (Yahoo 429s, Stooq answers 200 with a proof-of-work
+ * challenge, Alpha Vantage allows 25 requests a day, Tiingo's free tier forbids
+ * redistributing the numbers), and the prices were the worthless half anyway —
+ * a daily percentage move is the one figure here that is embarrassing when
+ * wrong and useless when right. The dates are the signal, so the heading says
+ * "decision dates" rather than "markets": a heading that names a portfolio
+ * invites the reader to look for a number that is deliberately absent.
+ */
+function renderCatalystsHtml(markets: MarketSection, options: RenderOptions): Raw {
+  const view = selectCatalysts(markets, options);
+  if (!view) return html``;
+  const rows = [...view.watched, ...view.unwatched];
+  const notShown = catalystsNotShown(view);
 
   return html`
     <h2
       class="vr-ink"
-      style="color:${COLORS.ink};font-size:15px;margin:24px 0 6px;padding-top:12px;border-top:2px solid ${COLORS.border};"
+      style="color:${COLORS.ink};font-size:15px;margin:24px 0 4px;padding-top:12px;border-top:2px solid ${COLORS.border};"
     >
-      Markets
+      Upcoming FDA decision dates
     </h2>
-    <div class="vr-muted" style="color:${COLORS.muted};font-size:11px;padding-bottom:6px;">
-      as of ${markets.asOf}${markets.tradingDay ? "" : " · not a trading day, so an unchanged line here is correct"}
+    <div class="vr-muted" style="color:${COLORS.muted};font-size:12px;line-height:1.5;">
+      PDUFA and advisory-committee dates, watched tickers first. A calendar, not a portfolio — there
+      are no prices in this email.
     </div>
-    ${movers.length > 0
-      ? html`<div class="vr-muted" style="color:${COLORS.muted};font-size:13px;line-height:1.6;">
-          ${movers.map((quote, index) => html`${index > 0 ? " · " : ""}${quoteHtml(quote)}`)}
+    <div class="vr-muted" style="color:${COLORS.muted};font-size:11px;line-height:1.5;padding:2px 0 6px;">
+      ${catalystProvenance(markets)}
+    </div>
+    ${rows.length === 0
+      ? html`<div class="vr-ink" style="color:${COLORS.ink};font-size:13px;line-height:1.5;">
+          No FDA decisions inside the next ${view.horizonDays} days. The calendars answered and had
+          nothing in range — that is a reading, not a gap.
         </div>`
-      : ""}
-    ${catalysts.length > 0
-      ? html`<div style="padding-top:6px;">
-          ${catalysts.map(
-            (catalyst) => html`<div class="vr-ink" style="color:${COLORS.ink};font-size:12px;line-height:1.6;">
-              ${catalystLine(catalyst)}
-            </div>`,
-          )}
-        </div>`
-      : ""}
-    ${broken.length > 0
-      ? html`<div class="vr-muted" style="color:${COLORS.muted};font-size:11px;padding-top:4px;">
-          market data degraded: ${broken.map((h) => h.sourceName).join(", ")} — this never makes a run unusable
+      : html`<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+          ${rows.map((catalyst) => catalystRowHtml(catalyst))}
+        </table>`}
+    ${notShown
+      ? html`<div class="vr-muted" style="color:${COLORS.muted};font-size:11px;padding-top:8px;">
+          ${notShown}
         </div>`
       : ""}
   `;
 }
 
-function quoteHtml(quote: Quote): Raw {
-  const pct = formatPct(quote.changePct);
-  const up = (quote.changePct ?? 0) >= 0;
-  return html`<span class="vr-ink" style="color:${COLORS.ink};font-weight:600;">${quote.ticker}</span>
-    ${formatUsd(quote.last) ?? ""}
-    ${pct
-      ? html`<span class="${up ? "vr-up" : "vr-down"}" style="color:${up ? COLORS.up : COLORS.down};">${pct}</span>`
-      : ""}`;
-}
+/**
+ * The same section in text/plain. Returns lines rather than a block so the
+ * caller can decide about the blank line after it — and returns NONE at all in
+ * the degraded case, matching renderCatalystsHtml exactly. Two renderers that
+ * disagree about when a section exists is how the text part quietly becomes a
+ * different email.
+ */
+function renderCatalystsText(markets: MarketSection, options: RenderOptions): string[] {
+  const view = selectCatalysts(markets, options);
+  if (!view) return [];
+  const rows = [...view.watched, ...view.unwatched];
 
-function catalystLine(catalyst: Catalyst): string {
-  return [catalyst.date, catalyst.kind.toUpperCase(), catalyst.ticker, catalyst.label]
-    .filter(Boolean)
-    .join(" · ");
+  const lines = [
+    "UPCOMING FDA DECISION DATES (a calendar, not a portfolio — no prices here)",
+    `  ${catalystProvenance(markets)}`,
+  ];
+  if (rows.length === 0) {
+    lines.push(`  No FDA decisions inside the next ${view.horizonDays} days.`);
+  }
+  for (const catalyst of rows) {
+    const tag = catalyst.watched ? " [WATCHED]" : "";
+    lines.push(`  ${formatDaysUntil(catalyst.daysUntil).padEnd(6)} ${catalystTitle(catalyst)}${tag}`);
+    lines.push(`         ${catalystDetail(catalyst)}`);
+  }
+  const notShown = catalystsNotShown(view);
+  if (notShown) lines.push(`  ${notShown}`);
+  return lines;
 }
 
 /**
@@ -562,6 +778,13 @@ export function subjectLabel(label: string): string {
  * network, no model, no filesystem. The alarm cannot be allowed to depend on the
  * two things in this system that are permitted to fail: a fetch and an LLM call.
  *
+ * `digest.markets` is deliberately not consulted, and that is a rule rather than
+ * an omission: a catalyst may never take over the subject line. Those dates come
+ * from a third-party public calendar, so wiring one in would hand an outside
+ * publisher the only alarm in this system that works on a locked phone — a feed
+ * glitch could then bury a Rhodes gating step behind someone else's PDUFA date.
+ * The subject escalates on `provenance: "yaml"` deadlines or on nothing.
+ *
  * Escalation candidates are GATING rows only, sorted ascending, so an already
  * closed gating step (negative days, rendered "T+3") outranks everything. If a
  * gating step slipped, that is the loudest thing this system can say, and it
@@ -691,7 +914,7 @@ export function renderDigestEmail(digest: DailyDigest, options: RenderOptions = 
                         `,
                       )}
 
-                      ${step.showMarkets && digest.markets ? renderMarketsHtml(digest.markets) : ""}
+                      ${step.showCatalysts && digest.markets ? renderCatalystsHtml(digest.markets, options) : ""}
                       ${step.showEditorial && digest.editorial ? renderEditorialHtml(digest.editorial) : ""}
 
                       <div
@@ -720,10 +943,15 @@ export function renderDigestEmail(digest: DailyDigest, options: RenderOptions = 
    * Gmail clips around 102 KB and puts everything past the cut behind a "View
    * entire message" link — including the footer, which is the heartbeat. So
    * overflowing does not merely look untidy, it hides the proof that the run
-   * happened. Detail goes first, then per-lane counts, then the opener, then
-   * markets, and only at the very floor do the non-pinned lanes go. The verify
-   * block and the countdown strip appear at every rung because they were built
-   * before this array existed.
+   * happened. Detail goes first, then per-lane counts, then the opener, then the
+   * FDA catalysts, and only at the very floor do the non-pinned lanes go.
+   *
+   * The verify block and the countdown strip appear at every rung, and not
+   * because this comment says so: they were rendered into local variables above,
+   * before this array existed, so no BuildStep field can reach them. The
+   * catalyst section is the opposite — it is decoration read off a third-party
+   * calendar, so it sits inside the ladder and is shed while the reader's own
+   * dates are untouched.
    */
   const ladder: BuildStep[] = [];
   const push = (over: Partial<BuildStep>) =>
@@ -731,7 +959,7 @@ export function renderDigestEmail(digest: DailyDigest, options: RenderOptions = 
       showBody: true,
       showBlurbs: true,
       perLane: maxPerLane,
-      showMarkets: true,
+      showCatalysts: true,
       showEditorial: true,
       pinnedOnly: false,
       ...over,
@@ -744,13 +972,13 @@ export function renderDigestEmail(digest: DailyDigest, options: RenderOptions = 
     push({ showBody: false, showBlurbs: false, perLane });
   }
   push({ showBody: false, showBlurbs: false, perLane: 1, showEditorial: false });
-  push({ showBody: false, showBlurbs: false, perLane: 1, showEditorial: false, showMarkets: false });
+  push({ showBody: false, showBlurbs: false, perLane: 1, showEditorial: false, showCatalysts: false });
   push({
     showBody: false,
     showBlurbs: false,
     perLane: 1,
     showEditorial: false,
-    showMarkets: false,
+    showCatalysts: false,
     pinnedOnly: true,
   });
 
@@ -839,18 +1067,14 @@ export function renderText(digest: DailyDigest, options: RenderOptions = {}): st
   }
 
   if (digest.markets) {
-    const markets = digest.markets;
-    const movers = (markets.movers?.length ? markets.movers : markets.quotes ?? []).slice(0, 6);
-    lines.push(`MARKETS — as of ${markets.asOf}${markets.tradingDay ? "" : " (not a trading day)"}`);
-    if (movers.length > 0) {
-      lines.push(
-        `  ${movers
-          .map((quote) => [quote.ticker, formatUsd(quote.last), formatPct(quote.changePct)].filter(Boolean).join(" "))
-          .join(" · ")}`,
-      );
+    const catalystLines = renderCatalystsText(digest.markets, options);
+    // Empty means the feed was degraded and the section suppressed itself. A
+    // heading with nothing under it would say "no FDA dates", which is a claim
+    // this renderer has no evidence for.
+    if (catalystLines.length > 0) {
+      lines.push(...catalystLines);
+      lines.push("");
     }
-    for (const catalyst of (markets.catalysts ?? []).slice(0, 5)) lines.push(`  ${catalystLine(catalyst)}`);
-    lines.push("");
   }
 
   if (digest.editorial) {
