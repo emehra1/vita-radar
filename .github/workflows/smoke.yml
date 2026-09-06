@@ -1,0 +1,46 @@
+# Source smoke test, run from a GitHub runner rather than a laptop.
+#
+# This exists because every source status recorded in pipeline/config/sources.ts
+# was verified from a residential IP, and runners sit on shared Azure ranges that
+# are throttled and challenged considerably harder. Known-hostile to datacenter
+# egress: Reddit, Akamai, Yahoo, www.biorxiv.org, and anything behind a
+# Cloudflare managed challenge. Treat the registry's notes as hypotheses until
+# this has passed here.
+#
+# Deliberately NOT on the daily schedule: the pipeline already reports source
+# health every morning in the digest footer, and a second daily alarm covering
+# the same ground is how alarms get ignored.
+name: Source smoke test
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated source ids (blank = all)"
+        type: string
+        required: false
+  schedule:
+    # Weekly, Monday 06:12 ET. Off the hour because :00 is peak queue time.
+    - cron: "12 6 * * 1"
+      timezone: America/New_York
+
+concurrency:
+  group: smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Fetch every source from the runner
+        run: |
+          npx tsx scripts/check-sources.ts \
+            ${{ inputs.only && format('{0}', inputs.only) || '' }} \
+            --summary="$GITHUB_STEP_SUMMARY"

@@ -20,6 +20,8 @@ import type { DailyDigest, DigestItem, Lane, RunStatus } from "../lib/types.ts";
 import { LANES, LANE_BLURBS, LANE_LABELS, PINNED_LANE } from "../lib/types.ts";
 import { DeadlineConfigError, loadRegistry } from "./config/deadlines.ts";
 import { buildOpportunities } from "./deadlines/build.ts";
+import { buildNews } from "./digest/build.ts";
+import { collectSources } from "./ingest/collect.ts";
 import { WEIGHTS } from "./score/index.ts";
 import { localDateString } from "./normalize/dates.ts";
 import {
@@ -32,6 +34,10 @@ import {
   writeRollingDelivered,
   writeRungs,
   writeRunStatus,
+  readPageHashes,
+  writePageHashes,
+  readSourceHistory,
+  writeSourceHistory,
 } from "./state/store.ts";
 
 const READER_ZONE = process.env.TZ ?? "America/New_York";
@@ -43,6 +49,10 @@ interface Args {
   summary?: string;
   noLlm: boolean;
   noMarket: boolean;
+  /** Skip the network entirely. The deadline tracker is unaffected by design. */
+  noSources: boolean;
+  fromCache: boolean;
+  only?: string[];
 }
 
 /**
@@ -50,7 +60,7 @@ interface Args {
  * both `--date X` and `--date=X` because CI writes one form and humans the other.
  */
 function parseArgs(argv: string[]): Args {
-  const args: Args = { dryRun: false, force: false, noLlm: false, noMarket: false };
+  const args: Args = { dryRun: false, force: false, noLlm: false, noMarket: false, noSources: false, fromCache: false };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (!arg) continue;
@@ -63,6 +73,9 @@ function parseArgs(argv: string[]): Args {
       case "--force": args.force = true; break;
       case "--no-llm": args.noLlm = true; break;
       case "--no-market": args.noMarket = true; break;
+      case "--no-sources": args.noSources = true; break;
+      case "--from-cache": args.fromCache = true; break;
+      case "--only": args.only = (next() ?? "").split(",").filter(Boolean); break;
       default:
         if (flag?.startsWith("--")) console.warn(`unknown flag ${flag} — ignored`);
     }
@@ -112,6 +125,28 @@ function emitSummary(path: string | undefined, lines: string[]): void {
   } catch {
     // A missing $GITHUB_STEP_SUMMARY must never fail a run that produced a digest.
   }
+}
+
+/**
+ * The registry counts as a source, and reporting it honestly matters: the email
+ * footer is the primary alarm, so "sources 0/0" on a perfectly good run trains
+ * the reader to distrust the one line that has to stay trustworthy.
+ */
+function digestHealthForRegistry(programs: number, kept: number): import("../lib/types.ts").SourceHealth[] {
+  return [{
+    sourceId: "deadlines-yml",
+    sourceName: "config/deadlines.yml",
+    status: "ok",
+    itemsParsed: programs,
+    itemsKept: kept,
+    parseWarnings: [],
+    latencyMs: 0,
+    lastSuccessAt: new Date().toISOString(),
+    consecutiveFailures: 0,
+    // If the registry cannot be read there is no digest; loadRegistry has
+    // already exited 1 by the time this is called.
+    optional: false,
+  }];
 }
 
 async function main(): Promise<number> {
@@ -176,10 +211,89 @@ async function main(): Promise<number> {
     readerZone: READER_ZONE,
   });
 
-  const items: Record<string, DigestItem> = {};
-  for (const item of built.items) items[item.id] = item;
+  /**
+   * Sources run AFTER the deadline tracker, and nothing below can affect it.
+   *
+   * That ordering is the whole reliability argument: the countdown, the Verify
+   * block, the subject-line escalation and the .ics are already computed from
+   * committed YAML and the clock. Every feed on earth can 403 and the part of
+   * this email that costs a year if missed is unchanged.
+   */
+  let newsItems: DigestItem[] = [];
+  let health = digestHealthForRegistry(registry.programs.length, built.items.length);
+  const pageHashesBefore = readPageHashes();
+  let pageHashes = pageHashesBefore;
+  const pageChanges: { programId: string; url: string; kind: string; detail: string }[] = [];
 
-  const lanes = assembleLanes(built.items, WEIGHTS.maxItemsPerLane);
+  if (!args.noSources) {
+    try {
+      const sourceHistory = readSourceHistory();
+      const collected = await collectSources({
+        now,
+        today: date,
+        previousHealth: sourceHistory.health,
+        trailingMedian: sourceHistory.medians,
+        pageHashes: pageHashesBefore,
+        fromCache: args.fromCache,
+        only: args.only,
+      });
+      const news = buildNews(collected.items, now, date, (id) => seen.firstSeen(id));
+      newsItems = news.items.slice(0, WEIGHTS.maxItemsPerDay);
+      for (const [reason, count] of Object.entries(news.dropped)) {
+        built.dropped[reason as keyof typeof built.dropped] =
+          (built.dropped[reason as keyof typeof built.dropped] ?? 0) + count;
+      }
+      health = [...health, ...collected.health];
+      pageHashes = collected.pageHashes;
+      pageChanges.push(...collected.pageChanges);
+      if (!args.dryRun) {
+        writeSourceHistory(collected.health, sourceHistory);
+      }
+    } catch (err) {
+      // A collapse of the entire source layer must not take the digest down.
+      // The deadline half is already computed and is the part that matters.
+      console.error(`sources failed wholesale: ${(err as Error).message}`);
+      health = [
+        ...health,
+        {
+          sourceId: "collect", sourceName: "source collection", status: "failed",
+          error: String((err as Error).message).slice(0, 200), itemsParsed: 0, itemsKept: 0,
+          parseWarnings: [], latencyMs: 0, consecutiveFailures: 1, optional: true,
+        },
+      ];
+    }
+  }
+
+  /**
+   * A changed program page becomes a Verify row, never a date.
+   *
+   * This is the join between the two halves and the place THE ONE RULE is
+   * cashed out: the network is allowed to say "this page moved, go look" and
+   * nothing more. It cannot edit config/deadlines.yml, and no countdown in the
+   * email can move because of anything a fetch returned.
+   */
+  for (const change of pageChanges) {
+    if (change.kind === "new") continue;
+    const program = registry.programs.find((p) => p.id === change.programId);
+    built.verify.push({
+      programId: change.programId,
+      label: program?.label ?? change.programId,
+      reason:
+        change.kind === "changed"
+          ? `page changed — verify the date (${change.detail})`
+          : change.kind === "suspicious"
+            ? `page looks broken — ${change.detail}`
+            : `page unreachable — ${change.detail}`,
+      url: change.url,
+    });
+  }
+  built.verify.sort((a, b) => (b.staleDays ?? 0) - (a.staleDays ?? 0) || a.label.localeCompare(b.label));
+
+  const allItems: DigestItem[] = [...built.items, ...newsItems];
+  const items: Record<string, DigestItem> = {};
+  for (const item of allItems) items[item.id] = item;
+
+  const lanes = assembleLanes(allItems, WEIGHTS.maxItemsPerLane);
 
   /**
    * The usability gate.
@@ -199,38 +313,14 @@ async function main(): Promise<number> {
     generatedAt: new Date().toISOString(),
     windowStart,
     windowEnd: date,
-    /**
-     * Phase 1 has exactly one source and it is the YAML file itself.
-     *
-     * Reporting it honestly matters because the email footer is the primary
-     * alarm: absence of the daily message is how a human notices an outage, so
-     * the footer has to carry proof of life. An empty health array renders as
-     * "sources 0/0", which reads as broken on a run that was completely fine and
-     * trains the reader to distrust the one line that has to stay trustworthy.
-     */
-    health: [
-      {
-        sourceId: "deadlines-yml",
-        sourceName: "config/deadlines.yml",
-        status: "ok",
-        itemsParsed: registry.programs.length,
-        itemsKept: built.items.length,
-        parseWarnings: [],
-        latencyMs: 0,
-        lastSuccessAt: new Date().toISOString(),
-        consecutiveFailures: 0,
-        // Not optional: if the registry cannot be read there is no digest, and
-        // loadRegistry() has already exited 1 by this point.
-        optional: false,
-      },
-    ],
+    health,
     items,
     lanes,
     countdown: built.countdown,
     verify: built.verify,
     stats: {
-      fetched: registry.programs.length,
-      kept: built.items.length,
+      fetched: registry.programs.length + newsItems.length,
+      kept: allItems.length,
       deadlinesTracked: built.deadlinesTracked,
       verifiedLast7d: built.verifiedLast7d,
       medianScore: median(built.items.map((i) => i.score)),
@@ -239,7 +329,7 @@ async function main(): Promise<number> {
   };
 
   // ── reporting ────────────────────────────────────────────────────────────
-  console.log(`\n${date} — ${built.items.length} items, ${built.countdown.length} on the strip, ${built.verify.length} to verify`);
+  console.log(`\n${date} — ${allItems.length} items (${built.items.length} opportunities, ${newsItems.length} news), ${built.countdown.length} on the strip, ${built.verify.length} to verify`);
   console.log(`tracked ${built.deadlinesTracked} dated deadlines across ${registry.programs.length} programs`);
   console.log(`dropped: ${JSON.stringify(built.dropped)}`);
 
@@ -265,7 +355,7 @@ async function main(): Promise<number> {
 
   if (args.dryRun) {
     console.log("\nTOP ITEMS BY SCORE");
-    for (const item of built.items.slice(0, 15)) {
+    for (const item of [...allItems].sort((a, b) => b.score - a.score).slice(0, 15)) {
       console.log(`\n  ${item.score.toFixed(1).padStart(6)}  ${item.title}`);
       for (const f of item.scoreBreakdown.factors) {
         console.log(`          + ${f.key.padEnd(22)} raw=${f.raw.toFixed(3)} x${f.weight} = ${f.contribution.toFixed(2)}`);
@@ -279,15 +369,16 @@ async function main(): Promise<number> {
   }
 
   const finishedAt = new Date();
+  const okSources = health.filter((h) => h.status === "ok" || h.status === "not-modified").length;
   const status: RunStatus = {
     runId: process.env.GITHUB_RUN_ID,
     startedAt: startedAt.toISOString(),
     finishedAt: finishedAt.toISOString(),
     outcome: unusable ? "unusable" : "ok",
     date,
-    sourcesOk: 1,
-    sourcesTotal: 1,
-    itemsKept: built.items.length,
+    sourcesOk: okSources,
+    sourcesTotal: health.length,
+    itemsKept: allItems.length,
     deadlinesTracked: built.deadlinesTracked,
   };
   writeRunStatus(status);
@@ -301,6 +392,7 @@ async function main(): Promise<number> {
   // Persist the ledgers only on a real run, and only merged — a partial write
   // would silently re-fire cards that already went out.
   writeRungs({ ...rungs, ...built.rungsDelivered });
+  writePageHashes(pageHashes);
   const rollingNow = { ...rollingDelivered };
   for (const item of built.items) {
     if (item.kind === "opportunity" && item.opportunity.deadline.kind === "rolling") {

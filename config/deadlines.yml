@@ -782,7 +782,7 @@ programs:
     status: watch
     watchFrom: 2026-09-01
     priority: normal
-    url: https://www.hhmi.org/programs/gilliam-fellowships-advanced-study
+    url: https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study
     cycles:
       - year: 2031
         kind: unknown

@@ -14,7 +14,8 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
-import type { DailyDigest, RunStatus } from "../../lib/types.ts";
+import type { DailyDigest, RunStatus, SourceHealth } from "../../lib/types.ts";
+import type { PageHashState } from "../watch/pagehash.ts";
 
 export const DATA_DIR = resolve(process.cwd(), "data");
 const DIGEST_DIR = join(DATA_DIR, "digests");
@@ -149,4 +150,75 @@ export function writeRunStatus(status: RunStatus): void {
 
 export function readRunStatus(): RunStatus | null {
   return readJson<RunStatus>(RUN_STATUS_PATH);
+}
+
+/* ------------------------------ page hashes ------------------------------- */
+
+const PAGE_HASHES_PATH = join(STATE_DIR, "page-hashes.json");
+const SOURCES_PATH = join(STATE_DIR, "sources.json");
+
+export function readPageHashes(): PageHashState {
+  return readJson<PageHashState>(PAGE_HASHES_PATH) ?? {};
+}
+
+export function writePageHashes(state: PageHashState): void {
+  writeJson(PAGE_HASHES_PATH, state);
+}
+
+/* ----------------------------- source history ----------------------------- */
+
+export interface SourceHistoryEntry {
+  lastSuccessAt?: string;
+  consecutiveFailures: number;
+  /** Items kept on recent runs, newest last, capped at 30. */
+  recentCounts: number[];
+}
+
+export interface SourceHistory {
+  health: Record<string, { lastSuccessAt?: string; consecutiveFailures: number }>;
+  /**
+   * sourceId -> median of recent counts.
+   *
+   * The only thing that catches a source which is still returning 200 and still
+   * returning items, but has quietly become ten sponsored whitepapers a day. An
+   * absolute count cannot see that; a collapse against its own history can.
+   */
+  medians: Record<string, number>;
+  raw: Record<string, SourceHistoryEntry>;
+}
+
+function median(values: number[]): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0 ? ((sorted[mid - 1] ?? 0) + (sorted[mid] ?? 0)) / 2 : (sorted[mid] ?? 0);
+}
+
+export function readSourceHistory(): SourceHistory {
+  const raw = readJson<Record<string, SourceHistoryEntry>>(SOURCES_PATH) ?? {};
+  const health: SourceHistory["health"] = {};
+  const medians: SourceHistory["medians"] = {};
+  for (const [id, entry] of Object.entries(raw)) {
+    health[id] = { lastSuccessAt: entry.lastSuccessAt, consecutiveFailures: entry.consecutiveFailures ?? 0 };
+    medians[id] = median(entry.recentCounts ?? []);
+  }
+  return { health, medians, raw };
+}
+
+export function writeSourceHistory(current: SourceHealth[], previous: SourceHistory): void {
+  const next: Record<string, SourceHistoryEntry> = { ...previous.raw };
+  for (const h of current) {
+    const prior = next[h.sourceId];
+    // A 304 is a healthy no-op, not a zero — recording it as one would drag the
+    // median down and eventually make a working source look degraded.
+    const counts = h.status === "not-modified"
+      ? (prior?.recentCounts ?? [])
+      : [...(prior?.recentCounts ?? []), h.itemsKept].slice(-30);
+    next[h.sourceId] = {
+      lastSuccessAt: h.lastSuccessAt ?? prior?.lastSuccessAt,
+      consecutiveFailures: h.consecutiveFailures,
+      recentCounts: counts,
+    };
+  }
+  writeJson(SOURCES_PATH, next);
 }
