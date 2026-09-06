@@ -1,14 +1,14 @@
 {
-  "rhodes-us": 45,
-  "gates-cambridge-us": 60,
-  "broad-bbps": 180,
+  "rhodes-us": 30,
+  "gates-cambridge-us": 45,
+  "broad-bbps": 90,
   "ardd-2026": 10,
-  "abrcms-2026": 21,
+  "abrcms-2026": 5,
   "keystone-epigenetics-2027": 180,
-  "cshl-biology-of-genomes-2027": 365,
-  "age-annual-2027": 365,
+  "cshl-biology-of-genomes-2027": 180,
+  "age-annual-2027": 180,
   "jpm-week-2027": 180,
-  "nucleate-activator-us": 60,
+  "nucleate-activator-us": 45,
   "scmethyl-manuscript": 365,
   "uraf-contact": 10
 }

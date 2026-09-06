@@ -1,0 +1,1720 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-06",
+  "runId": "34039087974",
+  "generatedAt": "2026-09-06T14:25:10.211Z",
+  "windowStart": "2026-08-22",
+  "windowEnd": "2026-09-06",
+  "health": [
+    {
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "status": "ok",
+      "itemsParsed": 37,
+      "itemsKept": 16,
+      "parseWarnings": [],
+      "latencyMs": 0,
+      "lastSuccessAt": "2026-09-06T14:25:10.211Z",
+      "consecutiveFailures": 0,
+      "optional": false
+    }
+  ],
+  "items": {
+    "583e844a010088b7": {
+      "kind": "opportunity",
+      "id": "583e844a010088b7",
+      "clusterId": "583e844a010088b7",
+      "title": "ABRCMS 2026 — Abstract submission",
+      "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+      "canonicalUrl": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 58.78,
+      "scoreBreakdown": {
+        "total": 58.78,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.9591909365914149,
+            "weight": 30,
+            "contribution": 28.775728097742444,
+            "evidence": [
+              "5d until 2026-09-11"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "event.deadline-imminent",
+            "label": "Event: deadline-imminent",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "deadline-imminent",
+              "step-due"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "abrcms-2026",
+        "label": "ABRCMS 2026",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2026,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2026-09-11",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Abstract submission",
+            "due": "2026-09-11",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-09-11",
+        "needsVerification": false,
+        "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [
+        "deadline-imminent",
+        "step-due"
+      ],
+      "daysUntil": 5,
+      "rung": 5
+    },
+    "b00693f401008e0b": {
+      "kind": "opportunity",
+      "id": "b00693f401008e0b",
+      "clusterId": "b00693f401008e0b",
+      "title": "Rhodes Scholarship (US) — National application (Rhodes portal) (but Harvard institutional endorsement (URAF / OUE) comes first)",
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+      "canonicalUrl": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 53.82,
+      "scoreBreakdown": {
+        "total": 53.82,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.4739336695651037,
+            "weight": 30,
+            "contribution": 14.218010086953111,
+            "evidence": [
+              "25d until 2026-10-01",
+              "projected (x0.7)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "rhodes-us",
+        "label": "Rhodes Scholarship (US)",
+        "org": "Rhodes Trust",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-08-25",
+          "kind": "projected",
+          "date": "2026-10-01",
+          "timeOfDay": "23:59",
+          "precision": "minute",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "harvard-endorsement",
+            "label": "Harvard institutional endorsement (URAF / OUE)",
+            "gating": true,
+            "status": "pending",
+            "note": "THE row that matters. Harvard's internal deadline PRECEDES the national one by weeks and missing it ends the application regardless of Oct 1. uraf.harvard.edu 403s every path including robots.txt, so no scraper on earth will find this. ACTION: email the Harvard fellowships office in early September and put the exact date here, then set precision: day.\n"
+          },
+          {
+            "id": "national-app",
+            "label": "National application (Rhodes portal)",
+            "due": "2026-10-01",
+            "timeOfDay": "23:59",
+            "precondition": "harvard-endorsement",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-10-01",
+        "eligibility": {
+          "notes": "US citizen; institutional endorsement REQUIRED. Cannot be deferred. Commences October 2027 for two years.\n",
+          "source": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
+        },
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Harvard institutional endorsement (URAF / OUE)",
+        "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ],
+      "daysUntil": 25,
+      "rung": 30
+    },
+    "482d97ad01012205": {
+      "kind": "opportunity",
+      "id": "482d97ad01012205",
+      "clusterId": "482d97ad01012205",
+      "title": "Nucleate Activator (US) — Activator application",
+      "url": "https://nucleate.org/",
+      "canonicalUrl": "https://nucleate.org/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "venture-founder": 1
+      },
+      "primaryLane": "venture-founder",
+      "score": 38.72,
+      "scoreBreakdown": {
+        "total": 38.72,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.2906924786966029,
+            "weight": 30,
+            "contribution": 8.720774360898087,
+            "evidence": [
+              "45d until 2026-10-21"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "nucleate-activator-us",
+        "label": "Nucleate Activator (US)",
+        "org": "Nucleate",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "evidence": "Deadline for US chapters is October 21st.",
+          "kind": "confirmed",
+          "date": "2026-10-21",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "application",
+            "label": "Activator application",
+            "due": "2026-10-21",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-10-21",
+        "needsVerification": false,
+        "url": "https://nucleate.org/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 45,
+      "rung": 45
+    },
+    "cfe618e401006e13": {
+      "kind": "opportunity",
+      "id": "cfe618e401006e13",
+      "clusterId": "cfe618e401006e13",
+      "title": "ARDD 2026 — Aging Research & Drug Discovery — Poster abstract submission",
+      "url": "https://agingpharma.org/registration",
+      "canonicalUrl": "https://agingpharma.org/registration",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 36.5,
+      "scoreBreakdown": {
+        "total": 36.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "ardd-2026",
+        "label": "ARDD 2026 — Aging Research & Drug Discovery",
+        "org": "Aging Pharma / ARDD",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "kind": "unknown",
+          "timeZone": "America/New_York",
+          "precision": "unknown",
+          "cycleYear": 2027,
+          "cycleYearConfident": false,
+          "provenance": "derived"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Poster abstract submission",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Poster abstract submission",
+        "url": "https://agingpharma.org/registration",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": []
+    },
+    "bfdb2b540100b27e": {
+      "kind": "opportunity",
+      "id": "bfdb2b540100b27e",
+      "clusterId": "bfdb2b540100b27e",
+      "title": "Get on the Harvard URAF fellowships mailing list — Email the Harvard fellowships office for endorsement deadlines",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/uraf-contact",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 36.5,
+      "scoreBreakdown": {
+        "total": 36.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "uraf-contact",
+        "label": "Get on the Harvard URAF fellowships mailing list",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "kind": "unknown",
+          "timeZone": "America/New_York",
+          "precision": "unknown",
+          "cycleYear": 2027,
+          "cycleYearConfident": false,
+          "provenance": "derived"
+        },
+        "steps": [
+          {
+            "id": "email-uraf",
+            "label": "Email the Harvard fellowships office for endorsement deadlines",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Email the Harvard fellowships office for endorsement deadlines"
+      },
+      "eventTypes": []
+    },
+    "294d04270100f5f1": {
+      "kind": "opportunity",
+      "id": "294d04270100f5f1",
+      "clusterId": "294d04270100f5f1",
+      "title": "Gates Cambridge Scholarship (US round) — Gates Cambridge application (but University of Cambridge MPhil application (separate deadline) comes first)",
+      "url": "https://www.gatescambridge.org/apply/",
+      "canonicalUrl": "https://www.gatescambridge.org/apply/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 34.86,
+      "scoreBreakdown": {
+        "total": 34.86,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.30853343613002576,
+            "weight": 30,
+            "contribution": 9.256003083900772,
+            "evidence": [
+              "39d until 2026-10-15",
+              "projected (x0.7)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "gates-cambridge-us",
+        "label": "Gates Cambridge Scholarship (US round)",
+        "org": "Gates Cambridge Trust",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "Europe/London",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "projected",
+          "date": "2026-10-15",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "cambridge-course-app",
+            "label": "University of Cambridge MPhil application (separate deadline)",
+            "gating": true,
+            "status": "pending",
+            "note": "Its own earlier deadline, course-dependent. Gates cannot be won without it. Verify the specific MPhil's date.\n"
+          },
+          {
+            "id": "gates-app",
+            "label": "Gates Cambridge application",
+            "due": "2026-10-15",
+            "precondition": "cambridge-course-app",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-10-15",
+        "eligibility": {
+          "notes": "Requires a SEPARATE application to a Cambridge MPhil or PhD with its own deadline. Target the 1-year MPhil: the 3-year PhD does not fit a Fall 2029 MD/PhD matriculation. Structurally awkward for the master plan — the clean version is MPhil then an RA year.\n"
+        },
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: University of Cambridge MPhil application (separate deadline)",
+        "url": "https://www.gatescambridge.org/apply/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ],
+      "daysUntil": 39,
+      "rung": 45
+    },
+    "c70df30301009609": {
+      "kind": "opportunity",
+      "id": "c70df30301009609",
+      "clusterId": "c70df30301009609",
+      "title": "Broad Biomedical Post-baccalaureate Scholars (BBPS) — Broad Early Career Researcher application (Avature) (but BBPS application comes first)",
+      "url": "https://www.broadinstitute.org/bbps",
+      "canonicalUrl": "https://www.broadinstitute.org/bbps",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "mstp-labs": 1
+      },
+      "primaryLane": "mstp-labs",
+      "score": 31,
+      "scoreBreakdown": {
+        "total": 31,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.1332599133242155,
+            "weight": 30,
+            "contribution": 3.9977973997264646,
+            "evidence": [
+              "85d until 2026-11-30",
+              "projected (x0.7)",
+              "month precision (x0.6)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "mstp-labs": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "broad-bbps",
+        "label": "Broad Biomedical Post-baccalaureate Scholars (BBPS)",
+        "org": "Broad Institute",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "projected",
+          "date": "2026-11-30",
+          "precision": "month",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "ecr",
+            "label": "Broad Early Career Researcher application (Avature)",
+            "due": "2026-11-30",
+            "system": "avature",
+            "gating": true,
+            "status": "pending",
+            "note": "A gate, not a formality — BBPS reads ECR applicants. Target submission Nov 2026 so review completes before the BBPS window. broadinstitute.org 403s every path incl. robots.txt; the only machine-readable route is broadinstitute.avature.net/en_US/careers/SearchJobs/feed/ (robots explicitly Allow: /careers). ACTION: email bbps@broadinstitute.org to get on the list — a mailing list beats any scraper against a hard 403.\n"
+          },
+          {
+            "id": "bbps-app",
+            "label": "BBPS application",
+            "precondition": "ecr",
+            "gating": true,
+            "status": "pending",
+            "note": "Rolling decisions from late April 2027."
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-11-30",
+        "eligibility": {
+          "notes": "Two-year program, two-step application. Has a diversity / underrepresented-in-STEM focus — verify alignment. A standalone RA hire in the Buenrostro lab is the viable Scenario B fallback.\n"
+        },
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: BBPS application",
+        "url": "https://www.broadinstitute.org/bbps",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 85,
+      "rung": 90
+    },
+    "e69922bc01011209": {
+      "kind": "opportunity",
+      "id": "e69922bc01011209",
+      "clusterId": "e69922bc01011209",
+      "title": "scMethyl methods manuscript — bioRxiv preprint + journal submission",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/scmethyl-manuscript",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "mstp-labs": 1
+      },
+      "primaryLane": "mstp-labs",
+      "score": 27.59,
+      "scoreBreakdown": {
+        "total": 27.59,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.019502324970392882,
+            "weight": 30,
+            "contribution": 0.5850697491117864,
+            "evidence": [
+              "237d until 2027-05-01",
+              "projected (x0.7)",
+              "month precision (x0.6)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "mstp-labs": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "scmethyl-manuscript",
+        "label": "scMethyl methods manuscript",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "projected",
+          "date": "2027-05-01",
+          "precision": "month",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "draft-circulated",
+            "label": "Full manuscript draft circulated in-lab and to Jason",
+            "due": "2026-12-15",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "journal-target",
+            "label": "Lock journal target (Nat Methods / Nat Biotech / Cell Methods / Genome Biology)",
+            "due": "2026-12-15",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "preprint",
+            "label": "bioRxiv preprint + journal submission",
+            "due": "2027-05-01",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2027-05-01",
+        "needsVerification": true,
+        "verifyReason": "only known to the month — cannot alert"
+      },
+      "eventTypes": [],
+      "daysUntil": 237
+    },
+    "55ce086a0100be9a": {
+      "kind": "opportunity",
+      "id": "55ce086a0100be9a",
+      "clusterId": "55ce086a0100be9a",
+      "title": "Broad Institute annual retreat (internal poster)",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/broad-retreat",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 19.1,
+      "scoreBreakdown": {
+        "total": 19.1,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "broad-retreat",
+        "label": "Broad Institute annual retreat (internal poster)",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2026,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ]
+    },
+    "d00abd2b01011a64": {
+      "kind": "opportunity",
+      "id": "d00abd2b01011a64",
+      "clusterId": "d00abd2b01011a64",
+      "title": "Marshall Scholarship",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/marshall-scholarship",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 19.1,
+      "scoreBreakdown": {
+        "total": 19.1,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "marshall-scholarship",
+        "label": "Marshall Scholarship",
+        "status": "watch",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ]
+    },
+    "7a5d35a4010150a4": {
+      "kind": "opportunity",
+      "id": "7a5d35a4010150a4",
+      "clusterId": "7a5d35a4010150a4",
+      "title": "CSHL — Biology of Genomes 2027 — Abstract submission",
+      "url": "https://meetings.cshl.edu/meetingshome.aspx",
+      "canonicalUrl": "https://meetings.cshl.edu/meetingshome.aspx",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 16.31,
+      "scoreBreakdown": {
+        "total": 16.31,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.010473028633827847,
+            "weight": 30,
+            "contribution": 0.3141908590148354,
+            "evidence": [
+              "166d until 2027-02-19"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "cshl-biology-of-genomes-2027",
+        "label": "CSHL — Biology of Genomes 2027",
+        "org": "Cold Spring Harbor Laboratory",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2027-02-19",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Abstract submission",
+            "due": "2027-02-19",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2027-02-19",
+        "needsVerification": false,
+        "url": "https://meetings.cshl.edu/meetingshome.aspx",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 166,
+      "rung": 180
+    },
+    "ce98ea3d0100b3b4": {
+      "kind": "opportunity",
+      "id": "ce98ea3d0100b3b4",
+      "clusterId": "ce98ea3d0100b3b4",
+      "title": "AGE — American Aging Association annual meeting — Abstract submission",
+      "url": "https://www.americanagingassociation.org/annual-meeting",
+      "canonicalUrl": "https://www.americanagingassociation.org/annual-meeting",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 16.31,
+      "scoreBreakdown": {
+        "total": 16.31,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.010473028633827847,
+            "weight": 30,
+            "contribution": 0.3141908590148354,
+            "evidence": [
+              "166d until 2027-02-19"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "age-annual-2027",
+        "label": "AGE — American Aging Association annual meeting",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2027-02-19",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Abstract submission",
+            "due": "2027-02-19",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2027-02-19",
+        "needsVerification": false,
+        "url": "https://www.americanagingassociation.org/annual-meeting",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 166,
+      "rung": 180
+    },
+    "cef1b06101013a1e": {
+      "kind": "opportunity",
+      "id": "cef1b06101013a1e",
+      "clusterId": "cef1b06101013a1e",
+      "title": "Keystone — Epigenetics in Health and Disease (D42027, Banff)",
+      "url": "https://www.keystonesymposia.org/conferences/conference-listing",
+      "canonicalUrl": "https://www.keystonesymposia.org/conferences/conference-listing",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 14.9,
+      "scoreBreakdown": {
+        "total": 14.9,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.029974049713583802,
+            "weight": 30,
+            "contribution": 0.8992214914075141,
+            "evidence": [
+              "102d until 2026-12-17"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "keystone-epigenetics-2027",
+        "label": "Keystone — Epigenetics in Health and Disease (D42027, Banff)",
+        "org": "Keystone Symposia",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/Denver",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2026-12-17",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "short-talk-abstract",
+            "label": "Short-talk abstract + scholarship",
+            "due": "2026-12-17",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "poster-abstract",
+            "label": "Poster abstract",
+            "due": "2027-03-23",
+            "gating": false,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-12-17",
+        "needsVerification": false,
+        "url": "https://www.keystonesymposia.org/conferences/conference-listing",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 102
+    },
+    "cf465fc30100dcff": {
+      "kind": "opportunity",
+      "id": "cf465fc30100dcff",
+      "clusterId": "cf465fc30100dcff",
+      "title": "CSHL — Single Cell Analyses (next US edition)",
+      "url": "https://meetings.cshl.edu/meetingshome.aspx",
+      "canonicalUrl": "https://meetings.cshl.edu/meetingshome.aspx",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 6.5,
+      "scoreBreakdown": {
+        "total": 6.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "cshl-single-cell",
+        "label": "CSHL — Single Cell Analyses (next US edition)",
+        "org": "Cold Spring Harbor Laboratory",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-15",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://meetings.cshl.edu/meetingshome.aspx",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": []
+    },
+    "045baff501006f2a": {
+      "kind": "opportunity",
+      "id": "045baff501006f2a",
+      "clusterId": "045baff501006f2a",
+      "title": "ASHG 2027",
+      "url": "https://www.ashg.org/meetings/",
+      "canonicalUrl": "https://www.ashg.org/meetings/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 6.5,
+      "scoreBreakdown": {
+        "total": 6.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "ashg-2027",
+        "label": "ASHG 2027",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2027-03-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://www.ashg.org/meetings/"
+      },
+      "eventTypes": []
+    },
+    "18d119f40100af58": {
+      "kind": "opportunity",
+      "id": "18d119f40100af58",
+      "clusterId": "18d119f40100af58",
+      "title": "HHMI Gilliam Fellows",
+      "url": "https://www.hhmi.org/programs/gilliam-fellowships-advanced-study",
+      "canonicalUrl": "https://www.hhmi.org/programs/gilliam-fellowships-advanced-study",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": true,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 6.5,
+      "scoreBreakdown": {
+        "total": 6.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "hhmi-gilliam",
+        "label": "HHMI Gilliam Fellows",
+        "status": "watch",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2031,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://www.hhmi.org/programs/gilliam-fellowships-advanced-study"
+      },
+      "eventTypes": []
+    }
+  },
+  "lanes": [
+    {
+      "id": "fellowships",
+      "label": "Fellowships & Scholarships",
+      "blurb": "New and refreshed named awards, plus anything new that fits the profile.",
+      "itemIds": [
+        "b00693f401008e0b",
+        "bfdb2b540100b27e",
+        "294d04270100f5f1",
+        "d00abd2b01011a64",
+        "18d119f40100af58"
+      ]
+    },
+    {
+      "id": "mstp-labs",
+      "label": "MSTP, Labs & PIs",
+      "blurb": "MD/PhD programs, and the labs and PIs doing causal human genetics you would want to name in an application.",
+      "itemIds": [
+        "c70df30301009609",
+        "e69922bc01011209"
+      ]
+    },
+    {
+      "id": "venture-founder",
+      "label": "Venture, Founder & Frontier Roles",
+      "blurb": "Nucleate, Flagship, Activate, age1, TechAtlas, FROs, Astera, and roles at the companies building the tools.",
+      "itemIds": [
+        "482d97ad01012205"
+      ]
+    },
+    {
+      "id": "conferences",
+      "label": "Conferences & Abstracts",
+      "blurb": "Abstract deadlines you cannot miss: ARDD, CSHL, Keystone, GRC, ASHG, ABRCMS, Cell Symposia, AGE.",
+      "itemIds": [
+        "583e844a010088b7",
+        "cfe618e401006e13",
+        "55ce086a0100be9a",
+        "7a5d35a4010150a4",
+        "ce98ea3d0100b3b4",
+        "cef1b06101013a1e"
+      ]
+    }
+  ],
+  "countdown": [
+    {
+      "programId": "abrcms-2026",
+      "label": "ABRCMS 2026",
+      "target": "Abstract submission",
+      "date": "2026-09-11",
+      "daysUntil": 5,
+      "kind": "confirmed",
+      "precision": "day",
+      "gating": true,
+      "displayWhen": "11 Sept 2026",
+      "needsVerification": false,
+      "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/"
+    },
+    {
+      "programId": "rhodes-us",
+      "label": "Rhodes Scholarship (US)",
+      "target": "National application (Rhodes portal) (but Harvard institutional endorsement (URAF / OUE) comes first)",
+      "date": "2026-10-01",
+      "daysUntil": 25,
+      "kind": "projected",
+      "precision": "minute",
+      "gating": true,
+      "displayWhen": "1 Oct 2026, 23:59 EDT",
+      "needsVerification": true,
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
+    },
+    {
+      "programId": "gates-cambridge-us",
+      "label": "Gates Cambridge Scholarship (US round)",
+      "target": "Gates Cambridge application (but University of Cambridge MPhil application (separate deadline) comes first)",
+      "date": "2026-10-15",
+      "daysUntil": 39,
+      "kind": "projected",
+      "precision": "day",
+      "gating": true,
+      "displayWhen": "15 Oct 2026 (London time)",
+      "needsVerification": true,
+      "url": "https://www.gatescambridge.org/apply/"
+    },
+    {
+      "programId": "nucleate-activator-us",
+      "label": "Nucleate Activator (US)",
+      "target": "Activator application",
+      "date": "2026-10-21",
+      "daysUntil": 45,
+      "kind": "confirmed",
+      "precision": "day",
+      "gating": true,
+      "displayWhen": "21 Oct 2026",
+      "needsVerification": false,
+      "url": "https://nucleate.org/"
+    }
+  ],
+  "verify": [
+    {
+      "programId": "ardd-2026",
+      "label": "ARDD 2026 — Aging Research & Drug Discovery",
+      "reason": "GATING step has no date: Poster abstract submission",
+      "staleDays": 15,
+      "url": "https://agingpharma.org/registration"
+    },
+    {
+      "programId": "broad-bbps",
+      "label": "Broad Biomedical Post-baccalaureate Scholars (BBPS)",
+      "reason": "GATING step has no date: BBPS application",
+      "staleDays": 15,
+      "url": "https://www.broadinstitute.org/bbps"
+    },
+    {
+      "programId": "cshl-single-cell",
+      "label": "CSHL — Single Cell Analyses (next US edition)",
+      "reason": "deadline unknown",
+      "staleDays": 15,
+      "url": "https://meetings.cshl.edu/meetingshome.aspx"
+    },
+    {
+      "programId": "gates-cambridge-us",
+      "label": "Gates Cambridge Scholarship (US round)",
+      "reason": "GATING step has no date: University of Cambridge MPhil application (separate deadline)",
+      "staleDays": 15,
+      "url": "https://www.gatescambridge.org/apply/"
+    },
+    {
+      "programId": "rhodes-us",
+      "label": "Rhodes Scholarship (US)",
+      "reason": "GATING step has no date: Harvard institutional endorsement (URAF / OUE)",
+      "staleDays": 15,
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
+    },
+    {
+      "programId": "ashg-2027",
+      "label": "ASHG 2027",
+      "reason": "deadline unknown",
+      "url": "https://www.ashg.org/meetings/"
+    },
+    {
+      "programId": "broad-retreat",
+      "label": "Broad Institute annual retreat (internal poster)",
+      "reason": "deadline unknown"
+    },
+    {
+      "programId": "uraf-contact",
+      "label": "Get on the Harvard URAF fellowships mailing list",
+      "reason": "GATING step has no date: Email the Harvard fellowships office for endorsement deadlines"
+    },
+    {
+      "programId": "hhmi-gilliam",
+      "label": "HHMI Gilliam Fellows",
+      "reason": "deadline unknown",
+      "url": "https://www.hhmi.org/programs/gilliam-fellowships-advanced-study"
+    },
+    {
+      "programId": "marshall-scholarship",
+      "label": "Marshall Scholarship",
+      "reason": "deadline unknown"
+    },
+    {
+      "programId": "scmethyl-manuscript",
+      "label": "scMethyl methods manuscript",
+      "reason": "only known to the month — cannot alert"
+    }
+  ],
+  "stats": {
+    "fetched": 37,
+    "kept": 16,
+    "deadlinesTracked": 10,
+    "verifiedLast7d": 0,
+    "medianScore": 23.345,
+    "dropped": {
+      "not-yet-watched": 13,
+      "below-threshold": 5,
+      "rolling-cooldown": 1,
+      "ruled-out": 2
+    }
+  }
+}
