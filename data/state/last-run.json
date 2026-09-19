@@ -1,11 +1,11 @@
 {
-  "runId": "35376883515",
-  "startedAt": "2026-09-18T17:52:46.041Z",
-  "finishedAt": "2026-09-18T17:53:04.381Z",
+  "runId": "35458084085",
+  "startedAt": "2026-09-19T17:26:22.670Z",
+  "finishedAt": "2026-09-19T17:26:36.065Z",
   "outcome": "ok",
-  "date": "2026-09-18",
+  "date": "2026-09-19",
   "sourcesOk": 28,
   "sourcesTotal": 30,
-  "itemsKept": 33,
+  "itemsKept": 32,
   "deadlinesTracked": 9
 }
