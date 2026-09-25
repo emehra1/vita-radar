@@ -56,10 +56,10 @@
     "lastStatus": 200
   },
   "ardd-2026": {
-    "hash": "66d5c61d9b08c8a5",
+    "hash": "8bb843a99879691a",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-06",
-    "length": 943,
+    "lastChanged": "2026-09-25",
+    "length": 976,
     "lastStatus": 200
   },
   "abrcms-2026": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "02060cccb9c97ea7",
+    "hash": "44f686a4869b0f21",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-24",
-    "length": 4721,
+    "lastChanged": "2026-09-25",
+    "length": 4727,
     "lastStatus": 200
   }
 }
