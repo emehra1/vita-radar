@@ -1,0 +1,4067 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-26",
+  "runId": "36261091495",
+  "generatedAt": "2026-09-26T18:02:08.564Z",
+  "windowStart": "2026-09-25",
+  "windowEnd": "2026-09-26",
+  "health": [
+    {
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "status": "ok",
+      "itemsParsed": 37,
+      "itemsKept": 14,
+      "parseWarnings": [],
+      "latencyMs": 0,
+      "lastSuccessAt": "2026-09-26T18:01:53.643Z",
+      "consecutiveFailures": 0,
+      "optional": false
+    },
+    {
+      "sourceId": "biopharma-dive",
+      "sourceName": "BioPharma Dive",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 10,
+      "parseWarnings": [],
+      "latencyMs": 242,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "fierce-biotech",
+      "sourceName": "Fierce Biotech",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 25,
+      "itemsKept": 25,
+      "parseWarnings": [
+        "title-was-object:25"
+      ],
+      "latencyMs": 222,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "fierce-pharma",
+      "sourceName": "Fierce Pharma",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 25,
+      "itemsKept": 25,
+      "parseWarnings": [
+        "title-was-object:25"
+      ],
+      "latencyMs": 265,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "stat",
+      "sourceName": "STAT",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 299,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "endpoints",
+      "sourceName": "Endpoints News",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 24,
+      "itemsKept": 24,
+      "parseWarnings": [],
+      "latencyMs": 325,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "lifescivc",
+      "sourceName": "LifeSciVC (Bruce Booth)",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 15,
+      "parseWarnings": [],
+      "latencyMs": 620,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "owlposting",
+      "sourceName": "Owl Posting",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 570,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "decodingbio",
+      "sourceName": "Decoding Bio",
+      "status": "failed",
+      "httpStatus": 403,
+      "error": "HTTP 403",
+      "itemsParsed": 0,
+      "itemsKept": 0,
+      "parseWarnings": [],
+      "latencyMs": 427,
+      "lastSuccessAt": "2026-09-06",
+      "consecutiveFailures": 20,
+      "optional": true
+    },
+    {
+      "sourceId": "ruxandra",
+      "sourceName": "Ruxandra Teslo",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 665,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "centuryofbio",
+      "sourceName": "Century of Biology",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 20,
+      "itemsKept": 20,
+      "parseWarnings": [],
+      "latencyMs": 741,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-biotech",
+      "sourceName": "Nature Biotechnology",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 750,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 3757,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 8,
+      "itemsKept": 8,
+      "parseWarnings": [],
+      "latencyMs": 4782,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "sdn-physician-scientists",
+      "sourceName": "SDN — Physician Scientists",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 50,
+      "itemsKept": 25,
+      "parseWarnings": [],
+      "latencyMs": 962,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gates-cambridge-news",
+      "sourceName": "Gates Cambridge — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 0,
+      "parseWarnings": [
+        "10 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 2569,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "pdsoros-news",
+      "sourceName": "PD Soros — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 0,
+      "parseWarnings": [
+        "10 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 1155,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "schmidt-news",
+      "sourceName": "Schmidt Science Fellows — news",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 10,
+      "itemsKept": 1,
+      "parseWarnings": [
+        "9 item(s) filtered by requireAny"
+      ],
+      "latencyMs": 2462,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "nih-guide-nofo",
+      "sourceName": "NIH Guide — funding opportunities",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 3,
+      "itemsKept": 3,
+      "parseWarnings": [],
+      "latencyMs": 1157,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": false
+    },
+    {
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 27,
+      "itemsKept": 27,
+      "parseWarnings": [],
+      "latencyMs": 1533,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "lever-retro",
+      "sourceName": "Retro Biosciences",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 5,
+      "itemsKept": 5,
+      "parseWarnings": [],
+      "latencyMs": 2581,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "ashby-insitro",
+      "sourceName": "insitro",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 15,
+      "itemsKept": 15,
+      "parseWarnings": [],
+      "latencyMs": 1685,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-recursion",
+      "sourceName": "Recursion — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 16,
+      "itemsKept": 16,
+      "parseWarnings": [],
+      "latencyMs": 1935,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-variantbio",
+      "sourceName": "Variant Bio — jobs",
+      "status": "degraded",
+      "httpStatus": 200,
+      "itemsParsed": 0,
+      "itemsKept": 0,
+      "parseWarnings": [],
+      "latencyMs": 3005,
+      "lastSuccessAt": "2026-09-17",
+      "consecutiveFailures": 9,
+      "optional": true,
+      "error": "parsed nothing usable"
+    },
+    {
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 13,
+      "itemsKept": 13,
+      "parseWarnings": [],
+      "latencyMs": 4134,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-altoslabs",
+      "sourceName": "Altos Labs — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 19,
+      "itemsKept": 19,
+      "parseWarnings": [],
+      "latencyMs": 5217,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-calicolabs",
+      "sourceName": "Calico — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 18,
+      "itemsKept": 18,
+      "parseWarnings": [],
+      "latencyMs": 6293,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-arcinstitute",
+      "sourceName": "Arc Institute — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 23,
+      "itemsKept": 23,
+      "parseWarnings": [],
+      "latencyMs": 7444,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-arcadiascience",
+      "sourceName": "Arcadia Science — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 7,
+      "itemsKept": 7,
+      "parseWarnings": [],
+      "latencyMs": 8516,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    },
+    {
+      "sourceId": "gh-beamtx",
+      "sourceName": "Beam Therapeutics — jobs",
+      "status": "ok",
+      "httpStatus": 200,
+      "itemsParsed": 42,
+      "itemsKept": 42,
+      "parseWarnings": [],
+      "latencyMs": 9625,
+      "lastSuccessAt": "2026-09-26",
+      "consecutiveFailures": 0,
+      "optional": true
+    }
+  ],
+  "items": {
+    "b00693f401008e0b": {
+      "kind": "opportunity",
+      "id": "b00693f401008e0b",
+      "clusterId": "b00693f401008e0b",
+      "title": "Rhodes Scholarship (US) — National application (Rhodes portal)",
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+      "canonicalUrl": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 69.72,
+      "scoreBreakdown": {
+        "total": 69.72,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.9273310304042636,
+            "weight": 30,
+            "contribution": 27.81993091212791,
+            "evidence": [
+              "11d until 2026-10-07"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "event.step-due",
+            "label": "Event: step-due",
+            "raw": 0.85,
+            "weight": 14,
+            "contribution": 11.9,
+            "evidence": [
+              "step-due"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "rhodes-us",
+        "label": "Rhodes Scholarship (US)",
+        "org": "Rhodes Trust",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2026-10-07",
+          "timeOfDay": "23:59",
+          "precision": "minute",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "harvard-endorsement",
+            "label": "Harvard institutional endorsement (URAF / OUE)",
+            "gating": true,
+            "status": "done",
+            "note": "DONE. Endorsement obtained 2026-09-06. Kept in the file rather than deleted, because the precondition on national-app still needs something to point at, and because next cycle's roll-forward reinstates this step as pending with no date — which is correct, since an endorsement is per-cycle and would have to be won again.\n"
+          },
+          {
+            "id": "national-app",
+            "label": "National application (Rhodes portal)",
+            "due": "2026-10-07",
+            "timeOfDay": "23:59",
+            "precondition": "harvard-endorsement",
+            "gating": true,
+            "status": "pending",
+            "note": "23:59 ET is the historical close and is carried over, NOT confirmed — \"October 7th\" does not specify a time. Worth two minutes on the portal, because the failure mode is submitting on the right day and still being late. Rhodes House is in Oxford; if the portal turns out to run on UK time, 23:59 BST is 18:59 ET and the margin is five hours smaller than it looks.\n"
+          }
+        ],
+        "nextStepIndex": 1,
+        "effectiveDate": "2026-10-07",
+        "eligibility": {
+          "notes": "US citizen; institutional endorsement REQUIRED and OBTAINED (2026-09-06). Cannot be deferred. Commences October 2027 for two years.\n",
+          "source": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
+        },
+        "needsVerification": false,
+        "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship",
+        "verifiedOn": "2026-09-06"
+      },
+      "eventTypes": [
+        "step-due"
+      ],
+      "daysUntil": 11
+    },
+    "482d97ad01012205": {
+      "kind": "opportunity",
+      "id": "482d97ad01012205",
+      "clusterId": "482d97ad01012205",
+      "title": "Nucleate Activator (US) — Activator application",
+      "url": "https://nucleate.org/",
+      "canonicalUrl": "https://nucleate.org/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "venture-founder": 1
+      },
+      "primaryLane": "venture-founder",
+      "score": 47.97,
+      "scoreBreakdown": {
+        "total": 47.97,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.5989537017533378,
+            "weight": 30,
+            "contribution": 17.968611052600135,
+            "evidence": [
+              "25d until 2026-10-21"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "nucleate-activator-us",
+        "label": "Nucleate Activator (US)",
+        "org": "Nucleate",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "evidence": "Deadline for US chapters is October 21st.",
+          "kind": "confirmed",
+          "date": "2026-10-21",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "application",
+            "label": "Activator application",
+            "due": "2026-10-21",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-10-21",
+        "needsVerification": false,
+        "url": "https://nucleate.org/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 25
+    },
+    "294d04270100f5f1": {
+      "kind": "opportunity",
+      "id": "294d04270100f5f1",
+      "clusterId": "294d04270100f5f1",
+      "title": "Gates Cambridge Scholarship (US round) — Gates Cambridge application (but University of Cambridge MPhil application (separate deadline) comes first)",
+      "url": "https://www.gatescambridge.org/apply/",
+      "canonicalUrl": "https://www.gatescambridge.org/apply/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 42.26,
+      "scoreBreakdown": {
+        "total": 42.26,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.5552028771130819,
+            "weight": 30,
+            "contribution": 16.656086313392457,
+            "evidence": [
+              "19d until 2026-10-15",
+              "projected (x0.7)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "gates-cambridge-us",
+        "label": "Gates Cambridge Scholarship (US round)",
+        "org": "Gates Cambridge Trust",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "Europe/London",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "projected",
+          "date": "2026-10-15",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "cambridge-course-app",
+            "label": "University of Cambridge MPhil application (separate deadline)",
+            "gating": true,
+            "status": "pending",
+            "note": "Its own earlier deadline, course-dependent. Gates cannot be won without it. Verify the specific MPhil's date.\n"
+          },
+          {
+            "id": "gates-app",
+            "label": "Gates Cambridge application",
+            "due": "2026-10-15",
+            "precondition": "cambridge-course-app",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-10-15",
+        "eligibility": {
+          "notes": "Requires a SEPARATE application to a Cambridge MPhil or PhD with its own deadline. Target the 1-year MPhil: the 3-year PhD does not fit a Fall 2029 MD/PhD matriculation. Structurally awkward for the master plan — the clean version is MPhil then an RA year.\n"
+        },
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: University of Cambridge MPhil application (separate deadline)",
+        "url": "https://www.gatescambridge.org/apply/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ],
+      "daysUntil": 19
+    },
+    "cfe618e401006e13": {
+      "kind": "opportunity",
+      "id": "cfe618e401006e13",
+      "clusterId": "cfe618e401006e13",
+      "title": "ARDD 2026 — Aging Research & Drug Discovery — Poster abstract submission",
+      "url": "https://agingpharma.org/registration",
+      "canonicalUrl": "https://agingpharma.org/registration",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 36.5,
+      "scoreBreakdown": {
+        "total": 36.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "ardd-2026",
+        "label": "ARDD 2026 — Aging Research & Drug Discovery",
+        "org": "Aging Pharma / ARDD",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "kind": "unknown",
+          "timeZone": "America/New_York",
+          "precision": "unknown",
+          "cycleYear": 2027,
+          "cycleYearConfident": false,
+          "provenance": "derived"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Poster abstract submission",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Poster abstract submission",
+        "url": "https://agingpharma.org/registration",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": []
+    },
+    "bfdb2b540100b27e": {
+      "kind": "opportunity",
+      "id": "bfdb2b540100b27e",
+      "clusterId": "bfdb2b540100b27e",
+      "title": "Get on the Harvard URAF fellowships mailing list — Email the Harvard fellowships office for endorsement deadlines",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/uraf-contact",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 36.5,
+      "scoreBreakdown": {
+        "total": 36.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "uraf-contact",
+        "label": "Get on the Harvard URAF fellowships mailing list",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "kind": "unknown",
+          "timeZone": "America/New_York",
+          "precision": "unknown",
+          "cycleYear": 2027,
+          "cycleYearConfident": false,
+          "provenance": "derived"
+        },
+        "steps": [
+          {
+            "id": "email-uraf",
+            "label": "Email the Harvard fellowships office for endorsement deadlines",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Email the Harvard fellowships office for endorsement deadlines"
+      },
+      "eventTypes": []
+    },
+    "c70df30301009609": {
+      "kind": "opportunity",
+      "id": "c70df30301009609",
+      "clusterId": "c70df30301009609",
+      "title": "Broad Biomedical Post-baccalaureate Scholars (BBPS) — Broad Early Career Researcher application (Avature) (but BBPS application comes first)",
+      "url": "https://www.broadinstitute.org/bbps",
+      "canonicalUrl": "https://www.broadinstitute.org/bbps",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "mstp-labs": 1
+      },
+      "primaryLane": "mstp-labs",
+      "score": 32.75,
+      "scoreBreakdown": {
+        "total": 32.75,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.19155776631009172,
+            "weight": 30,
+            "contribution": 5.7467329893027514,
+            "evidence": [
+              "65d until 2026-11-30",
+              "projected (x0.7)",
+              "month precision (x0.6)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "mstp-labs": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "broad-bbps",
+        "label": "Broad Biomedical Post-baccalaureate Scholars (BBPS)",
+        "org": "Broad Institute",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "projected",
+          "date": "2026-11-30",
+          "precision": "month",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "ecr",
+            "label": "Broad Early Career Researcher application (Avature)",
+            "due": "2026-11-30",
+            "system": "avature",
+            "gating": true,
+            "status": "pending",
+            "note": "A gate, not a formality — BBPS reads ECR applicants. Target submission Nov 2026 so review completes before the BBPS window. broadinstitute.org 403s every path incl. robots.txt; the only machine-readable route is broadinstitute.avature.net/en_US/careers/SearchJobs/feed/ (robots explicitly Allow: /careers). ACTION: email bbps@broadinstitute.org to get on the list — a mailing list beats any scraper against a hard 403.\n"
+          },
+          {
+            "id": "bbps-app",
+            "label": "BBPS application",
+            "precondition": "ecr",
+            "gating": true,
+            "status": "pending",
+            "note": "Rolling decisions from late April 2027."
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-11-30",
+        "eligibility": {
+          "notes": "Two-year program, two-step application. Has a diversity / underrepresented-in-STEM focus — verify alignment. A standalone RA hire in the Buenrostro lab is the viable Scenario B fallback.\n"
+        },
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: BBPS application",
+        "url": "https://www.broadinstitute.org/bbps",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 65
+    },
+    "e69922bc01011209": {
+      "kind": "opportunity",
+      "id": "e69922bc01011209",
+      "clusterId": "e69922bc01011209",
+      "title": "scMethyl methods manuscript — bioRxiv preprint + journal submission",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/scmethyl-manuscript",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "mstp-labs": 1
+      },
+      "primaryLane": "mstp-labs",
+      "score": 27.7,
+      "scoreBreakdown": {
+        "total": 27.7,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.023443701780706656,
+            "weight": 30,
+            "contribution": 0.7033110534211997,
+            "evidence": [
+              "217d until 2027-05-01",
+              "projected (x0.7)",
+              "month precision (x0.6)"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineProjected",
+            "label": "deadlineProjected",
+            "raw": 1,
+            "weight": -3,
+            "contribution": -3
+          }
+        ],
+        "laneScores": {
+          "mstp-labs": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "scmethyl-manuscript",
+        "label": "scMethyl methods manuscript",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "projected",
+          "date": "2027-05-01",
+          "precision": "month",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "draft-circulated",
+            "label": "Full manuscript draft circulated in-lab and to Jason",
+            "due": "2026-12-15",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "journal-target",
+            "label": "Lock journal target (Nat Methods / Nat Biotech / Cell Methods / Genome Biology)",
+            "due": "2026-12-15",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "preprint",
+            "label": "bioRxiv preprint + journal submission",
+            "due": "2027-05-01",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2027-05-01",
+        "needsVerification": true,
+        "verifyReason": "only known to the month — cannot alert"
+      },
+      "eventTypes": [],
+      "daysUntil": 217
+    },
+    "593e85dd010088d6": {
+      "kind": "opportunity",
+      "id": "593e85dd010088d6",
+      "clusterId": "593e85dd010088d6",
+      "title": "ABRCMS 2026 — Abstract submission",
+      "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+      "canonicalUrl": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-14",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 22.5,
+      "scoreBreakdown": {
+        "total": 22.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "gating",
+            "label": "Gating step",
+            "raw": 1,
+            "weight": 16,
+            "contribution": 16,
+            "evidence": [
+              "missing this ends the application"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "abrcms-2026",
+        "label": "ABRCMS 2026",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "kind": "unknown",
+          "timeZone": "America/New_York",
+          "precision": "unknown",
+          "cycleYear": 2027,
+          "cycleYearConfident": false,
+          "provenance": "derived"
+        },
+        "steps": [
+          {
+            "id": "abstract",
+            "label": "Abstract submission",
+            "gating": true,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "needsVerification": true,
+        "verifyReason": "GATING step has no date: Abstract submission",
+        "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": []
+    },
+    "cf465fc30100dcff": {
+      "kind": "opportunity",
+      "id": "cf465fc30100dcff",
+      "clusterId": "cf465fc30100dcff",
+      "title": "CSHL — Single Cell Analyses (next US edition)",
+      "url": "https://meetings.cshl.edu/meetingshome.aspx",
+      "canonicalUrl": "https://meetings.cshl.edu/meetingshome.aspx",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 19.1,
+      "scoreBreakdown": {
+        "total": 19.1,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "cshl-single-cell",
+        "label": "CSHL — Single Cell Analyses (next US edition)",
+        "org": "Cold Spring Harbor Laboratory",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-15",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://meetings.cshl.edu/meetingshome.aspx",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ]
+    },
+    "55ce086a0100be9a": {
+      "kind": "opportunity",
+      "id": "55ce086a0100be9a",
+      "clusterId": "55ce086a0100be9a",
+      "title": "Broad Institute annual retreat (internal poster)",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/broad-retreat",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 19.1,
+      "scoreBreakdown": {
+        "total": 19.1,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "broad-retreat",
+        "label": "Broad Institute annual retreat (internal poster)",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2026,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ]
+    },
+    "d00abd2b01011a64": {
+      "kind": "opportunity",
+      "id": "d00abd2b01011a64",
+      "clusterId": "d00abd2b01011a64",
+      "title": "Marshall Scholarship",
+      "url": "",
+      "canonicalUrl": "vita-radar:program/marshall-scholarship",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 19.1,
+      "scoreBreakdown": {
+        "total": 19.1,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          },
+          {
+            "key": "event.verify-deadline",
+            "label": "Event: verify-deadline",
+            "raw": 0.9,
+            "weight": 14,
+            "contribution": 12.6,
+            "evidence": [
+              "verify-deadline"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "marshall-scholarship",
+        "label": "Marshall Scholarship",
+        "status": "watch",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-09-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown"
+      },
+      "eventTypes": [
+        "verify-deadline"
+      ]
+    },
+    "cef1b06101013a1e": {
+      "kind": "opportunity",
+      "id": "cef1b06101013a1e",
+      "clusterId": "cef1b06101013a1e",
+      "title": "Keystone — Epigenetics in Health and Disease (D42027, Banff)",
+      "url": "https://www.keystonesymposia.org/conferences/conference-listing",
+      "canonicalUrl": "https://www.keystonesymposia.org/conferences/conference-listing",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 15.43,
+      "scoreBreakdown": {
+        "total": 15.43,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.0475691537636124,
+            "weight": 30,
+            "contribution": 1.427074612908372,
+            "evidence": [
+              "82d until 2026-12-17"
+            ]
+          },
+          {
+            "key": "fit",
+            "label": "High priority",
+            "raw": 1,
+            "weight": 14,
+            "contribution": 14,
+            "evidence": [
+              "priority: high"
+            ]
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "keystone-epigenetics-2027",
+        "label": "Keystone — Epigenetics in Health and Disease (D42027, Banff)",
+        "org": "Keystone Symposia",
+        "status": "active",
+        "priority": "high",
+        "deadline": {
+          "timeZone": "America/Denver",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "kind": "confirmed",
+          "date": "2026-12-17",
+          "precision": "day",
+          "provenance": "yaml"
+        },
+        "steps": [
+          {
+            "id": "short-talk-abstract",
+            "label": "Short-talk abstract + scholarship",
+            "due": "2026-12-17",
+            "gating": false,
+            "status": "pending"
+          },
+          {
+            "id": "poster-abstract",
+            "label": "Poster abstract",
+            "due": "2027-03-23",
+            "gating": false,
+            "status": "pending"
+          }
+        ],
+        "nextStepIndex": 0,
+        "effectiveDate": "2026-12-17",
+        "needsVerification": false,
+        "url": "https://www.keystonesymposia.org/conferences/conference-listing",
+        "verifiedOn": "2026-08-22"
+      },
+      "eventTypes": [],
+      "daysUntil": 82
+    },
+    "045baff501006f2a": {
+      "kind": "opportunity",
+      "id": "045baff501006f2a",
+      "clusterId": "045baff501006f2a",
+      "title": "ASHG 2027",
+      "url": "https://www.ashg.org/meetings/",
+      "canonicalUrl": "https://www.ashg.org/meetings/",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-08-22",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "conferences": 1
+      },
+      "primaryLane": "conferences",
+      "score": 6.5,
+      "scoreBreakdown": {
+        "total": 6.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "conferences": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "ashg-2027",
+        "label": "ASHG 2027",
+        "status": "active",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2027,
+          "cycleYearConfident": true,
+          "verifyBy": "2027-03-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://www.ashg.org/meetings/"
+      },
+      "eventTypes": []
+    },
+    "18d119f40100af58": {
+      "kind": "opportunity",
+      "id": "18d119f40100af58",
+      "clusterId": "18d119f40100af58",
+      "title": "HHMI Gilliam Fellows",
+      "url": "https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study",
+      "canonicalUrl": "https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study",
+      "sourceId": "deadlines-yml",
+      "sourceName": "config/deadlines.yml",
+      "publisherGroup": "self",
+      "sourceKind": "registry",
+      "datePrecision": "unknown",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "yaml",
+      "lanes": {
+        "fellowships": 1
+      },
+      "primaryLane": "fellowships",
+      "score": 6.5,
+      "scoreBreakdown": {
+        "total": 6.5,
+        "factors": [
+          {
+            "key": "deadlineUrgency",
+            "label": "Deadline urgency",
+            "raw": 0.35,
+            "weight": 30,
+            "contribution": 10.5,
+            "evidence": [
+              "deadline unknown — needs a human"
+            ]
+          }
+        ],
+        "penalties": [
+          {
+            "key": "deadlineUnknown",
+            "label": "deadlineUnknown",
+            "raw": 1,
+            "weight": -4,
+            "contribution": -4
+          }
+        ],
+        "laneScores": {
+          "fellowships": 1
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": [],
+      "opportunity": {
+        "programId": "hhmi-gilliam",
+        "label": "HHMI Gilliam Fellows",
+        "status": "watch",
+        "priority": "normal",
+        "deadline": {
+          "timeZone": "America/New_York",
+          "cycleYear": 2031,
+          "cycleYearConfident": true,
+          "verifyBy": "2026-10-01",
+          "kind": "unknown",
+          "precision": "unknown",
+          "provenance": "yaml"
+        },
+        "steps": [],
+        "nextStepIndex": -1,
+        "needsVerification": true,
+        "verifyReason": "deadline unknown",
+        "url": "https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study"
+      },
+      "eventTypes": []
+    },
+    "644eaec2d55aaae1": {
+      "kind": "news",
+      "id": "644eaec2d55aaae1",
+      "clusterId": "644eaec2d55aaae1",
+      "title": "A cross-species single-cell kidney epigenome atlas reveals epithelial-dominant aging-like states in disease",
+      "url": "https://www.nature.com/articles/s43587-026-01221-z",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01221-z",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-24",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Jeong, Lake and colleagues map changes in the human and mouse kidney DNA methylomes at single-cell resolution across disease and aging, respectively.",
+        "They identify disease-associated epithelial states with epigenetic age acceleration, altered DNA methylation and chromatin compartments and spatially localized repair programs."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.7095680354165476
+      },
+      "primaryLane": "causal-genetics",
+      "score": 39.38,
+      "scoreBreakdown": {
+        "total": 39.38,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.7095680354165476,
+            "weight": 22,
+            "contribution": 15.610496779164047,
+            "evidence": [
+              "single-cell",
+              "dna methylation",
+              "chromatin",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.6207874733382639,
+            "weight": 8,
+            "contribution": 4.966299786706111,
+            "evidence": [
+              "66h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.7095680354165476
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "b821a566ee0bbb3e": {
+      "kind": "news",
+      "id": "b821a566ee0bbb3e",
+      "clusterId": "b821a566ee0bbb3e",
+      "title": "ResolVI: addressing noise and bias in spatial transcriptomics",
+      "url": "https://www.nature.com/articles/s41592-026-03212-9",
+      "canonicalUrl": "https://www.nature.com/articles/s41592-026-03212-9",
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-24",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Segmentation and quantification of spatial transcriptomics data is plagued by specific noise and bias.",
+        "ResolVI tackles this challenge by generating error- and batch-corrected probabilistic representations of spatial transcriptomics data, contributing to improved performance in multiple analysis tasks."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.5674053198541206
+      },
+      "primaryLane": "causal-genetics",
+      "score": 36.25,
+      "scoreBreakdown": {
+        "total": 36.25,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5674053198541206,
+            "weight": 22,
+            "contribution": 12.482917036790653,
+            "evidence": [
+              "spatial transcriptomics"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.6207874733382639,
+            "weight": 8,
+            "contribution": 4.966299786706111,
+            "evidence": [
+              "66h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.5674053198541206
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "12d7d589a995c908": {
+      "kind": "news",
+      "id": "12d7d589a995c908",
+      "clusterId": "12d7d589a995c908",
+      "title": "RamanOmics decodes the spatial vibrational–molecular architecture of senescence in aging and repair",
+      "url": "https://www.nature.com/articles/s43587-026-01219-7",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01219-7",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-21",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Zhang, Chen, Monticolo, Sorrentino and colleagues pair label-free Raman imaging with spatial and single-cell transcriptomics to probe biochemical signatures of senescence in aging and repair, identifying a lipid-linked Raman signature of p21+ cells."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.6420906778694951
+      },
+      "primaryLane": "causal-genetics",
+      "score": 35.88,
+      "scoreBreakdown": {
+        "total": 35.88,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.6420906778694951,
+            "weight": 22,
+            "contribution": 14.125994913128894,
+            "evidence": [
+              "single-cell",
+              "senescence",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.36912244009921275,
+            "weight": 8,
+            "contribution": 2.952979520793702,
+            "evidence": [
+              "138h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.6420906778694951
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "a1202cc5c6851c30": {
+      "kind": "news",
+      "id": "a1202cc5c6851c30",
+      "clusterId": "a1202cc5c6851c30",
+      "title": "The chemical fingerprint of cellular senescence",
+      "url": "https://www.nature.com/articles/s43587-026-01230-y",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01230-y",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-21",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Senescence has traditionally been studied largely on the basis of changes in gene expression, but senescent cells also undergo profound biochemical remodeling.",
+        "Zhang and colleagues introduce RamanOmics, a multimodal approach that links Raman-based chemical imaging with spatial transcriptomics to reveal the hidden biochemical landscape of cellular senescence."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.576595224633915
+      },
+      "primaryLane": "causal-genetics",
+      "score": 34.44,
+      "scoreBreakdown": {
+        "total": 34.44,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.576595224633915,
+            "weight": 22,
+            "contribution": 12.68509494194613,
+            "evidence": [
+              "spatial transcriptomics",
+              "senescence"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.36912244009921275,
+            "weight": 8,
+            "contribution": 2.952979520793702,
+            "evidence": [
+              "138h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.576595224633915
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "5989e0d62632e46d": {
+      "kind": "news",
+      "id": "5989e0d62632e46d",
+      "clusterId": "5989e0d62632e46d",
+      "title": "Photolabile oligonucleotides with topological light gradients enable spatially resolved single-cell transcriptomics and epigenomics",
+      "url": "https://www.nature.com/articles/s41587-026-03328-5",
+      "canonicalUrl": "https://www.nature.com/articles/s41587-026-03328-5",
+      "sourceId": "nature-biotech",
+      "sourceName": "Nature Biotechnology",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-25T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-25",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "A photolabile oligonucleotide system enables spatially resolved single-cell measurements to show how the epigenome regulates gene expression."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.5141425778218797
+      },
+      "primaryLane": "causal-genetics",
+      "score": 30.02,
+      "scoreBreakdown": {
+        "total": 30.02,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5141425778218797,
+            "weight": 22,
+            "contribution": 11.311136712081353,
+            "evidence": [
+              "single-cell"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.7382448801984254,
+            "weight": 8,
+            "contribution": 5.905959041587403,
+            "evidence": [
+              "42h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [
+          {
+            "key": "thinContent",
+            "label": "Thin content",
+            "raw": 1,
+            "weight": -6,
+            "contribution": -6
+          }
+        ],
+        "laneScores": {
+          "causal-genetics": 0.5141425778218797
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "2cc723c825f2e6db": {
+      "kind": "news",
+      "id": "2cc723c825f2e6db",
+      "clusterId": "2cc723c825f2e6db",
+      "title": "Spatially resolved chromatin architectures in mammalian brain tissues",
+      "url": "https://www.nature.com/articles/s41592-026-03218-3",
+      "canonicalUrl": "https://www.nature.com/articles/s41592-026-03218-3",
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-25T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-25",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Spatial Hi-C allows the study of chromatin organization in a spatially resolved manner.",
+        "This approach shows regional and cell-type-specific differences in the adult and developing mouse brain."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.5141425778218797
+      },
+      "primaryLane": "causal-genetics",
+      "score": 30.02,
+      "scoreBreakdown": {
+        "total": 30.02,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5141425778218797,
+            "weight": 22,
+            "contribution": 11.311136712081353,
+            "evidence": [
+              "chromatin"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.7382448801984254,
+            "weight": 8,
+            "contribution": 5.905959041587403,
+            "evidence": [
+              "42h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [
+          {
+            "key": "thinContent",
+            "label": "Thin content",
+            "raw": 1,
+            "weight": -6,
+            "contribution": -6
+          }
+        ],
+        "laneScores": {
+          "causal-genetics": 0.5141425778218797
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "28621939099579f3": {
+      "kind": "news",
+      "id": "28621939099579f3",
+      "clusterId": "28621939099579f3",
+      "title": "NanoTS: a deep learning tool for accurate SNP calling in nanopore long-read transcriptome data",
+      "url": "https://www.nature.com/articles/s41592-026-03225-4",
+      "canonicalUrl": "https://www.nature.com/articles/s41592-026-03225-4",
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-22",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "NanoTS facilitates nanopore long-read transcriptome sequencing based SNP detection and genotype calling using deep learning."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "tools-platforms": 0.6791204280926869
+      },
+      "primaryLane": "tools-platforms",
+      "score": 29.28,
+      "scoreBreakdown": {
+        "total": 29.28,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.6791204280926869,
+            "weight": 22,
+            "contribution": 14.940649418039111,
+            "evidence": [
+              "long-read",
+              "nanopore"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.19268854352685283,
+            "weight": 8,
+            "contribution": 1.5415083482148226,
+            "evidence": [
+              "114h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [
+          {
+            "key": "thinContent",
+            "label": "Thin content",
+            "raw": 1,
+            "weight": -6,
+            "contribution": -6
+          }
+        ],
+        "laneScores": {
+          "tools-platforms": 0.6791204280926869
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "15904c116a2ce42a": {
+      "kind": "news",
+      "id": "15904c116a2ce42a",
+      "clusterId": "15904c116a2ce42a",
+      "title": "Scientist, Metabolism",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/6209015004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/6209015004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-25T23:56:28.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-26",
+      "isNew": true,
+      "bodyProvenance": "api",
+      "digest": [
+        "Company info NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat age-related diseases by reprogramming the epigenome, a new therapeutic mechanism to restore regenerative potential in aged and diseased cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5294884979375295
+      },
+      "primaryLane": "venture-founder",
+      "score": 28.57,
+      "scoreBreakdown": {
+        "total": 28.57,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5294884979375295,
+            "weight": 22,
+            "contribution": 11.648746954625649,
+            "evidence": [
+              "single cell",
+              "epigenetic editing",
+              "reprogramming",
+              "healthspan"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.9280785455840536,
+            "weight": 8,
+            "contribution": 7.4246283646724285,
+            "evidence": [
+              "18h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5294884979375295
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "b1dd9b1661159efa": {
+      "kind": "news",
+      "id": "b1dd9b1661159efa",
+      "clusterId": "b1dd9b1661159efa",
+      "title": "Multi-modality profiling identifies Neisseria flavescens as a central geroprotective oral commensal in humans",
+      "url": "https://www.nature.com/articles/s43587-026-01220-0",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01220-0",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-24",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "use the generative framework AURORA to link the oral commensal Neisseria flavescens to decelerated aging in humans.",
+        "In worms and mice, live and heat-killed supplementation, respectively, are geroprotective."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.15789473684210525
+      },
+      "primaryLane": "causal-genetics",
+      "score": 27.24,
+      "scoreBreakdown": {
+        "total": 27.24,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.15789473684210525,
+            "weight": 22,
+            "contribution": 3.4736842105263155,
+            "evidence": [
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.6207874733382639,
+            "weight": 8,
+            "contribution": 4.966299786706111,
+            "evidence": [
+              "66h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.15789473684210525
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "26d48cde47bb2bb0": {
+      "kind": "news",
+      "id": "26d48cde47bb2bb0",
+      "clusterId": "26d48cde47bb2bb0",
+      "title": "Program Launch Manager",
+      "url": "https://jobs.lever.co/convergentresearch/7b0506c1-caf2-4e92-9a44-d062c7a9b988",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/7b0506c1-caf2-4e92-9a44-d062c7a9b988",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-14T22:23:16.348Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-16",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Convergent Research\nConvergent Research is a nonprofit science studio best known for pioneering the Focused Research Organization (FRO).",
+        "We design, launch, and support mission-driven, time-bound organizations built to solve important scientific and engineering bottlenecks."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5024702829844531
+      },
+      "primaryLane": "venture-founder",
+      "score": 25.04,
+      "scoreBreakdown": {
+        "total": 25.04,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5024702829844531,
+            "weight": 22,
+            "contribution": 11.054346225657968,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.31028046774164625,
+            "weight": 8,
+            "contribution": 2.48224374193317,
+            "evidence": [
+              "284h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5024702829844531
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "e5f7b79a7bb3104d": {
+      "kind": "news",
+      "id": "e5f7b79a7bb3104d",
+      "clusterId": "e5f7b79a7bb3104d",
+      "title": "Senior/Research Associate, Single Cell Technology",
+      "url": "https://job-boards.greenhouse.io/newlimit/jobs/6191814004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/newlimit/jobs/6191814004",
+      "sourceId": "gh-newlimit",
+      "sourceName": "NewLimit — jobs",
+      "publisherGroup": "ats:newlimit",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-14T23:37:12.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-15",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "Company info NewLimit is a biotechnology company working to radically extend human healthspan.",
+        "We’re developing medicines to treat age-related diseases by reprogramming the epigenome, a new therapeutic mechanism to restore regenerative potential in aged and diseased cells."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.583382583772709
+      },
+      "primaryLane": "venture-founder",
+      "score": 24.83,
+      "scoreBreakdown": {
+        "total": 24.83,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.583382583772709,
+            "weight": 22,
+            "contribution": 12.834416842999598,
+            "evidence": [
+              "single-cell",
+              "single cell",
+              "epigenetic editing",
+              "reprogramming",
+              "healthspan"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.31186182479112906,
+            "weight": 8,
+            "contribution": 2.4948945983290325,
+            "evidence": [
+              "282h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.583382583772709
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "773e8212c2e711fb": {
+      "kind": "news",
+      "id": "773e8212c2e711fb",
+      "clusterId": "773e8212c2e711fb",
+      "title": "Solid-state nanopore sensing: the next workhorse of biophysical characterization",
+      "url": "https://www.nature.com/articles/s41592-026-03222-7",
+      "canonicalUrl": "https://www.nature.com/articles/s41592-026-03222-7",
+      "sourceId": "nature-methods",
+      "sourceName": "Nature Methods",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-24",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "This Perspective discusses opportunities and challenges of using solid-state nanopores for broader biophysical characterization."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "tools-platforms": 0.38461538461538464
+      },
+      "primaryLane": "tools-platforms",
+      "score": 24.34,
+      "scoreBreakdown": {
+        "total": 24.34,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.38461538461538464,
+            "weight": 22,
+            "contribution": 8.461538461538462,
+            "evidence": [
+              "nanopore"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.38537708705370566,
+            "weight": 8,
+            "contribution": 3.0830166964296453,
+            "evidence": [
+              "66h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [
+          {
+            "key": "thinContent",
+            "label": "Thin content",
+            "raw": 1,
+            "weight": -6,
+            "contribution": -6
+          }
+        ],
+        "laneScores": {
+          "tools-platforms": 0.38461538461538464
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "370040ce8a38b75f": {
+      "kind": "news",
+      "id": "370040ce8a38b75f",
+      "clusterId": "370040ce8a38b75f",
+      "title": "Cytotoxic CD4+ T cells support age-associated myelopoiesis",
+      "url": "https://www.nature.com/articles/s43587-026-01241-9",
+      "canonicalUrl": "https://www.nature.com/articles/s43587-026-01241-9",
+      "sourceId": "nature-aging",
+      "sourceName": "Nature Aging",
+      "publisherGroup": "springer-nature",
+      "sourceKind": "journal",
+      "publishedAt": "2026-09-18T00:00:00.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-18",
+      "isNew": false,
+      "bodyProvenance": "content:encoded",
+      "digest": [
+        "Aging is associated with myeloid-biased hematopoiesis, which leads to the establishment of a pro-inflammatory microenvironment.",
+        "We discovered that cytotoxic CD4+ T cells foster this process via the CCL5–CCR5 axis and found that the clinically approved CCR5 antagonist maraviroc can rebalance immunity in aged mice."
+      ],
+      "digestSource": "dek",
+      "eventTypes": [
+        "major-journal-primary",
+        "approval"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "causal-genetics": 0.15789473684210525
+      },
+      "primaryLane": "causal-genetics",
+      "score": 24.03,
+      "scoreBreakdown": {
+        "total": 24.03,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.15789473684210525,
+            "weight": 22,
+            "contribution": 3.4736842105263155,
+            "evidence": [
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.21948151603657473,
+            "weight": 8,
+            "contribution": 1.7558521282925978,
+            "evidence": [
+              "210h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.9,
+            "weight": 10,
+            "contribution": 9
+          },
+          {
+            "key": "event.major-journal-primary",
+            "label": "Event: major-journal-primary",
+            "raw": 0.7,
+            "weight": 14,
+            "contribution": 9.799999999999999
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "causal-genetics": 0.15789473684210525
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "52222922d686c19b": {
+      "kind": "news",
+      "id": "52222922d686c19b",
+      "clusterId": "52222922d686c19b",
+      "title": "Media and Outreach Specialist",
+      "url": "https://jobs.lever.co/convergentresearch/2e8b4b86-5913-4931-8350-1efdacae8eca",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/2e8b4b86-5913-4931-8350-1efdacae8eca",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-08T22:44:03.733Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-10",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "Dragonfly is a Convergent Research Focused Research Organization (FRO).",
+        "Our mission is to capture the faint cosmic web of gas that connects galaxies across the universe, using a groundbreaking distributed-aperture telescope with over 1000 high-end telephoto lenses."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5024702829844531
+      },
+      "primaryLane": "venture-founder",
+      "score": 23.93,
+      "scoreBreakdown": {
+        "total": 23.93,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5024702829844531,
+            "weight": 22,
+            "contribution": 11.054346225657968,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.17153375462443637,
+            "weight": 8,
+            "contribution": 1.372270036995491,
+            "evidence": [
+              "427h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5024702829844531
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "e4dbff860eca0dad": {
+      "kind": "news",
+      "id": "e4dbff860eca0dad",
+      "clusterId": "e4dbff860eca0dad",
+      "title": "Scientist II, In Vivo Biology",
+      "url": "https://job-boards.greenhouse.io/altoslabs/jobs/6114500004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/altoslabs/jobs/6114500004",
+      "sourceId": "gh-altoslabs",
+      "sourceName": "Altos Labs — jobs",
+      "publisherGroup": "ats:altoslabs",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-25T22:02:02.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-16",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "Our Mission Our mission is to restore cell health and resilience through cell rejuvenation to reverse disease, injury, and the disabilities that can occur throughout life.",
+        "Our Value Our Single Altos Value: Everyone Owns Achieving Our Inspiring Mission."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.3076923076923077
+      },
+      "primaryLane": "venture-founder",
+      "score": 23.64,
+      "scoreBreakdown": {
+        "total": 23.64,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.3076923076923077,
+            "weight": 22,
+            "contribution": 6.76923076923077,
+            "evidence": [
+              "target discovery",
+              "aging"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.9208041886356009,
+            "weight": 8,
+            "contribution": 7.366433509084807,
+            "evidence": [
+              "20h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.3076923076923077
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "97517bcad5d53661": {
+      "kind": "news",
+      "id": "97517bcad5d53661",
+      "clusterId": "97517bcad5d53661",
+      "title": "Partner, AI Resilience",
+      "url": "https://jobs.lever.co/convergentresearch/801342e0-5446-4520-b084-04590fc26d3d",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/801342e0-5446-4520-b084-04590fc26d3d",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-27T20:17:53.273Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "Convergent Research is a nonprofit science studio best known for pioneering the Focused Research Organization (FRO): purpose-built, mission-driven orgs designed to solve technological bottlenecks, unlock whole new fields, and lead to scaled revolutions.",
+        "We’ve proven our model works by building over 14 high-impact scientific organizations spanning AI, biotech, mathematics, climate science, and more."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5024702829844531
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.97,
+      "scoreBreakdown": {
+        "total": 22.97,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5024702829844531,
+            "weight": 22,
+            "contribution": 11.054346225657968,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.05175267584361155,
+            "weight": 8,
+            "contribution": 0.4140214067488924,
+            "evidence": [
+              "718h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5024702829844531
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "99ef20c3ab045d81": {
+      "kind": "news",
+      "id": "99ef20c3ab045d81",
+      "clusterId": "99ef20c3ab045d81",
+      "title": "Scientist, Computational Biology",
+      "url": "https://job-boards.greenhouse.io/arcinstitute/jobs/6134331004",
+      "canonicalUrl": "https://job-boards.greenhouse.io/arcinstitute/jobs/6134331004",
+      "sourceId": "gh-arcinstitute",
+      "sourceName": "Arc Institute — jobs",
+      "publisherGroup": "ats:arcinstitute",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-08-31T05:08:54.000Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-06",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Arc Institute Arc Institute is an independent nonprofit research organization at the interface of artificial intelligence and biology, working to accelerate scientific progress and understand the root causes of complex diseases.",
+        "Founded in 2021 and based in Palo Alto, Arc partners with Stanford University, UC Berkeley, and UC San Francisco."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.5767788263934998
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.77,
+      "scoreBreakdown": {
+        "total": 22.77,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.5767788263934998,
+            "weight": 22,
+            "contribution": 12.689134180656994,
+            "evidence": [
+              "perturb-seq",
+              "crispr screen",
+              "functional genomics",
+              "single-cell"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.0722443448367831,
+            "weight": 8,
+            "contribution": 0.5779547586942648,
+            "evidence": [
+              "637h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.6,
+            "weight": 10,
+            "contribution": 6
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.5767788263934998
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "8e8eab056cb5b7bf": {
+      "kind": "news",
+      "id": "8e8eab056cb5b7bf",
+      "clusterId": "8e8eab056cb5b7bf",
+      "title": "Oath Technologies - Formal Methods Research Engineer",
+      "url": "https://jobs.lever.co/convergentresearch/87a70993-3dbd-480a-9fe2-221628639f07",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/87a70993-3dbd-480a-9fe2-221628639f07",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-09T18:09:52.325Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-10",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Oath Technologies\n\nOath Technologies is a new research organization building tools for oversight of advanced AIs.",
+        "As AIs become more powerful, it will become more difficult to understand and monitor their behavior."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.42857142857142855
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.42,
+      "scoreBreakdown": {
+        "total": 22.42,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.42857142857142855,
+            "weight": 22,
+            "contribution": 9.428571428571429,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.18585123053063954,
+            "weight": 8,
+            "contribution": 1.4868098442451163,
+            "evidence": [
+              "408h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.42857142857142855
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    },
+    "15ee45a48eb8aca9": {
+      "kind": "news",
+      "id": "15ee45a48eb8aca9",
+      "clusterId": "15ee45a48eb8aca9",
+      "title": "Oath Technologies - Research Engineer, Tools & Infrastructure",
+      "url": "https://jobs.lever.co/convergentresearch/a2e56f3e-09b0-402e-9566-6c7b235759d0",
+      "canonicalUrl": "https://jobs.lever.co/convergentresearch/a2e56f3e-09b0-402e-9566-6c7b235759d0",
+      "sourceId": "lever-convergent",
+      "sourceName": "Convergent Research (all FROs)",
+      "publisherGroup": "ats:convergent",
+      "sourceKind": "jobs",
+      "publishedAt": "2026-09-09T18:30:06.851Z",
+      "datePrecision": "second",
+      "firstSeenAt": "2026-09-12",
+      "isNew": false,
+      "bodyProvenance": "api",
+      "digest": [
+        "About Oath Technologies\n\nOath Technologies is a new research organization building tools for oversight of advanced AIs.",
+        "As AIs become more powerful, it will become more difficult to understand and monitor their behavior."
+      ],
+      "digestSource": "abstract",
+      "eventTypes": [
+        "personnel"
+      ],
+      "paywalled": false,
+      "lanes": {
+        "venture-founder": 0.42857142857142855
+      },
+      "primaryLane": "venture-founder",
+      "score": 22.42,
+      "scoreBreakdown": {
+        "total": 22.42,
+        "factors": [
+          {
+            "key": "lexicon",
+            "label": "Topic match",
+            "raw": 0.42857142857142855,
+            "weight": 22,
+            "contribution": 9.428571428571429,
+            "evidence": [
+              "focused research organization",
+              "convergent research"
+            ]
+          },
+          {
+            "key": "recency",
+            "label": "Recency",
+            "raw": 0.18611010440700815,
+            "weight": 8,
+            "contribution": 1.4888808352560652,
+            "evidence": [
+              "408h old"
+            ]
+          },
+          {
+            "key": "authority",
+            "label": "Source authority",
+            "raw": 0.8,
+            "weight": 10,
+            "contribution": 8
+          },
+          {
+            "key": "event.personnel",
+            "label": "Event: personnel",
+            "raw": 0.25,
+            "weight": 14,
+            "contribution": 3.5
+          }
+        ],
+        "penalties": [],
+        "laneScores": {
+          "venture-founder": 0.42857142857142855
+        },
+        "weightsVersion": "2d39314b2ecc"
+      },
+      "watchHits": []
+    }
+  },
+  "lanes": [
+    {
+      "id": "fellowships",
+      "label": "Fellowships & Scholarships",
+      "blurb": "New and refreshed named awards, plus anything new that fits the profile.",
+      "itemIds": [
+        "b00693f401008e0b",
+        "294d04270100f5f1",
+        "bfdb2b540100b27e",
+        "d00abd2b01011a64",
+        "18d119f40100af58"
+      ]
+    },
+    {
+      "id": "mstp-labs",
+      "label": "MSTP, Labs & PIs",
+      "blurb": "MD/PhD programs, and the labs and PIs doing causal human genetics you would want to name in an application.",
+      "itemIds": [
+        "c70df30301009609",
+        "e69922bc01011209"
+      ]
+    },
+    {
+      "id": "venture-founder",
+      "label": "Venture, Founder & Frontier Roles",
+      "blurb": "Nucleate, Flagship, Activate, age1, TechAtlas, FROs, Astera, and roles at the companies building the tools.",
+      "itemIds": [
+        "482d97ad01012205",
+        "15904c116a2ce42a",
+        "26d48cde47bb2bb0",
+        "e5f7b79a7bb3104d",
+        "52222922d686c19b",
+        "e4dbff860eca0dad"
+      ]
+    },
+    {
+      "id": "conferences",
+      "label": "Conferences & Abstracts",
+      "blurb": "Abstract deadlines you cannot miss: ARDD, CSHL, Keystone, GRC, ASHG, ABRCMS, Cell Symposia, AGE.",
+      "itemIds": [
+        "cfe618e401006e13",
+        "593e85dd010088d6",
+        "cf465fc30100dcff",
+        "55ce086a0100be9a",
+        "cef1b06101013a1e",
+        "045baff501006f2a"
+      ]
+    },
+    {
+      "id": "causal-genetics",
+      "label": "Causal Human Genetics",
+      "blurb": "GWAS, Mendelian randomization, fine-mapping, colocalization, burden tests, PheWAS, perturbation screens, single-cell and spatial epigenomics, epigenetic editing, biomarkers of aging.",
+      "itemIds": [
+        "644eaec2d55aaae1",
+        "b821a566ee0bbb3e",
+        "12d7d589a995c908",
+        "a1202cc5c6851c30",
+        "5989e0d62632e46d",
+        "2cc723c825f2e6db"
+      ]
+    },
+    {
+      "id": "tools-platforms",
+      "label": "Tools, Platforms & the Business of Genomics",
+      "blurb": "Sequencing and methylation platforms, single-cell instruments, target-discovery companies, and the deals that move the tickers.",
+      "itemIds": [
+        "28621939099579f3",
+        "773e8212c2e711fb"
+      ]
+    }
+  ],
+  "countdown": [
+    {
+      "programId": "rhodes-us",
+      "label": "Rhodes Scholarship (US)",
+      "target": "National application (Rhodes portal)",
+      "date": "2026-10-07",
+      "daysUntil": 11,
+      "kind": "confirmed",
+      "precision": "minute",
+      "gating": true,
+      "displayWhen": "7 Oct 2026, 23:59 EDT",
+      "needsVerification": false,
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship"
+    },
+    {
+      "programId": "gates-cambridge-us",
+      "label": "Gates Cambridge Scholarship (US round)",
+      "target": "Gates Cambridge application (but University of Cambridge MPhil application (separate deadline) comes first)",
+      "date": "2026-10-15",
+      "daysUntil": 19,
+      "kind": "projected",
+      "precision": "day",
+      "gating": true,
+      "displayWhen": "15 Oct 2026 (London time)",
+      "needsVerification": true,
+      "url": "https://www.gatescambridge.org/apply/"
+    },
+    {
+      "programId": "nucleate-activator-us",
+      "label": "Nucleate Activator (US)",
+      "target": "Activator application",
+      "date": "2026-10-21",
+      "daysUntil": 25,
+      "kind": "confirmed",
+      "precision": "day",
+      "gating": true,
+      "displayWhen": "21 Oct 2026",
+      "needsVerification": false,
+      "url": "https://nucleate.org/"
+    }
+  ],
+  "verify": [
+    {
+      "programId": "abrcms-2026",
+      "label": "ABRCMS 2026",
+      "reason": "GATING step has no date: Abstract submission",
+      "staleDays": 35,
+      "url": "https://abrcms.org/present-at-abrcms/submit-an-abstract/"
+    },
+    {
+      "programId": "ardd-2026",
+      "label": "ARDD 2026 — Aging Research & Drug Discovery",
+      "reason": "GATING step has no date: Poster abstract submission",
+      "staleDays": 35,
+      "url": "https://agingpharma.org/registration"
+    },
+    {
+      "programId": "broad-bbps",
+      "label": "Broad Biomedical Post-baccalaureate Scholars (BBPS)",
+      "reason": "GATING step has no date: BBPS application",
+      "staleDays": 35,
+      "url": "https://www.broadinstitute.org/bbps"
+    },
+    {
+      "programId": "cshl-single-cell",
+      "label": "CSHL — Single Cell Analyses (next US edition)",
+      "reason": "deadline unknown",
+      "staleDays": 35,
+      "url": "https://meetings.cshl.edu/meetingshome.aspx"
+    },
+    {
+      "programId": "gates-cambridge-us",
+      "label": "Gates Cambridge Scholarship (US round)",
+      "reason": "GATING step has no date: University of Cambridge MPhil application (separate deadline)",
+      "staleDays": 35,
+      "url": "https://www.gatescambridge.org/apply/"
+    },
+    {
+      "programId": "ashg-2027",
+      "label": "ASHG 2027",
+      "reason": "deadline unknown",
+      "url": "https://www.ashg.org/meetings/"
+    },
+    {
+      "programId": "broad-retreat",
+      "label": "Broad Institute annual retreat (internal poster)",
+      "reason": "deadline unknown"
+    },
+    {
+      "programId": "uraf-contact",
+      "label": "Get on the Harvard URAF fellowships mailing list",
+      "reason": "GATING step has no date: Email the Harvard fellowships office for endorsement deadlines"
+    },
+    {
+      "programId": "hhmi-gilliam",
+      "label": "HHMI Gilliam Fellows",
+      "reason": "deadline unknown",
+      "url": "https://www.hhmi.org/developing-scientists/gilliam-fellowships-advanced-study"
+    },
+    {
+      "programId": "marshall-scholarship",
+      "label": "Marshall Scholarship",
+      "reason": "deadline unknown"
+    },
+    {
+      "programId": "pd-soros",
+      "label": "Paul & Daisy Soros Fellowship for New Americans",
+      "reason": "page changed — verify the date (content changed (last changed 2026-09-17))",
+      "url": "https://www.pdsoros.org/apply"
+    },
+    {
+      "programId": "scmethyl-manuscript",
+      "label": "scMethyl methods manuscript",
+      "reason": "only known to the month — cannot alert"
+    }
+  ],
+  "markets": {
+    "asOf": "2026-09-26",
+    "catalysts": [
+      {
+        "date": "2026-09-30",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB",
+        "label": "BRISTOL MYERS SQUIBB PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 4,
+        "watched": true
+      },
+      {
+        "date": "2026-10-04",
+        "ticker": "MRK",
+        "company": "Merck & Co., Inc.",
+        "label": "Merck & Co., Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 8,
+        "watched": true
+      },
+      {
+        "date": "2026-10-10",
+        "ticker": "MRK",
+        "company": "MERCK & CO., INC.",
+        "label": "MERCK & CO., INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 14,
+        "watched": true
+      },
+      {
+        "date": "2026-10-26",
+        "ticker": "IONS",
+        "company": "IONIS PHARMACEUTICALS, INC.",
+        "label": "IONIS PHARMACEUTICALS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 30,
+        "watched": true
+      },
+      {
+        "date": "2026-11-25",
+        "ticker": "SNY",
+        "company": "Sanofi Winthrop Industrie",
+        "label": "Sanofi Winthrop Industrie PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 60,
+        "watched": true
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "VRTX",
+        "company": "VERTEX PHARMACEUTICALS INCORPORATED",
+        "label": "VERTEX PHARMACEUTICALS INCORPORATED PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 65,
+        "watched": true
+      },
+      {
+        "date": "2026-12-23",
+        "ticker": "GILD",
+        "company": "GILEAD SCIENCES, INC.",
+        "label": "GILEAD SCIENCES, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 88,
+        "watched": true
+      },
+      {
+        "date": "2027-03-10",
+        "ticker": "NTLA",
+        "company": "Intellia Therapeutics, Inc.",
+        "label": "Intellia Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 165,
+        "watched": true
+      },
+      {
+        "date": "2027-03-11",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB CO",
+        "label": "BRISTOL MYERS SQUIBB CO PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 166,
+        "watched": true
+      },
+      {
+        "date": "2027-03-22",
+        "ticker": "MRK",
+        "company": "MERCK & CO., INC.",
+        "label": "MERCK & CO., INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 177,
+        "watched": true
+      },
+      {
+        "date": "2027-05-13",
+        "ticker": "BMY",
+        "company": "BRISTOL MYERS SQUIBB",
+        "label": "BRISTOL MYERS SQUIBB PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 229,
+        "watched": true
+      },
+      {
+        "date": "2026-09-26",
+        "ticker": "MIRM",
+        "company": "Mirum Pharmaceuticals, Inc.",
+        "label": "Mirum Pharmaceuticals, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 0,
+        "watched": false
+      },
+      {
+        "date": "2026-09-28",
+        "ticker": "BFRI",
+        "company": "Biofrontera Inc.",
+        "label": "Biofrontera Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 2,
+        "watched": false
+      },
+      {
+        "date": "2026-10-10",
+        "company": "4568 DAIICHI SANKYO",
+        "label": "4568 DAIICHI SANKYO PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 14,
+        "watched": false
+      },
+      {
+        "date": "2026-10-17",
+        "ticker": "IRD",
+        "company": "Opus Genetics, Inc.",
+        "label": "Opus Genetics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 21,
+        "watched": false
+      },
+      {
+        "date": "2026-10-17",
+        "ticker": "VTRS",
+        "company": "Viatris Inc.",
+        "label": "Viatris Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 21,
+        "watched": false
+      },
+      {
+        "date": "2026-10-30",
+        "ticker": "INO",
+        "company": "INOVIO PHARMACEUTICALS, INC.",
+        "label": "INOVIO PHARMACEUTICALS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 34,
+        "watched": false
+      },
+      {
+        "date": "2026-11-01",
+        "ticker": "AGIO",
+        "company": "Agios Pharmaceuticals, Inc.",
+        "label": "Agios Pharmaceuticals, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 36,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "BTAI",
+        "company": "BioXcel Therapeutics, Inc.",
+        "label": "BioXcel Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 49,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "CYTK",
+        "company": "CYTOKINETICS INC",
+        "label": "CYTOKINETICS INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 49,
+        "watched": false
+      },
+      {
+        "date": "2026-11-14",
+        "ticker": "SMMT",
+        "company": "Summit Therapeutics Inc.",
+        "label": "Summit Therapeutics Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 49,
+        "watched": false
+      },
+      {
+        "date": "2026-11-22",
+        "ticker": "CAPR",
+        "company": "CAPRICOR THERAPEUTICS, INC.",
+        "label": "CAPRICOR THERAPEUTICS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 57,
+        "watched": false
+      },
+      {
+        "date": "2026-11-22",
+        "ticker": "SVRA",
+        "company": "SAVARA INC.",
+        "label": "SAVARA INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 57,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "BBIO",
+        "company": "BridgeBio Pharma, Inc.",
+        "label": "BridgeBio Pharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 62,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "NUVL",
+        "company": "Nuvalent, Inc.",
+        "label": "Nuvalent, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 62,
+        "watched": false
+      },
+      {
+        "date": "2026-11-27",
+        "ticker": "RPRX",
+        "company": "Royalty Pharma plc",
+        "label": "Royalty Pharma plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 62,
+        "watched": false
+      },
+      {
+        "date": "2026-11-28",
+        "ticker": "PYPD",
+        "company": "PolyPid Ltd.",
+        "label": "PolyPid Ltd. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 63,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "COGT",
+        "company": "Cogent Biosciences, Inc.",
+        "label": "Cogent Biosciences, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 65,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "RHHBY",
+        "company": "F. Hoffmann-La Roche Ltd",
+        "label": "F. Hoffmann-La Roche Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 65,
+        "watched": false
+      },
+      {
+        "date": "2026-11-30",
+        "ticker": "ZLAB",
+        "company": "Zai Lab Ltd",
+        "label": "Zai Lab Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 65,
+        "watched": false
+      },
+      {
+        "date": "2026-12-12",
+        "ticker": "ANAB",
+        "company": "ANAPTYSBIO, INC",
+        "label": "ANAPTYSBIO, INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 77,
+        "watched": false
+      },
+      {
+        "date": "2026-12-12",
+        "ticker": "VNDA",
+        "company": "Vanda Pharmaceuticals Inc.",
+        "label": "Vanda Pharmaceuticals Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 77,
+        "watched": false
+      },
+      {
+        "date": "2026-12-17",
+        "ticker": "CORT",
+        "company": "CORCEPT THERAPEUTICS INC",
+        "label": "CORCEPT THERAPEUTICS INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 82,
+        "watched": false
+      },
+      {
+        "date": "2026-12-18",
+        "ticker": "RHHBY",
+        "company": "F. Hoffmann-La Roche Ltd",
+        "label": "F. Hoffmann-La Roche Ltd PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 83,
+        "watched": false
+      },
+      {
+        "date": "2026-12-22",
+        "ticker": "MLYS",
+        "company": "Mineralys Therapeutics, Inc.",
+        "label": "Mineralys Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 87,
+        "watched": false
+      },
+      {
+        "date": "2026-12-23",
+        "ticker": "ACLX",
+        "company": "Arcellx, Inc.",
+        "label": "Arcellx, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 88,
+        "watched": false
+      },
+      {
+        "date": "2026-12-27",
+        "ticker": "PRAX",
+        "company": "Praxis Precision Medicines, Inc.",
+        "label": "Praxis Precision Medicines, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 92,
+        "watched": false
+      },
+      {
+        "date": "2026-12-27",
+        "ticker": "VTRS",
+        "company": "Viatris Inc.",
+        "label": "Viatris Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 92,
+        "watched": false
+      },
+      {
+        "date": "2026-12-30",
+        "ticker": "COGT",
+        "company": "Cogent Biosciences, Inc.",
+        "label": "Cogent Biosciences, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 95,
+        "watched": false
+      },
+      {
+        "date": "2027-01-06",
+        "ticker": "IBRX",
+        "company": "IMMUNITYBIO, INC.",
+        "label": "IMMUNITYBIO, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 102,
+        "watched": false
+      },
+      {
+        "date": "2027-01-21",
+        "ticker": "DYN",
+        "company": "Dyne Therapeutics, Inc.",
+        "label": "Dyne Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 117,
+        "watched": false
+      },
+      {
+        "date": "2027-01-29",
+        "ticker": "PRAX",
+        "company": "Praxis Precision Medicines, Inc.",
+        "label": "Praxis Precision Medicines, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 125,
+        "watched": false
+      },
+      {
+        "date": "2027-02-12",
+        "ticker": "BLTE",
+        "company": "BELITE BIO, INC",
+        "label": "BELITE BIO, INC PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 139,
+        "watched": false
+      },
+      {
+        "date": "2027-02-23",
+        "ticker": "ARQT",
+        "company": "Arcutis Biotherapeutics, Inc.",
+        "label": "Arcutis Biotherapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 150,
+        "watched": false
+      },
+      {
+        "date": "2027-02-27",
+        "ticker": "CGEM",
+        "company": "Cullinan Therapeutics, Inc.",
+        "label": "Cullinan Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 154,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "APMD",
+        "company": "Apnimed, Inc.",
+        "label": "Apnimed, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 155,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "BMRN",
+        "company": "BioMarin Pharmaceutical Inc.",
+        "label": "BioMarin Pharmaceutical Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 155,
+        "watched": false
+      },
+      {
+        "date": "2027-02-28",
+        "ticker": "SRPT",
+        "company": "SAREPTA THERAPEUTICS, INC.",
+        "label": "SAREPTA THERAPEUTICS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 155,
+        "watched": false
+      },
+      {
+        "date": "2027-03-03",
+        "ticker": "EXEL",
+        "company": "EXELIXIS, INC.",
+        "label": "EXELIXIS, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 158,
+        "watched": false
+      },
+      {
+        "date": "2027-04-01",
+        "ticker": "HRMY",
+        "company": "Harmony Biosciences Holdings, Inc.",
+        "label": "Harmony Biosciences Holdings, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 187,
+        "watched": false
+      },
+      {
+        "date": "2027-04-23",
+        "ticker": "PHVS",
+        "company": "Pharvaris N.V.",
+        "label": "Pharvaris N.V. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 209,
+        "watched": false
+      },
+      {
+        "date": "2027-04-23",
+        "ticker": "RPRX",
+        "company": "Royalty Pharma plc",
+        "label": "Royalty Pharma plc PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 209,
+        "watched": false
+      },
+      {
+        "date": "2027-04-24",
+        "ticker": "ORGO",
+        "company": "Organogenesis Holdings Inc.",
+        "label": "Organogenesis Holdings Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 210,
+        "watched": false
+      },
+      {
+        "date": "2027-04-28",
+        "ticker": "IMNM",
+        "company": "IMMUNOME, INC.",
+        "label": "IMMUNOME, INC. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 214,
+        "watched": false
+      },
+      {
+        "date": "2027-05-01",
+        "ticker": "AXSM",
+        "company": "Axsome Therapeutics, Inc.",
+        "label": "Axsome Therapeutics, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 217,
+        "watched": false
+      },
+      {
+        "date": "2027-05-08",
+        "ticker": "BBIO",
+        "company": "BridgeBio Pharma, Inc.",
+        "label": "BridgeBio Pharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 224,
+        "watched": false
+      },
+      {
+        "date": "2027-05-27",
+        "ticker": "ZBIO",
+        "company": "Zenas BioPharma, Inc.",
+        "label": "Zenas BioPharma, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 243,
+        "watched": false
+      },
+      {
+        "date": "2027-06-24",
+        "ticker": "UTHR",
+        "company": "UNITED THERAPEUTICS CORPORATION",
+        "label": "UNITED THERAPEUTICS CORPORATION PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 271,
+        "watched": false
+      },
+      {
+        "date": "2027-06-29",
+        "ticker": "COGT",
+        "company": "Cogent Biosciences, Inc.",
+        "label": "Cogent Biosciences, Inc. PDUFA",
+        "kind": "pdufa",
+        "source": "FDA PDUFA calendar",
+        "daysUntil": 276,
+        "watched": false
+      }
+    ],
+    "health": [
+      {
+        "sourceId": "fda-pdufa",
+        "sourceName": "FDA PDUFA calendar",
+        "status": "ok",
+        "httpStatus": 200,
+        "itemsParsed": 1555,
+        "itemsKept": 59,
+        "parseWarnings": [],
+        "latencyMs": 1384,
+        "lastSuccessAt": "2026-09-26",
+        "consecutiveFailures": 0,
+        "optional": true
+      },
+      {
+        "sourceId": "fda-adcomm",
+        "sourceName": "FDA AdCom calendar",
+        "status": "ok",
+        "httpStatus": 200,
+        "itemsParsed": 243,
+        "itemsKept": 0,
+        "parseWarnings": [],
+        "latencyMs": 2578,
+        "lastSuccessAt": "2026-09-26",
+        "consecutiveFailures": 0,
+        "optional": true
+      }
+    ]
+  },
+  "stats": {
+    "fetched": 56,
+    "kept": 33,
+    "deadlinesTracked": 9,
+    "verifiedLast7d": 0,
+    "medianScore": 25.1,
+    "dropped": {
+      "below-threshold": 269,
+      "not-yet-watched": 13,
+      "rolling-cooldown": 1,
+      "ruled-out": 2,
+      "too-old": 136
+    }
+  }
+}
