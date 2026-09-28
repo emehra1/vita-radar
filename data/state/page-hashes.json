@@ -7,10 +7,10 @@
     "lastStatus": 200
   },
   "gates-cambridge-us": {
-    "hash": "3fc080aae530d5d6",
+    "hash": "75e7483b26287a1d",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-27",
-    "length": 2877,
+    "lastChanged": "2026-09-28",
+    "length": 2837,
     "lastStatus": 200
   },
   "hertz-fellowship": {
@@ -35,10 +35,10 @@
     "lastStatus": 200
   },
   "nucleate-activator-us": {
-    "hash": "24c03894fcd85253",
+    "hash": "5f0fea276b5464e2",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-27",
-    "length": 3700,
+    "lastChanged": "2026-09-28",
+    "length": 3528,
     "lastStatus": 200
   },
   "activate-fellowship": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "44f686a4869b0f21",
+    "hash": "4dfb7672574e5036",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-25",
-    "length": 4727,
+    "lastChanged": "2026-09-28",
+    "length": 4725,
     "lastStatus": 200
   }
 }
