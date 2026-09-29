@@ -7,10 +7,10 @@
     "lastStatus": 200
   },
   "gates-cambridge-us": {
-    "hash": "75e7483b26287a1d",
+    "hash": "a0747fc47be33a7d",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-28",
-    "length": 2837,
+    "lastChanged": "2026-09-29",
+    "length": 2838,
     "lastStatus": 200
   },
   "hertz-fellowship": {
@@ -21,10 +21,10 @@
     "lastStatus": 200
   },
   "pd-soros": {
-    "hash": "107e77901cec46e1",
+    "hash": "d990a01db10eb091",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-26",
-    "length": 16925,
+    "lastChanged": "2026-09-29",
+    "length": 16926,
     "lastStatus": 200
   },
   "knight-hennessy": {
