@@ -21,9 +21,9 @@
     "lastStatus": 200
   },
   "pd-soros": {
-    "hash": "2f482d5fd34eaf62",
+    "hash": "1f36e9f441602fe8",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-30",
+    "lastChanged": "2026-10-01",
     "length": 16927,
     "lastStatus": 200
   },
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "4dfb7672574e5036",
+    "hash": "228669f68dbe74e9",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-28",
-    "length": 4725,
+    "lastChanged": "2026-10-01",
+    "length": 4727,
     "lastStatus": 200
   }
 }
