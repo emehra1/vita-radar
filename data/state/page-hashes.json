@@ -7,10 +7,10 @@
     "lastStatus": 200
   },
   "gates-cambridge-us": {
-    "hash": "6477b4b05feb7769",
+    "hash": "6cbd02b03d29299b",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-02",
-    "length": 2837,
+    "lastChanged": "2026-10-05",
+    "length": 2808,
     "lastStatus": 200
   },
   "hertz-fellowship": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "228669f68dbe74e9",
+    "hash": "4fc5085634557eb5",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-01",
-    "length": 4727,
+    "lastChanged": "2026-10-05",
+    "length": 4745,
     "lastStatus": 200
   }
 }
