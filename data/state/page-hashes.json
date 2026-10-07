@@ -1,9 +1,9 @@
 {
   "rhodes-us": {
-    "hash": "8bcd555d8926ef20",
+    "hash": "da9b011948b1c425",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-17",
-    "length": 6300,
+    "lastChanged": "2026-10-07",
+    "length": 5182,
     "lastStatus": 200
   },
   "gates-cambridge-us": {
@@ -28,17 +28,17 @@
     "lastStatus": 200
   },
   "knight-hennessy": {
-    "hash": "664105d0ffdb1350",
+    "hash": "b2d4ec9aa499eb5a",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-06",
-    "length": 2164,
+    "lastChanged": "2026-10-07",
+    "length": 2195,
     "lastStatus": 200
   },
   "nucleate-activator-us": {
-    "hash": "5f0fea276b5464e2",
+    "hash": "597d3aedeb7f186f",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-28",
-    "length": 3528,
+    "lastChanged": "2026-10-07",
+    "length": 3517,
     "lastStatus": 200
   },
   "activate-fellowship": {
