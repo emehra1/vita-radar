@@ -1,16 +1,16 @@
 {
   "rhodes-us": {
-    "hash": "da9b011948b1c425",
+    "hash": "0ab76e229b7a3f09",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-07",
-    "length": 5182,
+    "lastChanged": "2026-10-08",
+    "length": 5196,
     "lastStatus": 200
   },
   "gates-cambridge-us": {
-    "hash": "6cbd02b03d29299b",
+    "hash": "b5c60fa94135de74",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-05",
-    "length": 2808,
+    "lastChanged": "2026-10-08",
+    "length": 2796,
     "lastStatus": 200
   },
   "hertz-fellowship": {
@@ -35,10 +35,10 @@
     "lastStatus": 200
   },
   "nucleate-activator-us": {
-    "hash": "597d3aedeb7f186f",
+    "hash": "1cc71ae70c3b692f",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-07",
-    "length": 3517,
+    "lastChanged": "2026-10-08",
+    "length": 3548,
     "lastStatus": 200
   },
   "activate-fellowship": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "4fc5085634557eb5",
+    "hash": "886a24cd4f9fa37d",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-05",
-    "length": 4745,
+    "lastChanged": "2026-10-08",
+    "length": 4739,
     "lastStatus": 200
   }
 }
