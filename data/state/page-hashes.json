@@ -42,10 +42,10 @@
     "lastStatus": 200
   },
   "activate-fellowship": {
-    "hash": "c0f34466df6f0dba",
+    "hash": "b1386f23adc62b23",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-09-16",
-    "length": 15064,
+    "lastChanged": "2026-10-13",
+    "length": 15086,
     "lastStatus": 200
   },
   "hhmi-gilliam": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "b82bab53b36ff210",
+    "hash": "32ec8a0188a76f37",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-09",
-    "length": 4805,
+    "lastChanged": "2026-10-13",
+    "length": 4779,
     "lastStatus": 200
   }
 }
