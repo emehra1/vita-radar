@@ -21,10 +21,10 @@
     "lastStatus": 200
   },
   "pd-soros": {
-    "hash": "3343d0aee33a35c0",
+    "hash": "ab8a9f9715c8bce9",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-09",
-    "length": 16926,
+    "lastChanged": "2026-10-14",
+    "length": 16925,
     "lastStatus": 200
   },
   "knight-hennessy": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "32ec8a0188a76f37",
+    "hash": "70743deff04c8a9a",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-13",
-    "length": 4779,
+    "lastChanged": "2026-10-14",
+    "length": 4803,
     "lastStatus": 200
   }
 }
