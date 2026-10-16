@@ -35,10 +35,10 @@
     "lastStatus": 200
   },
   "nucleate-activator-us": {
-    "hash": "1cc71ae70c3b692f",
+    "hash": "1133e425c0f5c999",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-08",
-    "length": 3548,
+    "lastChanged": "2026-10-16",
+    "length": 3569,
     "lastStatus": 200
   },
   "activate-fellowship": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "1df78d970ebd9cbd",
+    "hash": "9fa4c74725579696",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-15",
-    "length": 4833,
+    "lastChanged": "2026-10-16",
+    "length": 4781,
     "lastStatus": 200
   }
 }
