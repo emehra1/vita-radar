@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.124.0",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.3.2",
     "nodemailer": "^6.9.5",
     "rss-parser": "^3.13.0"
   },
