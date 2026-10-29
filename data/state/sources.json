@@ -1,6 +1,6 @@
 {
   "biopharma-dive": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       10,
@@ -36,7 +36,7 @@
     ]
   },
   "fierce-biotech": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       25,
@@ -72,7 +72,7 @@
     ]
   },
   "fierce-pharma": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       25,
@@ -108,7 +108,7 @@
     ]
   },
   "stat": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       20,
@@ -144,7 +144,7 @@
     ]
   },
   "endpoints": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       24,
@@ -180,7 +180,7 @@
     ]
   },
   "lifescivc": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       15,
@@ -216,7 +216,7 @@
     ]
   },
   "owlposting": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       20,
@@ -253,7 +253,7 @@
   },
   "decodingbio": {
     "lastSuccessAt": "2026-09-06",
-    "consecutiveFailures": 52,
+    "consecutiveFailures": 53,
     "recentCounts": [
       0,
       0,
@@ -288,7 +288,7 @@
     ]
   },
   "ruxandra": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       20,
@@ -324,7 +324,7 @@
     ]
   },
   "centuryofbio": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       20,
@@ -360,7 +360,7 @@
     ]
   },
   "nature-biotech": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       8,
@@ -396,7 +396,7 @@
     ]
   },
   "nature-aging": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       8,
@@ -432,7 +432,7 @@
     ]
   },
   "nature-methods": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       8,
@@ -468,10 +468,9 @@
     ]
   },
   "sdn-physician-scientists": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      25,
       25,
       25,
       25,
@@ -500,11 +499,12 @@
       25,
       25,
       25,
+      25,
       25
     ]
   },
   "gates-cambridge-news": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       0,
@@ -540,7 +540,7 @@
     ]
   },
   "pdsoros-news": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       0,
@@ -576,7 +576,7 @@
     ]
   },
   "schmidt-news": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       1,
@@ -612,10 +612,9 @@
     ]
   },
   "nih-guide-nofo": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      1,
       2,
       2,
       2,
@@ -644,14 +643,14 @@
       12,
       1,
       1,
+      3,
       3
     ]
   },
   "lever-convergent": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      26,
       26,
       26,
       26,
@@ -680,11 +679,12 @@
       26,
       25,
       26,
-      26
+      26,
+      25
     ]
   },
   "lever-retro": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       5,
@@ -699,7 +699,6 @@
       5,
       5,
       5,
-      5,
       6,
       6,
       6,
@@ -716,14 +715,14 @@
       7,
       7,
       7,
-      7
+      7,
+      8
     ]
   },
   "ashby-insitro": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      13,
       13,
       13,
       13,
@@ -745,6 +744,7 @@
       13,
       13,
       13,
+      14,
       14,
       14,
       14,
@@ -756,13 +756,12 @@
     ]
   },
   "gh-recursion": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       16,
       16,
       16,
-      16,
       12,
       12,
       12,
@@ -788,12 +787,13 @@
       13,
       13,
       13,
+      12,
       12
     ]
   },
   "gh-variantbio": {
     "lastSuccessAt": "2026-09-17",
-    "consecutiveFailures": 41,
+    "consecutiveFailures": 42,
     "recentCounts": [
       0,
       0,
@@ -828,10 +828,9 @@
     ]
   },
   "gh-newlimit": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      13,
       13,
       12,
       12,
@@ -860,15 +859,15 @@
       17,
       17,
       17,
+      17,
       17
     ]
   },
   "gh-altoslabs": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       19,
-      19,
       18,
       17,
       17,
@@ -896,14 +895,14 @@
       18,
       18,
       17,
-      16
+      16,
+      19
     ]
   },
   "gh-calicolabs": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      18,
       18,
       18,
       18,
@@ -925,6 +924,7 @@
       20,
       20,
       20,
+      21,
       21,
       21,
       21,
@@ -936,12 +936,11 @@
     ]
   },
   "gh-arcinstitute": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       23,
       23,
-      23,
       22,
       22,
       22,
@@ -962,6 +961,7 @@
       24,
       25,
       25,
+      26,
       26,
       26,
       26,
@@ -972,7 +972,7 @@
     ]
   },
   "gh-arcadiascience": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
       7,
@@ -984,7 +984,6 @@
       7,
       7,
       7,
-      7,
       6,
       6,
       6,
@@ -1004,14 +1003,14 @@
       5,
       5,
       5,
-      5
+      5,
+      6
     ]
   },
   "gh-beamtx": {
-    "lastSuccessAt": "2026-10-28",
+    "lastSuccessAt": "2026-10-29",
     "consecutiveFailures": 0,
     "recentCounts": [
-      41,
       41,
       43,
       41,
@@ -1040,6 +1039,7 @@
       44,
       43,
       43,
+      41,
       41
     ]
   }
