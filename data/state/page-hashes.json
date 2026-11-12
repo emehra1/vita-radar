@@ -49,10 +49,10 @@
     "lastStatus": 200
   },
   "hhmi-gilliam": {
-    "hash": "10ae561b6e74881f",
+    "hash": "ed398b4f647a7447",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-10-28",
-    "length": 11472,
+    "lastChanged": "2026-11-12",
+    "length": 11525,
     "lastStatus": 200
   },
   "ardd-2026": {
@@ -77,10 +77,10 @@
     "lastStatus": 200
   },
   "broad-bbps": {
-    "hash": "ecf5d3c093cebaf2",
+    "hash": "d24266f3de5ceeed",
     "firstSeen": "2026-09-06",
-    "lastChanged": "2026-11-07",
-    "length": 4745,
+    "lastChanged": "2026-11-12",
+    "length": 4811,
     "lastStatus": 200
   }
 }
